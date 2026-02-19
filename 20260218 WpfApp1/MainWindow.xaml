@@ -7,10 +7,10 @@
         mc:Ignorable="d"
         Title="MainWindow" Height="720" Width="1280" WindowStartupLocation="CenterScreen">
     <Grid>
-        <Image Source="C:\Users\24-0087C\Downloads\Untitled design.png" Stretch="UniformToFill" />
+        <Image Source="C:\Users\24-0087C\source\repos\20260218 WpfApp1\20260218 WpfApp1\bin\Debug\Untitled design.png" Stretch="UniformToFill" />
         <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
             <StackPanel VerticalAlignment="Center" Background="#FF672121">
-                <Image Source="C:\Users\24-0087C\Downloads\Marksmen-Daily-2024-11-05T165301.030.png" Height="100" Margin="0,50,0,0"/>
+                <Image Source="C:\Users\24-0087C\source\repos\20260218 WpfApp1\20260218 WpfApp1\bin\Debug\Marksmen-Daily-2024-11-05T165301.030.png" Height="100" Margin="0,50,0,0"/>
                 <TextBlock Text="The future is here: flying cars!" HorizontalAlignment="Center" Foreground="White"/>
                 <TextBlock Text="LOGIN" HorizontalAlignment="Center" VerticalAlignment="Top"  FontSize="50" Margin="50,0,50,25" Foreground="White" FontWeight="Bold"/>
                 <TextBlock Text="Username" HorizontalAlignment="Center" VerticalAlignment="Top" FontSize="25" Margin="0,25,0,0" Foreground="White"/>

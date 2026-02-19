@@ -55,7 +55,47 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Page Include="MainMenu.xaml">
+    <Page Include="Return.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Rent.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="AddCars.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="AddCar.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="CarsInMaintenance.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="MaintenanceHistory.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="CarToMaintenance.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="RentedCars.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="AvaiblableCars.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="UserMainMenu.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="AdminMainMenu.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -63,12 +103,42 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
+    <Compile Include="Return.xaml.cs">
+      <DependentUpon>Return.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Rent.xaml.cs">
+      <DependentUpon>Rent.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="AddCars.xaml.cs">
+      <DependentUpon>AddCars.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="AddCar.xaml.cs">
+      <DependentUpon>AddCar.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="CarsInMaintenance.xaml.cs">
+      <DependentUpon>CarsInMaintenance.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="MaintenanceHistory.xaml.cs">
+      <DependentUpon>MaintenanceHistory.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="CarToMaintenance.xaml.cs">
+      <DependentUpon>CarToMaintenance.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="RentedCars.xaml.cs">
+      <DependentUpon>RentedCars.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="AvaiblableCars.xaml.cs">
+      <DependentUpon>AvaiblableCars.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="UserMainMenu.xaml.cs">
+      <DependentUpon>UserMainMenu.xaml</DependentUpon>
+    </Compile>
     <Compile Include="App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="MainMenu.xaml.cs">
-      <DependentUpon>MainMenu.xaml</DependentUpon>
+    <Compile Include="AdminMainMenu.xaml.cs">
+      <DependentUpon>AdminMainMenu.xaml</DependentUpon>
     </Compile>
     <Compile Include="MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
