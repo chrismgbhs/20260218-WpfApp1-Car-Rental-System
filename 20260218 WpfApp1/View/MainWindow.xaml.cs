@@ -10,22 +10,27 @@ using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
+using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace _20260218_WpfApp1
+namespace _20260218_WpfApp1.View
 {
     /// <summary>
-    /// Interaction logic for MainMenu.xaml
+    /// Interaction logic for MainWindow.xaml
     /// </summary>
-    public partial class RentCar : Window
+    public partial class MainWindow : Window
     {
-        public RentCar()
+        public MainWindow()
         {
             InitializeComponent();
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
+            AdminMainMenu adminMainMenu = new AdminMainMenu();
+            UserMainMenu userMainMenu = new UserMainMenu();
+            userMainMenu.Show();
+            adminMainMenu.Show();
             this.Close();
         }
     }

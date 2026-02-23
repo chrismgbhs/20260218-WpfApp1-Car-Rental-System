@@ -55,92 +55,92 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Page Include="Return.xaml">
+    <Page Include="View\Return.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="Rent.xaml">
+    <Page Include="View\Rent.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="AddCars.xaml">
+    <Page Include="View\AddCars.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="AddCar.xaml">
+    <Page Include="View\AddCar.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="CarsInMaintenance.xaml">
+    <Page Include="View\CarsInMaintenance.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="MaintenanceHistory.xaml">
+    <Page Include="View\MaintenanceHistory.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="CarToMaintenance.xaml">
+    <Page Include="View\CarToMaintenance.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="RentedCars.xaml">
+    <Page Include="View\RentedCars.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="AvaiblableCars.xaml">
+    <Page Include="View\AvaiblableCars.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="UserMainMenu.xaml">
+    <Page Include="View\UserMainMenu.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="AdminMainMenu.xaml">
+    <Page Include="View\AdminMainMenu.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="MainWindow.xaml">
+    <Page Include="View\MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Compile Include="Return.xaml.cs">
+    <Compile Include="View\Return.xaml.cs">
       <DependentUpon>Return.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Rent.xaml.cs">
+    <Compile Include="View\Rent.xaml.cs">
       <DependentUpon>Rent.xaml</DependentUpon>
     </Compile>
-    <Compile Include="AddCars.xaml.cs">
+    <Compile Include="View\AddCars.xaml.cs">
       <DependentUpon>AddCars.xaml</DependentUpon>
     </Compile>
-    <Compile Include="AddCar.xaml.cs">
+    <Compile Include="View\AddCar.xaml.cs">
       <DependentUpon>AddCar.xaml</DependentUpon>
     </Compile>
-    <Compile Include="CarsInMaintenance.xaml.cs">
+    <Compile Include="View\CarsInMaintenance.xaml.cs">
       <DependentUpon>CarsInMaintenance.xaml</DependentUpon>
     </Compile>
-    <Compile Include="MaintenanceHistory.xaml.cs">
+    <Compile Include="View\MaintenanceHistory.xaml.cs">
       <DependentUpon>MaintenanceHistory.xaml</DependentUpon>
     </Compile>
-    <Compile Include="CarToMaintenance.xaml.cs">
+    <Compile Include="View\CarToMaintenance.xaml.cs">
       <DependentUpon>CarToMaintenance.xaml</DependentUpon>
     </Compile>
-    <Compile Include="RentedCars.xaml.cs">
+    <Compile Include="View\RentedCars.xaml.cs">
       <DependentUpon>RentedCars.xaml</DependentUpon>
     </Compile>
-    <Compile Include="AvaiblableCars.xaml.cs">
+    <Compile Include="View\AvaiblableCars.xaml.cs">
       <DependentUpon>AvaiblableCars.xaml</DependentUpon>
     </Compile>
-    <Compile Include="UserMainMenu.xaml.cs">
+    <Compile Include="View\UserMainMenu.xaml.cs">
       <DependentUpon>UserMainMenu.xaml</DependentUpon>
     </Compile>
     <Compile Include="App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="AdminMainMenu.xaml.cs">
+    <Compile Include="View\AdminMainMenu.xaml.cs">
       <DependentUpon>AdminMainMenu.xaml</DependentUpon>
     </Compile>
-    <Compile Include="MainWindow.xaml.cs">
+    <Compile Include="View\MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
@@ -170,6 +170,10 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Model\" />
+    <Folder Include="ViewModel\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

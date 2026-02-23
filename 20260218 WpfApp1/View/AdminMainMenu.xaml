@@ -1,4 +1,4 @@
-﻿<Window x:Class="_20260218_WpfApp1.AdminMainMenu"
+﻿<Window x:Class="_20260218_WpfApp1.View.AdminMainMenu"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"

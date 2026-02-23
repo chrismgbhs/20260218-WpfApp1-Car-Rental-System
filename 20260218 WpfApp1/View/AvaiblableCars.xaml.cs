@@ -12,21 +12,16 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 
-namespace _20260218_WpfApp1
+namespace _20260218_WpfApp1.View
 {
     /// <summary>
     /// Interaction logic for MainMenu.xaml
     /// </summary>
-    public partial class ReturnCar : Window
+    public partial class AvailableCars : Window
     {
-        public ReturnCar()
+        public AvailableCars()
         {
             InitializeComponent();
-        }
-
-        private void Button_Click(object sender, RoutedEventArgs e)
-        {
-            this.Close();
         }
     }
 }
