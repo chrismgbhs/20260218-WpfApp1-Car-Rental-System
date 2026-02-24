@@ -7,19 +7,19 @@
         mc:Ignorable="d"
         Title="MainWindow" Height="auto" Width="auto" WindowStartupLocation="CenterScreen">
     <ScrollViewer VerticalScrollBarVisibility="Visible">
-        <Viewbox Stretch="UniformToFill">
+        <Viewbox Stretch="UniformToFill" HorizontalAlignment="Center">
             <Grid Height="auto" Width="auto">
-                <Image Source="C:\Users\24-0087C\source\repos\20260218-WpfApp1-Car-Rental-System\20260218 WpfApp1\images\bg.png" Stretch="UniformToFill" HorizontalAlignment="Center"/>
+                <Image Source="C:\Users\24-0087C\source\repos\20260218-WpfApp1-Car-Rental-System\20260218 WpfApp1\images\bg.png"/>
                 <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
                     <StackPanel VerticalAlignment="Center" Background="#FF672121">
-                        <Image Source="C:\Users\24-0087C\source\repos\20260218 WpfApp1\20260218 WpfApp1\bin\Debug\Marksmen-Daily-2024-11-05T165301.030.png" Height="100" Margin="0,50,0,0"/>
-                        <TextBlock Text="The future is here: flying cars!" HorizontalAlignment="Center" Foreground="White"/>
-                        <TextBlock Text="LOGIN" HorizontalAlignment="Center" VerticalAlignment="Top"  FontSize="50" Margin="50,0,50,25" Foreground="White" FontWeight="Bold"/>
-                        <TextBlock Text="Username" HorizontalAlignment="Center" VerticalAlignment="Top" FontSize="25" Margin="0,25,0,0" Foreground="White"/>
-                        <TextBox HorizontalAlignment="Center" VerticalAlignment="Top" FontSize="20" Width="400" BorderBrush="Gray" Background="White" Margin="50,0,50,0"/>
-                        <TextBlock Text="PIN" HorizontalAlignment="Center" VerticalAlignment="Top" FontSize="25" Margin="0,25,0,0" Foreground="White"/>
-                        <TextBox HorizontalAlignment="Center" VerticalAlignment="Top" FontSize="20" Width="400" BorderBrush="Gray" Background="White" Margin="50,0,50,0"/>
-                        <Button Content="SUBMIT" Height="50" Width="70" Margin="0,50,0,50" FontWeight="Bold" Click="Button_Click" />
+                        <Image Source="C:\Users\24-0087C\source\repos\20260218-WpfApp1-Car-Rental-System\20260218 WpfApp1\images\Car.png" Height="100" Margin="10,10,10,10"/>
+                        <TextBlock Text="The future is here: flying cars!" HorizontalAlignment="Center" Foreground="White" Style="{StaticResource BodyTextStyle}"/>
+                        <TextBlock Text="LOGIN" HorizontalAlignment="Center" VerticalAlignment="Top" Foreground="White" Style="{StaticResource Header}"/>
+                        <TextBlock Text="Username" HorizontalAlignment="Center" VerticalAlignment="Top" Foreground="White" Style="{StaticResource BodyTextStyle}"/>
+                        <TextBox HorizontalAlignment="Center" VerticalAlignment="Top" Width="100" BorderBrush="Gray" Background="White" Style="{StaticResource BodyTextBox}"/>
+                        <TextBlock Text="PIN" HorizontalAlignment="Center" VerticalAlignment="Top" Foreground="White" Style="{StaticResource BodyTextStyle}"/>
+                        <TextBox HorizontalAlignment="Center" VerticalAlignment="Top" Width="100" BorderBrush="Gray" Background="White" Style="{StaticResource BodyTextBox}"/>
+                        <Button Content="SUBMIT" Style="{StaticResource MajorButton}" Click="Button_Click" />
                     </StackPanel>
                 </StackPanel>
             </Grid>

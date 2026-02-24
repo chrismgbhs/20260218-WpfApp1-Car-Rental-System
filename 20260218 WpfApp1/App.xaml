@@ -4,6 +4,52 @@
              xmlns:local="clr-namespace:_20260218_WpfApp1"
              StartupUri="View\MainWindow.xaml">
     <Application.Resources>
-         
+        
+        <!--TEXT STYLES!!-->
+        <Style x:Key="Header" TargetType="TextBlock">
+            <Setter Property="FontFamily" Value="Segoe UI"/>
+            <Setter Property="FontSize" Value="10.333"/>
+            <Setter Property="Margin" Value="10,0,10,20"/>
+            <Setter Property="FontWeight" Value="Bold"/>
+        </Style>
+        
+        <Style x:Key="BodyTextStyle" TargetType="TextBlock">
+            <Setter Property="FontFamily" Value="Segoe UI"/>
+            <Setter Property="FontSize" Value="8.333"/>
+            <Setter Property="Margin" Value="10,0,10,5"/>
+        </Style>
+        
+        <Style x:Key="Title" TargetType="TextBlock">
+            <Setter Property="FontFamily" Value="Segoe UI"/>
+            <Setter Property="FontSize" Value="12.333"/>
+            <Setter Property="Margin" Value="10,0,10,25"/>
+            <Setter Property="FontWeight" Value="Bold"/>
+        </Style>
+
+        <!--TEXT BOXES!!-->
+        <Style x:Key="BodyTextBox" TargetType="TextBox">
+            <Setter Property="FontFamily" Value="Segoe UI"/>
+            <Setter Property="FontSize" Value="8.333"/>
+            <Setter Property="Margin" Value="10,0,10,5"/>
+        </Style>
+
+        <!--BUTTONS!!-->
+        <Style x:Key="MajorButton" TargetType="Button">
+            <Setter Property="FontFamily" Value="Segoe UI"/>
+            <Setter Property="FontSize" Value="10.333"/>
+            <Setter Property="Margin" Value="10,20,10,5"/>
+            <Setter Property="FontWeight" Value="Bold"/>
+        </Style>
+        <Style x:Key="NormalButton" TargetType="Button">
+            <Setter Property="FontFamily" Value="Segoe UI"/>
+            <Setter Property="FontSize" Value="8.333"/>
+            <Setter Property="Margin" Value="10,0,10,5"/>
+        </Style>
+
+        <!--BORDER-->
+        <Style x:Key="MainBorder" TargetType="Border">
+            <Setter Property="BorderBrush" Value="White"/>
+            <Setter Property="BorderThickness" Value="0,10,0,10"/>
+        </Style>
     </Application.Resources>
 </Application>

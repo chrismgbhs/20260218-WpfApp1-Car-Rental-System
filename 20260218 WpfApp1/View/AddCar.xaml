@@ -5,20 +5,19 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:_20260218_WpfApp1"
         mc:Ignorable="d"
-        Title="Car" Height="720" Width="1280" WindowStartupLocation="CenterScreen" Foreground="White">
+        Title="Car" Height="auto" Width="auto" WindowStartupLocation="CenterScreen" Foreground="White">
     <ScrollViewer VerticalScrollBarVisibility="Visible">
         <Viewbox Stretch="UniformToFill">
-            <Grid Background="#FF672121">
-                <Grid.RowDefinitions>
-                    <RowDefinition Height="50"/>
-                    <RowDefinition Height="*"/>
-                    <RowDefinition Height="50"/>
-                </Grid.RowDefinitions>
-                <Label Grid.Row="0" Content="CAR RENTAL SYSTEM" Foreground="WHITE" FontSize="15" Margin="10, 10, 10, 10"/>
-                <Border Grid.Row="0" BorderBrush="White" BorderThickness="0,0,0,5"/>
-                <StackPanel Grid.Row="1" VerticalAlignment="Center" Width="auto">
-                    <TextBlock Text="ADD A CAR" Margin="25, 50, 25, 25" HorizontalAlignment="Center" FontSize="35" FontWeight="Bold"/>
-                    <TextBlock Text="This is where the car will be added."/>
+            <Grid Background="#FF672121" Height="auto" Width="auto">
+                <StackPanel Orientation="Vertical" HorizontalAlignment="Center" Background="#FF672121">
+                    <TextBlock Text="CAR RENTAL SYSTEM" Foreground="WHITE" Style="{StaticResource Title}" VerticalAlignment="Center"/>
+                    <Border Style="{StaticResource MainBorder}"/>
+                    <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                        <StackPanel VerticalAlignment="Center" Width="auto">
+                            <TextBlock Text="ADD A CAR" HorizontalAlignment="Center" Style="{StaticResource Header}"/>
+                            <TextBlock Text="This is where the car will be added."/>
+                        </StackPanel>
+                    </StackPanel>
                 </StackPanel>
             </Grid>
         </Viewbox>
