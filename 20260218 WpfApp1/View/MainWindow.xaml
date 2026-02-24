@@ -9,16 +9,16 @@
     <ScrollViewer VerticalScrollBarVisibility="Visible">
         <Viewbox Stretch="UniformToFill" HorizontalAlignment="Center">
             <Grid Height="auto" Width="auto">
-                <Image Source="C:\Users\24-0087C\source\repos\20260218-WpfApp1-Car-Rental-System\20260218 WpfApp1\images\bg.png"/>
+                <Image Source="/Image/bg.png"/>
                 <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
                     <StackPanel VerticalAlignment="Center" Background="#FF672121">
-                        <Image Source="C:\Users\24-0087C\source\repos\20260218-WpfApp1-Car-Rental-System\20260218 WpfApp1\images\Car.png" Height="100" Margin="10,10,10,10"/>
-                        <TextBlock Text="The future is here: flying cars!" HorizontalAlignment="Center" Foreground="White" Style="{StaticResource BodyTextStyle}"/>
+                        <Image Source="/Image/Car.png" Height="150" Margin="10,10,10,10"/>
+                        <TextBlock Text="The future is here: flying cars!" FontStyle="Italic" HorizontalAlignment="Center" Foreground="White" Style="{StaticResource BodyTextStyle}"/>
                         <TextBlock Text="LOGIN" HorizontalAlignment="Center" VerticalAlignment="Top" Foreground="White" Style="{StaticResource Header}"/>
                         <TextBlock Text="Username" HorizontalAlignment="Center" VerticalAlignment="Top" Foreground="White" Style="{StaticResource BodyTextStyle}"/>
-                        <TextBox HorizontalAlignment="Center" VerticalAlignment="Top" Width="100" BorderBrush="Gray" Background="White" Style="{StaticResource BodyTextBox}"/>
+                        <TextBox HorizontalAlignment="Center" VerticalAlignment="Top" Width="200" BorderBrush="Gray" Background="White" Style="{StaticResource BodyTextBox}"/>
                         <TextBlock Text="PIN" HorizontalAlignment="Center" VerticalAlignment="Top" Foreground="White" Style="{StaticResource BodyTextStyle}"/>
-                        <TextBox HorizontalAlignment="Center" VerticalAlignment="Top" Width="100" BorderBrush="Gray" Background="White" Style="{StaticResource BodyTextBox}"/>
+                        <TextBox HorizontalAlignment="Center" VerticalAlignment="Top" Width="200" BorderBrush="Gray" Background="White" Style="{StaticResource BodyTextBox}"/>
                         <Button Content="SUBMIT" Style="{StaticResource MajorButton}" Click="Button_Click" />
                     </StackPanel>
                 </StackPanel>

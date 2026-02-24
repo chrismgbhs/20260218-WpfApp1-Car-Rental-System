@@ -5,26 +5,34 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:_20260218_WpfApp1"
         mc:Ignorable="d"
-        Title="Admin Dashboard" Height="720" Width="1280" WindowStartupLocation="CenterScreen" Foreground="White">
-    <Grid Background="#FF672121">
-        <Grid.RowDefinitions>
-            <RowDefinition Height="50"/>
-            <RowDefinition Height="*"/>
-            <RowDefinition Height="50"/>
-        </Grid.RowDefinitions>
-        <Label Grid.Row="0" Content="CAR RENTAL SYSTEM" Foreground="WHITE" FontSize="15" Margin="10, 10, 10, 10"/>
-        <Border Grid.Row="0" BorderBrush="White" BorderThickness="0,0,0,5"/>
-        <StackPanel Grid.Row="1" VerticalAlignment="Center" Width="600">
-            <TextBlock Text="MAIN MENU" Margin="25, 50, 25, 25" HorizontalAlignment="Center" FontSize="35" FontWeight="Bold"/>
-            <Button Content="View Available Cars" Height="50" FontSize="20" Click="Button_Click_1" />
-            <Button Content="View Rented Cars" Height="50" FontSize="20" Click="Button_Click_2"/>
-            <Button Content="Send Car to Maintenance or Return Car from Maintenance" Height="50" FontSize="20" Click="Button_Click_3"/>
-            <Button Content="View Cars in Maintenance" Height="50" FontSize="20" Click="Button_Click_5"/>
-            <Button Content="View Mainthenance History" Height="50" FontSize="20" Click="Button_Click_4"/>
-            <Button Content="Add a Car" Height="50" FontSize="20" Click="Button_Click_6"/>
-            <Button Content="Add Multiple Cars via CSV file" Height="50" FontSize="20" Click="Button_Click_7"/>
-        </StackPanel>
-        <Border Grid.Row="2" BorderBrush="White" BorderThickness="0,5,0,0"/>
-        <Button Grid.Row="2" Content="Exit and Save" Height="50" Width="150" FontSize="20" Click="Button_Click" HorizontalAlignment="Right"/>
-    </Grid>
+        Title="Admin Dashboard" WindowStartupLocation="CenterScreen" Foreground="White">
+    <ScrollViewer VerticalScrollBarVisibility="Visible">
+        <Viewbox Stretch="UniformToFill">
+            <Grid Background="#FF672121" Height="1080" Width="1920">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                    <!-- Title -->
+                    <RowDefinition Height="Auto"/>
+                    <!-- Border -->
+                    <RowDefinition Height="*"/>
+                    <!-- Main Menu fills remaining space -->
+                </Grid.RowDefinitions>
+
+                <TextBlock Text="CAR RENTAL SYSTEM" Foreground="White" Style="{StaticResource Title}" Grid.Row="0" Margin="25,40,25,40"/>
+                <Border BorderBrush="White" Style="{StaticResource MainBorder}" Grid.Row="1"/>
+
+                <StackPanel Grid.Row="2" VerticalAlignment="Center" HorizontalAlignment="Center">
+                    <TextBlock Text="MAIN MENU" HorizontalAlignment="Center" Style="{StaticResource Header}"/>
+                    <Button Content="View Available Cars" Style="{StaticResource NormalButton}" Click="Button_Click_1"/>
+                    <Button Content="View Rented Cars" Style="{StaticResource NormalButton}" Click="Button_Click_2"/>
+                    <Button Content="Send Car to Maintenance or Return Car from Maintenance" Style="{StaticResource NormalButton}" Click="Button_Click_3"/>
+                    <Button Content="View Cars in Maintenance" Style="{StaticResource NormalButton}" Click="Button_Click_5"/>
+                    <Button Content="View Maintenance History" Style="{StaticResource NormalButton}" Click="Button_Click_4"/>
+                    <Button Content="Add a Car" Style="{StaticResource NormalButton}" Click="Button_Click_6"/>
+                    <Button Content="Add Multiple Cars via CSV file" Style="{StaticResource NormalButton}" Click="Button_Click_7"/>
+                    <Button Content="Exit and Save" Style="{StaticResource NormalButton}" Click="Button_Click"/>
+                </StackPanel>
+            </Grid>
+        </Viewbox>
+    </ScrollViewer>
 </Window>

@@ -175,5 +175,9 @@
     <Folder Include="Model\" />
     <Folder Include="ViewModel\" />
   </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Image\bg.png" />
+    <Resource Include="Image\Car.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

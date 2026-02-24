@@ -5,18 +5,27 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:_20260218_WpfApp1"
         mc:Ignorable="d"
-        Title="Cars" Height="720" Width="1280" WindowStartupLocation="CenterScreen" Foreground="White">
-    <Grid Background="#FF672121">
-        <Grid.RowDefinitions>
-            <RowDefinition Height="50"/>
-            <RowDefinition Height="*"/>
-            <RowDefinition Height="50"/>
-        </Grid.RowDefinitions>
-        <Label Grid.Row="0" Content="CAR RENTAL SYSTEM" Foreground="WHITE" FontSize="15" Margin="10, 10, 10, 10"/>
-        <Border Grid.Row="0" BorderBrush="White" BorderThickness="0,0,0,5"/>
-        <StackPanel Grid.Row="1" VerticalAlignment="Center" Width="600">
-            <TextBlock Text="ADD CARS" Margin="25, 50, 25, 25" HorizontalAlignment="Center" FontSize="35" FontWeight="Bold"/>
-            <TextBlock Text="This is where the cars will be added."/>
-        </StackPanel>
-    </Grid>
+        Title="Cars" WindowStartupLocation="CenterScreen" Foreground="White">
+    <ScrollViewer VerticalScrollBarVisibility="Visible">
+        <Viewbox Stretch="UniformToFill">
+            <Grid Background="#FF672121" Height="1080" Width="1920">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                    <!-- Title -->
+                    <RowDefinition Height="Auto"/>
+                    <!-- Border -->
+                    <RowDefinition Height="*"/>
+                    <!-- Main Menu fills remaining space -->
+                </Grid.RowDefinitions>
+
+                <TextBlock Text="CAR RENTAL SYSTEM" Foreground="White" Style="{StaticResource Title}" Grid.Row="0" Margin="25,40,25,40"/>
+                <Border BorderBrush="White" Style="{StaticResource MainBorder}" Grid.Row="1"/>
+
+                <StackPanel Grid.Row="2" VerticalAlignment="Center" HorizontalAlignment="Center">
+                    <TextBlock Text="ADD CARS" HorizontalAlignment="Center" Style="{StaticResource Header}"/>
+                    <TextBlock Text="This is where the cars will be added." Style="{StaticResource BodyTextStyle}"/>
+                </StackPanel>
+            </Grid>
+        </Viewbox>
+    </ScrollViewer>
 </Window>
