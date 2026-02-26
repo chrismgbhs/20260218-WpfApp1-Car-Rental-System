@@ -19,18 +19,35 @@
                 </Grid.RowDefinitions>
 
                 <TextBlock Text="CAR RENTAL SYSTEM" Foreground="White" Style="{StaticResource Title}" Grid.Row="0" Margin="25,40,25,40"/>
-                <Border BorderBrush="White" Style="{StaticResource MainBorder}" Grid.Row="1"/>
+                <Border Style="{StaticResource MainBorder}" Grid.Row="1"/>
 
                 <StackPanel Grid.Row="2" VerticalAlignment="Center" HorizontalAlignment="Center">
                     <TextBlock Text="MAIN MENU" HorizontalAlignment="Center" Style="{StaticResource Header}"/>
-                    <Button Content="View Available Cars" Style="{StaticResource NormalButton}" Click="Button_Click_1"/>
-                    <Button Content="View Rented Cars" Style="{StaticResource NormalButton}" Click="Button_Click_2"/>
-                    <Button Content="Send Car to Maintenance or Return Car from Maintenance" Style="{StaticResource NormalButton}" Click="Button_Click_3"/>
-                    <Button Content="View Cars in Maintenance" Style="{StaticResource NormalButton}" Click="Button_Click_5"/>
-                    <Button Content="View Maintenance History" Style="{StaticResource NormalButton}" Click="Button_Click_4"/>
-                    <Button Content="Add a Car" Style="{StaticResource NormalButton}" Click="Button_Click_6"/>
-                    <Button Content="Add Multiple Cars via CSV file" Style="{StaticResource NormalButton}" Click="Button_Click_7"/>
-                    <Button Content="Exit and Save" Style="{StaticResource NormalButton}" Click="Button_Click"/>
+                    <Border Style="{StaticResource NormalButtonBorder}">
+                        <Button Content="View Available Cars" Style="{StaticResource NormalButton}" Click="Button_Click_1"/>
+                    </Border>
+                    <Border Style="{StaticResource NormalButtonBorder}">
+                        <Button Content="View Rented Cars" Style="{StaticResource NormalButton}" Click="Button_Click_2"/>
+                    </Border>
+                    <Border Style="{StaticResource NormalButtonBorder}">
+                        <Button Content="Send Car to Maintenance or Return Car from Maintenance" Style="{StaticResource NormalButton}" Click="Button_Click_3"/>
+                    </Border>
+                    <Border Style="{StaticResource NormalButtonBorder}">
+                        <Button Content="View Cars in Maintenance" Style="{StaticResource NormalButton}" Click="Button_Click_5"/>
+                    </Border>
+                    <Border Style="{StaticResource NormalButtonBorder}">
+                        <Button Content="View Maintenance History" Style="{StaticResource NormalButton}" Click="Button_Click_4"/>
+                    </Border>
+                    <Border Style="{StaticResource NormalButtonBorder}">
+                        <Button Content="Add a Car" Style="{StaticResource NormalButton}" Click="Button_Click_6"/>
+                    </Border>
+                    <Border Style="{StaticResource NormalButtonBorder}">
+                        <Button Content="Add Multiple Cars via CSV file" Style="{StaticResource NormalButton}" Click="Button_Click_7"/>
+                    </Border>
+                    <Border Style="{StaticResource NormalButtonBorder}">
+                        <Button Content="Exit and Save" Style="{StaticResource NormalButton}" Click="Button_Click"/>
+                    </Border>
+                    
                 </StackPanel>
             </Grid>
         </Viewbox>

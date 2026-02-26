@@ -19,7 +19,7 @@
                 </Grid.RowDefinitions>
 
                 <TextBlock Text="CAR RENTAL SYSTEM" Foreground="White" Style="{StaticResource Title}" Grid.Row="0" Margin="25,40,25,40"/>
-                <Border BorderBrush="White" Style="{StaticResource MainBorder}" Grid.Row="1"/>
+                <Border Style="{StaticResource MainBorder}" Grid.Row="1"/>
 
                 <StackPanel Grid.Row="2" VerticalAlignment="Center" HorizontalAlignment="Center">
                     <TextBlock Text="RENT A CAR" HorizontalAlignment="Center" Style="{StaticResource Header}"/>

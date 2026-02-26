@@ -6,6 +6,7 @@
         xmlns:local="clr-namespace:_20260218_WpfApp1"
         mc:Ignorable="d"
         Title="User Dashboard" WindowStartupLocation="CenterScreen" Foreground="White">
+
     <ScrollViewer VerticalScrollBarVisibility="Visible">
         <Viewbox Stretch="UniformToFill">
             <Grid Background="#FF672121" Height="1080" Width="1920">
@@ -18,16 +19,26 @@
                     <!-- Main Menu fills remaining space -->
                 </Grid.RowDefinitions>
 
-                <TextBlock Text="CAR RENTAL SYSTEM" Foreground="White" Style="{StaticResource Title}" Grid.Row="0" Margin="25,40,25,40"/>
-                <Border BorderBrush="White" Style="{StaticResource MainBorder}" Grid.Row="1"/>
+                <TextBlock Text="CAR RENTAL SYSTEM" Style="{StaticResource Title}" Grid.Row="0" Margin="25,40,25,40"/>
+                <Border Style="{StaticResource MainBorder}" Grid.Row="1"/>
 
-                <StackPanel Grid.Row="2" VerticalAlignment="Center" HorizontalAlignment="Center">
-                    <TextBlock Text="MAIN MENU" HorizontalAlignment="Center" Style="{StaticResource Header}"/>
-                    <Button Content="View Available Cars" Click="Button_Click_1" Style="{StaticResource NormalButton}"/>
-                    <Button Content="View Rented Cars" Click="Button_Click_2" Style="{StaticResource NormalButton}"/>
-                    <Button Content="Rent a Car" Click="Button_Click_3" Style="{StaticResource NormalButton}"/>
-                    <Button Content="Return a Car" Click="Button_Click_4" Style="{StaticResource NormalButton}"/>
-                    <Button Content="Exit and Save" Click="Button_Click" Style="{StaticResource NormalButton}"/>
+                <StackPanel Grid.Row="2" VerticalAlignment="Center" HorizontalAlignment="{StaticResource MainMenuHorizontalAlignment}">
+                    <TextBlock Text="MAIN MENU" Style="{StaticResource Header}" HorizontalAlignment="{StaticResource MainMenuHorizontalAlignment}"/>
+                    <Border Style="{StaticResource NormalButtonBorder}" HorizontalAlignment="{StaticResource MainMenuHorizontalAlignment}">
+                        <Button Content="View Available Cars" Click="Button_Click_1" Style="{StaticResource NormalButton}" HorizontalAlignment="{StaticResource MainMenuHorizontalAlignment}"/>
+                    </Border>
+                    <Border Style="{StaticResource NormalButtonBorder}" HorizontalAlignment="{StaticResource MainMenuHorizontalAlignment}">
+                        <Button Content="View Rented Cars" Click="Button_Click_2" Style="{StaticResource NormalButton}" HorizontalAlignment="{StaticResource MainMenuHorizontalAlignment}"/>
+                    </Border>
+                    <Border Style="{StaticResource NormalButtonBorder}" HorizontalAlignment="{StaticResource MainMenuHorizontalAlignment}">
+                        <Button Content="Rent a Car" Click="Button_Click_3" Style="{StaticResource NormalButton}" HorizontalAlignment="{StaticResource MainMenuHorizontalAlignment}"/>
+                    </Border>
+                    <Border Style="{StaticResource NormalButtonBorder}" HorizontalAlignment="{StaticResource MainMenuHorizontalAlignment}">
+                        <Button Content="Return a Car" Click="Button_Click_4" Style="{StaticResource NormalButton}" HorizontalAlignment="{StaticResource MainMenuHorizontalAlignment}"/>
+                    </Border>
+                    <Border Style="{StaticResource NormalButtonBorder}" HorizontalAlignment="{StaticResource MainMenuHorizontalAlignment}">
+                        <Button Content="Exit and Save" Click="Button_Click" Style="{StaticResource NormalButton}" HorizontalAlignment="{StaticResource MainMenuHorizontalAlignment}"/>
+                    </Border>
                 </StackPanel>
             </Grid>
         </Viewbox>
