@@ -63,6 +63,7 @@
 
         <Style x:Key="TextBoxBorder" TargetType="Border">
             <Setter Property="BorderBrush" Value="{StaticResource TextBoxBorderColor}"/>
+            <Setter Property="BorderBrush" Value="White"/>
             <Setter Property="BorderThickness" Value="5,5,5,5"/>
             <Setter Property="Margin" Value="25,0,25,20"/>
             <Setter Property="CornerRadius" Value="5"/>
@@ -72,6 +73,7 @@
 
         <Style x:Key="ElementBorder" TargetType="Border">
             <Setter Property="BorderBrush" Value="{StaticResource ElementBorderColor}"/>
+            <Setter Property="BorderBrush" Value="White"/>
             <Setter Property="BorderThickness" Value="5,5,5,5"/>
             <Setter Property="CornerRadius" Value="5"/>
             <Setter Property="VerticalAlignment" Value="Center"/>
@@ -80,19 +82,19 @@
 
         <Style x:Key="MajorButtonBorder" TargetType="Border">
             <Setter Property="BorderBrush" Value="{StaticResource ButtonBorderColor}"/>
+            <Setter Property="BorderBrush" Value="White"/>
             <Setter Property="BorderThickness" Value="5,5,5,5"/>
             <Setter Property="Margin" Value="25,35,25,20"/>
             <Setter Property="CornerRadius" Value="5"/>
             <Setter Property="VerticalAlignment" Value="Center"/>
             <Setter Property="HorizontalAlignment" Value="Center"/>
         </Style>
-
         <Style x:Key="NormalButtonBorder" TargetType="Border">
             <Setter Property="BorderBrush" Value="{StaticResource ButtonBorderColor}"/>
             <Setter Property="BorderThickness" Value="5,5,5,5"/>
             <Setter Property="Margin" Value="25,0,25,20"/>
             <Setter Property="CornerRadius" Value="5"/>
-  
-        </Style>
+
+            </Style>
     </Application.Resources>
 </Application>
