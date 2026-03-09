@@ -3,6 +3,7 @@ using _20260218_WpfApp1.View;
 using System;
 using System.Collections.Generic;
 using System.Data;
+using System.Diagnostics.Contracts;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -13,6 +14,7 @@ namespace _20260218_WpfApp1.ViewModel
 {
     internal class LoginViewModel : ObservableObject
     {
+        //Declare and construct the objects using a new name.
         public UserModel CurrentUser { get; set; }
         public ICommand LoginCommand { get; set; }
 
@@ -22,6 +24,7 @@ namespace _20260218_WpfApp1.ViewModel
             LoginCommand = new RelayCommand(ExecuteLogin);
         }
 
+        //Implement method and logic.
         private void ExecuteLogin()
         {
             bool userFound = false;

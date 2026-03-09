@@ -9,14 +9,13 @@ namespace _20260218_WpfApp1.Model
 {
     internal class UserModel : ObservableObject
     {
+        //DECLARATION OF OBJECT ELEMENTS
         private string _username = string.Empty;
         private string _pin = string.Empty;
 
-        public string _statusMessage = string.Empty;
-
+        //REFERENCE USERNAME TO PROPERTY CHANGE
         public string Username
         {
-
            get => _username;
             set
             {
@@ -28,6 +27,7 @@ namespace _20260218_WpfApp1.Model
             }
         }
 
+        //REFERENCE PIN TO PROPERTY CHANGE
         public string Pin
         {
             get => _pin;
