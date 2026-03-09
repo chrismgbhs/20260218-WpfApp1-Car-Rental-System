@@ -1,0 +1,14 @@
+RULES FOR EACH PAGES
+
+IF THERE ARE INPUTS
+1. Create a model for the object variables.
+2. Declare the elements of the object.
+2. Reference the elements of the object to property change.
+
+VIEW MODEL
+1. Declare and construct the objects using a new name.
+2. Implement method and logic.
+
+XAML
+1. Bind commands and property change to elements in the xaml.
+
