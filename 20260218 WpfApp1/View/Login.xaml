@@ -21,16 +21,30 @@
                                 <TextBlock Text="Username" HorizontalAlignment="Center" VerticalAlignment="Top" Foreground="White" Style="{StaticResource BodyTextStyle}"/>
 
                                 <Border Style="{StaticResource TextBoxBorder}">
-                                    <TextBox HorizontalAlignment="Center" VerticalAlignment="Top" Width="200" Style="{StaticResource BodyTextBox}"/>
+                                    <TextBox 
+                                        HorizontalAlignment="Center" 
+                                        VerticalAlignment="Top" 
+                                        Width="200" 
+                                        Style="{StaticResource BodyTextBox}"
+                                        Text="{Binding CurrentUser.Username, UpdateSourceTrigger=PropertyChanged}"
+                                    />
                                 </Border>
 
                                 <TextBlock Text="PIN" HorizontalAlignment="Center" VerticalAlignment="Top" Foreground="White" Style="{StaticResource BodyTextStyle}"/>
                                 <Border Style="{StaticResource TextBoxBorder}">
-                                    <TextBox Width="200" Style="{StaticResource BodyTextBox}"/>
+                                    <TextBox 
+                                        Width="200" 
+                                        Style="{StaticResource BodyTextBox}"
+                                        Text="{Binding CurrentUser.Pin, UpdateSourceTrigger=PropertyChanged}"
+                                    />
                                 </Border>
 
                                 <Border Style="{StaticResource MajorButtonBorder}">
-                                    <Button Content="SUBMIT" Style="{StaticResource MajorButton}" Click="Button_Click" />
+                                    <Button 
+                                        Content="SUBMIT" 
+                                        Style="{StaticResource MajorButton}" 
+                                        Command="{Binding LoginCommand}"
+                                    />
                                 </Border>
                             </StackPanel>
                         </Grid>

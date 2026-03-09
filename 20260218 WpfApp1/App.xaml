@@ -10,7 +10,7 @@
         <SolidColorBrush x:Key="ButtonBorderColor" Color="White" />
         <SolidColorBrush x:Key="ElementBorderColor" Color="White" />
         <SolidColorBrush x:Key="TextBoxBorderColor" Color="White" />
-        <HorizontalAlignment x:Key="MainMenuHorizontalAlignment">Left</HorizontalAlignment>
+        <HorizontalAlignment x:Key="MainMenuHorizontalAlignment">Center</HorizontalAlignment>
 
         <!--TEXT STYLES!!-->
         <Style x:Key="Header" TargetType="TextBlock">

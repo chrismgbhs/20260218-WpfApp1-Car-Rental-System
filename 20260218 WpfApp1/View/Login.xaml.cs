@@ -23,15 +23,7 @@ namespace _20260218_WpfApp1.View
         public Login()
         {
             InitializeComponent();
-        }
-
-        private void Button_Click(object sender, RoutedEventArgs e)
-        {
-            AdminMainMenu adminMainMenu = new AdminMainMenu();
-            UserMainMenu userMainMenu = new UserMainMenu();
-            userMainMenu.Show();
-            adminMainMenu.Show();
-            this.Close();
+            this.DataContext = new ViewModel.LoginViewModel();
         }
     }
 }
