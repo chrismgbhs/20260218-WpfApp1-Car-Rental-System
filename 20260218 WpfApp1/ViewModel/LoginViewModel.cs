@@ -39,7 +39,7 @@ namespace _20260218_WpfApp1.ViewModel
                     userFound = true;
                     MessageBox.Show("User found.");
 
-                    if (userDetails[2] == "Admin")
+                    if (userDetails[2] == "admin")
                     {
                         var AdminMainMenu = new AdminMainMenu();
                         AdminMainMenu.Show();

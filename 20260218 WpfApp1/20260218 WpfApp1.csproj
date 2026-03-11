@@ -103,11 +103,13 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
+    <Compile Include="ViewModel\AdminMainMenuViewModel.cs" />
     <Compile Include="ViewModel\FileManager.cs" />
     <Compile Include="Model\UserModel.cs" />
     <Compile Include="ViewModel\LoginViewModel.cs" />
     <Compile Include="ViewModel\ObservableObject.cs" />
     <Compile Include="ViewModel\RelayCommand.cs" />
+    <Compile Include="ViewModel\UserMainMenuViewModel.cs" />
     <Compile Include="View\Return.xaml.cs">
       <DependentUpon>Return.xaml</DependentUpon>
     </Compile>

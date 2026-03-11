@@ -24,28 +24,28 @@
                 <StackPanel Grid.Row="2" VerticalAlignment="Center" HorizontalAlignment="Center">
                     <TextBlock Text="MAIN MENU" HorizontalAlignment="Center" Style="{StaticResource Header}"/>
                     <Border Style="{StaticResource NormalButtonBorder}">
-                        <Button Content="View Available Cars" Style="{StaticResource NormalButton}" Click="Button_Click_1"/>
+                        <Button Content="View Available Cars" Style="{StaticResource NormalButton}" Command="{Binding ViewAvailableCarsCommand}"/>
                     </Border>
                     <Border Style="{StaticResource NormalButtonBorder}">
-                        <Button Content="View Rented Cars" Style="{StaticResource NormalButton}" Click="Button_Click_2"/>
+                        <Button Content="View Rented Cars" Style="{StaticResource NormalButton}" Command="{Binding ViewRentedCarsCommand}"/>
                     </Border>
                     <Border Style="{StaticResource NormalButtonBorder}">
-                        <Button Content="Send Car to Maintenance or Return Car from Maintenance" Style="{StaticResource NormalButton}" Click="Button_Click_3"/>
+                        <Button Content="Send Car to Maintenance or Return Car from Maintenance" Style="{StaticResource NormalButton}" Command="{Binding SendReturnCarFromMaintenanceCommand}"/>
                     </Border>
                     <Border Style="{StaticResource NormalButtonBorder}">
-                        <Button Content="View Cars in Maintenance" Style="{StaticResource NormalButton}" Click="Button_Click_5"/>
+                        <Button Content="View Cars in Maintenance" Style="{StaticResource NormalButton}" Command="{Binding ViewCarsInMaintenanceCommand}"/>
                     </Border>
                     <Border Style="{StaticResource NormalButtonBorder}">
-                        <Button Content="View Maintenance History" Style="{StaticResource NormalButton}" Click="Button_Click_4"/>
+                        <Button Content="View Maintenance History" Style="{StaticResource NormalButton}" Command="{Binding ViewMaintenanceHistoryCommand}"/>
                     </Border>
                     <Border Style="{StaticResource NormalButtonBorder}">
-                        <Button Content="Add a Car" Style="{StaticResource NormalButton}" Click="Button_Click_6"/>
+                        <Button Content="Add a Car" Style="{StaticResource NormalButton}" Command="{Binding AddACarCommand}"/>
                     </Border>
                     <Border Style="{StaticResource NormalButtonBorder}">
-                        <Button Content="Add Multiple Cars via CSV file" Style="{StaticResource NormalButton}" Click="Button_Click_7"/>
+                        <Button Content="Add Multiple Cars via CSV file" Style="{StaticResource NormalButton}" Command="{Binding AddMultipleCarsViaCSVFileCommand}"/>
                     </Border>
                     <Border Style="{StaticResource NormalButtonBorder}">
-                        <Button Content="Exit and Save" Style="{StaticResource NormalButton}" Click="Button_Click"/>
+                        <Button Content="Exit and Save" Style="{StaticResource NormalButton}" Command="{Binding ExitAndSaveCommand}"/>
                     </Border>
                     
                 </StackPanel>
