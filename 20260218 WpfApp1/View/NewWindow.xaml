@@ -1,0 +1,51 @@
+﻿<Window x:Class="_20260218_WpfApp1.View.NewWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:_20260218_WpfApp1.View"
+        mc:Ignorable="d"
+        Title="NewWindow">
+    <Viewbox Stretch="UniformToFill">
+        <Grid>
+            <Rectangle Height="1080" Width="1920" Fill="White"/>
+            <Grid VerticalAlignment="Center">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="1.5*"/>
+                    <ColumnDefinition Width="0.5*"/>
+                </Grid.ColumnDefinitions>
+                <Border Grid.Column="0" BorderThickness="2" BorderBrush="Black" CornerRadius="5" Margin="25, 25, 25, 25">
+                    <StackPanel VerticalAlignment="Top">
+                        <TextBlock Text="Lost Items" FontSize="25" Margin="15, 5, 15, 10"/>
+                        <DataGrid ItemsSource="{Binding LostItems}"
+                                  SelectedItem="{Binding SelectedLostItems}"
+                                  AutoGenerateColumns="False"
+                                  CanUserAddRows="False"
+                                  AlternatingRowBackground="LightBlue">
+                            <DataGrid.Columns>
+                                <DataGridTextColumn Header="Name" Binding="{Binding Name}"/>
+                                <DataGridTextColumn Header="Description" Binding="{Binding Description}"/>
+                                <DataGridTextColumn Header="Location" Binding="{Binding Location}"/>
+                                <DataGridTextColumn Header="Date Reported" Binding="{Binding Time}"/>
+                            </DataGrid.Columns>
+                        </DataGrid>
+                    </StackPanel>
+                </Border>
+                <Border Grid.Column="1" BorderThickness="2" BorderBrush="Black" CornerRadius="5" Margin="25, 25, 25, 25">
+                    <StackPanel VerticalAlignment="Top">
+                        <TextBlock Text="Report New Lost Items" FontSize="25" Margin="15, 5, 15, 10"/>
+                        <TextBlock Text="Name:" FontSize="20" Margin="15, 5, 15, 5"/>
+                        <TextBox FontSize="20" Margin="15, 5, 15, 10" Text="{Binding LostItem.Name, UpdateSourceTrigger=PropertyChanged}"/>
+                        <TextBlock Text="Location Lost:" FontSize="20" Margin="15, 5, 15, 5"/>
+                        <TextBox FontSize="20" Margin="15, 5, 15, 10" Text="{Binding LostItem.Location, UpdateSourceTrigger=PropertyChanged}"/>
+                        <StackPanel Orientation="Horizontal">
+                            <Button Content="Save" FontSize="20" Margin="15, 5, 15, 10" Command="{Binding SaveCommand}"/>
+                            <Button Content="Delete" FontSize="20" Margin="15, 5, 15, 10"/>
+                        </StackPanel>
+                    </StackPanel>
+                </Border>
+            </Grid>
+        </Grid>
+    </Viewbox>
+
+</Window>
