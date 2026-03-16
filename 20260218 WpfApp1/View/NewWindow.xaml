@@ -36,11 +36,14 @@
                         <TextBlock Text="Report New Lost Items" FontSize="25" Margin="15, 5, 15, 10"/>
                         <TextBlock Text="Name:" FontSize="20" Margin="15, 5, 15, 5"/>
                         <TextBox FontSize="20" Margin="15, 5, 15, 10" Text="{Binding LostItem.Name, UpdateSourceTrigger=PropertyChanged}"/>
+                        <TextBlock Text="Description:" FontSize="20" Margin="15, 5, 15, 5"/>
+                        <TextBox FontSize="20" Margin="15, 5, 15, 10" Text="{Binding LostItem.Description, UpdateSourceTrigger=PropertyChanged}"/>
                         <TextBlock Text="Location Lost:" FontSize="20" Margin="15, 5, 15, 5"/>
                         <TextBox FontSize="20" Margin="15, 5, 15, 10" Text="{Binding LostItem.Location, UpdateSourceTrigger=PropertyChanged}"/>
                         <StackPanel Orientation="Horizontal">
                             <Button Content="Save" FontSize="20" Margin="15, 5, 15, 10" Command="{Binding SaveCommand}"/>
-                            <Button Content="Delete" FontSize="20" Margin="15, 5, 15, 10"/>
+                            <Button Content="Delete" FontSize="20" Margin="15, 5, 15, 10" Command="{Binding DeleteCommand}"/>
+                            <Button Content="Clear" FontSize="20" Margin="15, 5, 15, 10" Command="{Binding ClearCommand}"/>
                         </StackPanel>
                     </StackPanel>
                 </Border>
