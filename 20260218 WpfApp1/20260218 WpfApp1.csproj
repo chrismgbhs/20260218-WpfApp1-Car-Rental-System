@@ -107,14 +107,22 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
+    <Compile Include="Model\Borrowed_Car.cs" />
+    <Compile Include="Model\Car.cs" />
     <Compile Include="Model\LostItem.cs" />
+    <Compile Include="Model\Maintenance.cs" />
+    <Compile Include="Model\Schedule.cs" />
     <Compile Include="ViewModel\AdminMainMenuViewModel.cs" />
+    <Compile Include="ViewModel\Cars_In.cs" />
+    <Compile Include="ViewModel\Cars_in_Maintenance.cs" />
+    <Compile Include="ViewModel\Cars_Out.cs" />
     <Compile Include="ViewModel\FileManager.cs" />
     <Compile Include="Model\UserModel.cs" />
     <Compile Include="ViewModel\LoginViewModel.cs" />
     <Compile Include="ViewModel\NewWindow.cs" />
     <Compile Include="ViewModel\ObservableObject.cs" />
     <Compile Include="ViewModel\RelayCommand.cs" />
+    <Compile Include="ViewModel\Rental_Manager.cs" />
     <Compile Include="ViewModel\UserMainMenuViewModel.cs" />
     <Compile Include="View\NewWindow.xaml.cs">
       <DependentUpon>NewWindow.xaml</DependentUpon>

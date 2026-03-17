@@ -22,6 +22,7 @@ namespace _20260218_WpfApp1.View
         public AvailableCars()
         {
             InitializeComponent();
+            this.DataContext = new ViewModel.Cars_In();
         }
     }
 }

@@ -38,6 +38,9 @@ namespace _20260218_WpfApp1.ViewModel
                 {
                     userFound = true;
                     MessageBox.Show("User found.");
+                    Cars_In.InitializeCarsInList();
+                    Cars_Out.InitializeCarsOutList();
+                    Cars_in_Maintenance.InitializeMaintenancesList();
 
                     if (userDetails[2] == "admin")
                     {

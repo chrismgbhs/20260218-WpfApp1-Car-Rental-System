@@ -7,7 +7,7 @@
         mc:Ignorable="d"
         Title="Avaiblable Cars" WindowStartupLocation="CenterScreen" Foreground="White">
     <ScrollViewer VerticalScrollBarVisibility="Visible">
-        <Viewbox Stretch="UniformToFill">
+        <Viewbox Stretch="Uniform">
             <Grid Background="#FF672121" Height="1080" Width="1920">
                 <Grid.RowDefinitions>
                     <RowDefinition Height="Auto"/>
@@ -23,7 +23,19 @@
 
                 <StackPanel Grid.Row="2" VerticalAlignment="Center" HorizontalAlignment="Center">
                     <TextBlock Text="AVAILABLE CARS" HorizontalAlignment="Center" Style="{StaticResource Header}"/>
-                    <TextBlock Text="This is where the cars will be presented." Style="{StaticResource BodyTextStyle}"/>
+                    <DataGrid 
+                        ItemsSource="{Binding carsAvailable}"
+                        AutoGenerateColumns="False"
+                        CanUserAddRows="False"
+                        Style="{StaticResource DataGridText}"
+                        AlternatingRowBackground="LightBlue">
+                        <DataGrid.Columns>
+                            <DataGridTextColumn Header="Name" Binding="{Binding Car.Name}" HeaderStyle="{StaticResource DataGridHeader}"/>
+                            <DataGridTextColumn Header="Brand" Binding="{Binding Car.Brand}" HeaderStyle="{StaticResource DataGridHeader}"/>
+                            <DataGridTextColumn Header="Age" Binding="{Binding Car.Age}" HeaderStyle="{StaticResource DataGridHeader}"/>
+                            <DataGridTextColumn Header="License Plate" Binding="{Binding Car.LicensePlate}" HeaderStyle="{StaticResource DataGridHeader}"/>
+                        </DataGrid.Columns>
+                    </DataGrid>
                 </StackPanel>
             </Grid>
         </Viewbox>
