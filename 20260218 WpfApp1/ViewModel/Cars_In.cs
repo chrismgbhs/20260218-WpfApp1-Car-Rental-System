@@ -14,15 +14,6 @@ namespace _20260218_WpfApp1.ViewModel
     internal class Cars_In : ObservableObject
     {
         public static ObservableCollection<Car> carsAvailable = new ObservableCollection<Car>();
-    
-
-        public Cars_In()
-        {
-            carsAvailable = new ObservableCollection<Car>()
-            {
-                new Car("Revo", "Toyota", "12", "WND362")
-            };
-        }
 
         public static void AddCar(Car car)
         {
@@ -71,7 +62,6 @@ namespace _20260218_WpfApp1.ViewModel
                         if (!Rental_Manager.CheckDuplicates(plateNumber))
                         {
                             AddCar(car);
-
                         }
 
                         else

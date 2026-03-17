@@ -8,10 +8,10 @@ namespace _20260218_WpfApp1.Model
 {
     internal class Car
     {
-        public string Name;
-        public string Brand;
-        public string Age;
-        public string LicensePlate;
+        public string Name { get; set; }
+        public string Brand { get; set; }
+        public string Age { get; set; }
+        public string LicensePlate { get; set; }
 
         public Car(string name, string brand, string age, string licensePlate)
         {

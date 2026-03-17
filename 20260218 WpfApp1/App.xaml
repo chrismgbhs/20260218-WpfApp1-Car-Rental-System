@@ -22,6 +22,7 @@
         <Style x:Key="DataGridText" TargetType="DataGrid">
             <Setter Property="FontFamily" Value="{StaticResource MainFont}"/>
             <Setter Property="FontSize" Value="25.333"/>
+            <Setter Property="Foreground" Value="Black"/>
         </Style>
 
         <!--TEXT STYLES!!-->
