@@ -2,12 +2,13 @@
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:vm="clr-namespace:_20260218_WpfApp1.ViewModel"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:_20260218_WpfApp1"
         mc:Ignorable="d"
         Title="Rented Cars" WindowStartupLocation="CenterScreen" Foreground="White">
     <ScrollViewer VerticalScrollBarVisibility="Visible">
-        <Viewbox Stretch="UniformToFill">
+        <Viewbox Stretch="Uniform">
             <Grid Background="#FF672121" Height="1080" Width="1920">
                 <Grid.RowDefinitions>
                     <RowDefinition Height="Auto"/>
@@ -23,7 +24,22 @@
 
                 <StackPanel Grid.Row="2" VerticalAlignment="Center" HorizontalAlignment="Center">
                     <TextBlock Text="RENTED CARS" HorizontalAlignment="Center" Style="{StaticResource Header}"/>
-                    <TextBlock Text="This is where the cars will be presented." Style="{StaticResource BodyTextStyle}"/>
+                    <DataGrid 
+                        Height="500"
+                        Width="700"
+                        ItemsSource="{Binding Source={x:Static vm:Cars_Out.carsRented}}"
+                        AutoGenerateColumns="False"
+                        CanUserAddRows="False"
+                        Style="{StaticResource DataGridText}"
+                        AlternatingRowBackground="LightPink">
+                        <DataGrid.Columns>
+                            <DataGridTextColumn Header="Car" Binding="{Binding Car.Name}" HeaderStyle="{StaticResource DataGridHeader}" ElementStyle="{StaticResource BodyTextStyle}"/>
+                            <DataGridTextColumn Header="License Plate" Binding="{Binding Car.LicensePlate}" HeaderStyle="{StaticResource DataGridHeader}" ElementStyle="{StaticResource BodyTextStyle}"/>
+                            <DataGridTextColumn Header="Borrower" Binding="{Binding BorrowerName}" HeaderStyle="{StaticResource DataGridHeader}" ElementStyle="{StaticResource BodyTextStyle}"/>
+                            <DataGridTextColumn Header="Start" Binding="{Binding StartDateTime}" HeaderStyle="{StaticResource DataGridHeader}" ElementStyle="{StaticResource BodyTextStyle}"/>
+                            <DataGridTextColumn Header="End" Binding="{Binding EndDateTime}" HeaderStyle="{StaticResource DataGridHeader}" ElementStyle="{StaticResource BodyTextStyle}"/>
+                        </DataGrid.Columns>
+                    </DataGrid>
                 </StackPanel>
             </Grid>
         </Viewbox>

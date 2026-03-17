@@ -22,6 +22,7 @@ namespace _20260218_WpfApp1.View
         public RentedCars()
         {
             InitializeComponent();
+            this.DataContext = new ViewModel.Cars_Out();
         }
     }
 }
