@@ -43,28 +43,20 @@ namespace _20260218_WpfApp1.ViewModel
 
         public void SendSelectedCarToMaintenance()
         {
-            if (SelectedCar != null)
+            if (Car != null)
             {
-                Car.Name = SelectedCar.Name;
-                Car.Brand = SelectedCar.Brand;
-                Car.Age = SelectedCar.Age;
-                Car.LicensePlate = SelectedCar.LicensePlate;
-                
-                Car selectedCar = new Car(Car.Name, Car.Brand, Car.Age, Car.LicensePlate);
-
-                Cars_in_Maintenance.carsInMaintenance.Add(new Maintenance(selectedCar, MaintenanceDescription, MaintenanceWorker, DateTime.Now.ToString()));
-                MessageBox.Show("Car sent to maintenance successfully!");
-
-                for (int counter = 0; counter < Cars_In.carsAvailable.Count; counter++)
+                if (MaintenanceDescription == null)
                 {
-                    if (Cars_In.carsAvailable[counter].LicensePlate == selectedCar.LicensePlate)
-                    {
-                        Cars_In.carsAvailable.RemoveAt(counter);
-                    }
+                    MessageBox.Show("Please fill in all the fields before sending the car to maintenance.");
+                }
+
+                else
+                {
+                    Cars_in_Maintenance.carsInMaintenance.Add(new Maintenance(Car, MaintenanceDescription, MaintenanceWorker, DateTime.Now.ToString()));
+                    MessageBox.Show("Car sent to maintenance successfully!");
+                    Cars_In.carsAvailable.Remove(Car);
                 }
             }
-
-            
         }
     }
 }
