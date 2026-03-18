@@ -30,7 +30,10 @@
                         <Button Content="View Rented Cars" Style="{StaticResource NormalButton}" Command="{Binding ViewRentedCarsCommand}"/>
                     </Border>
                     <Border Style="{StaticResource NormalButtonBorder}">
-                        <Button Content="Send Car to Maintenance or Return Car from Maintenance" Style="{StaticResource NormalButton}" Command="{Binding SendReturnCarFromMaintenanceCommand}"/>
+                        <Button Content="Send Car to Maintenance" Style="{StaticResource NormalButton}" Command="{Binding SendCarToMaintenanceCommand}"/>
+                    </Border>
+                    <Border Style="{StaticResource NormalButtonBorder}">
+                        <Button Content="Return Car from Maintenance" Style="{StaticResource NormalButton}" Command="{Binding ReturnCarFromMaintenanceCommand}"/>
                     </Border>
                     <Border Style="{StaticResource NormalButtonBorder}">
                         <Button Content="View Cars in Maintenance" Style="{StaticResource NormalButton}" Command="{Binding ViewCarsInMaintenanceCommand}"/>

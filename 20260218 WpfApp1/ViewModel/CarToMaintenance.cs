@@ -13,11 +13,11 @@ namespace _20260218_WpfApp1.ViewModel
     internal class CarToMaintenance : ObservableObject
     {
         public string MaintenanceDescription { get; set; }
-        public string MaintenanceWorker { get; set; }
+        public string MaintenanceWorker = LoginViewModel.CurrentUser.Username;
         private Car _selectedCar;
-        public Car Car { get; set; }
+        public Car car;
 
-        public ICommand SendSelectedCarToMaintenanceCommand { get; set; }
+        public ICommand SendCarToMaintenanceCommand { get; set; }
         public Car SelectedCar
         {
             get { return _selectedCar; }
@@ -28,22 +28,21 @@ namespace _20260218_WpfApp1.ViewModel
 
                 if (SelectedCar != null)
                 {
-                    Car.Name = SelectedCar.Name;
-                    Car.Brand = SelectedCar.Brand;
-                    Car.Age = SelectedCar.Age;
-                    Car.LicensePlate = SelectedCar.LicensePlate;
+                    car = new Car(SelectedCar.Name, SelectedCar.Brand, SelectedCar.Age, SelectedCar.LicensePlate);
+                    //MessageBox.Show($"Selected Car:\nName: {car.Name}\nBrand: {car.Brand}\nAge: {car.Age}\nLicense Plate: {car.LicensePlate}");
                 }
             }
         }
 
         public CarToMaintenance()
         {
-            SendSelectedCarToMaintenanceCommand = new RelayCommand(SendSelectedCarToMaintenance);
+            SendCarToMaintenanceCommand = new RelayCommand(SendSelectedCarToMaintenance);
         }
 
         public void SendSelectedCarToMaintenance()
         {
-            if (Car != null)
+            //MessageBox.Show($"Selected Car:\nName: {car.Name}\nBrand: {car.Brand}\nAge: {car.Age}\nLicense Plate: {car.LicensePlate}");
+            if (car != null)
             {
                 if (MaintenanceDescription == null)
                 {
@@ -52,9 +51,25 @@ namespace _20260218_WpfApp1.ViewModel
 
                 else
                 {
-                    Cars_in_Maintenance.carsInMaintenance.Add(new Maintenance(Car, MaintenanceDescription, MaintenanceWorker, DateTime.Now.ToString()));
+                    //.Show($"Selected Car:\nName: {car.Name}\nBrand: {car.Brand}\nAge: {car.Age}\nLicense Plate: {car.LicensePlate}");
+                    //MessageBox.Show($"{Cars_In.carsAvailable.Count} cars available");
+                    Cars_in_Maintenance.carsInMaintenance.Add(new Maintenance(car, MaintenanceDescription, MaintenanceWorker, DateTime.Now.ToString()));
                     MessageBox.Show("Car sent to maintenance successfully!");
-                    Cars_In.carsAvailable.Remove(Car);
+                    
+                    foreach (var availableCar in Cars_In.carsAvailable)
+                    {
+                        if (availableCar.LicensePlate == car.LicensePlate)
+                        {
+                            Cars_In.carsAvailable.Remove(availableCar);
+                            MessageBox.Show("Car removed from available cars list.");
+                            break;
+                        }
+                    }
+                    
+                    car.Name = string.Empty;
+                    car.Brand = string.Empty;
+                    car.Age = string.Empty;
+                    car.LicensePlate = string.Empty;
                 }
             }
         }

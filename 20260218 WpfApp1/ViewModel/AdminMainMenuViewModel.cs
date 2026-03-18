@@ -13,7 +13,8 @@ namespace _20260218_WpfApp1.ViewModel
     {
         public ICommand ViewAvailableCarsCommand { get; set; }
         public ICommand ViewRentedCarsCommand { get; set; }
-        public ICommand SendReturnCarFromMaintenanceCommand { get; set; }
+        public ICommand SendCarToMaintenanceCommand { get; set; }
+        public ICommand ReturnCarFromMaintenanceCommand { get; set; }
         public ICommand ViewCarsInMaintenanceCommand { get; set; }
         public ICommand ViewMaintenanceHistoryCommand { get; set; }
         public ICommand AddACarCommand { get; set; }
@@ -25,7 +26,8 @@ namespace _20260218_WpfApp1.ViewModel
         {
             ViewAvailableCarsCommand = new RelayCommand(ExecuteViewAvailableCars);
             ViewRentedCarsCommand = new RelayCommand(ExecuteViewRentedCars);
-            SendReturnCarFromMaintenanceCommand = new RelayCommand(ExecuteSendReturnCarFromMaintenance);
+            SendCarToMaintenanceCommand = new RelayCommand(ExecuteSendCarToMaintenance);
+            ReturnCarFromMaintenanceCommand = new RelayCommand(ExecuteReturnCarFromMaintenance);
             ViewCarsInMaintenanceCommand = new RelayCommand(ExecuteViewCarsInMaintenance);
             ViewMaintenanceHistoryCommand = new RelayCommand(ExecuteViewMaintenanceHistory);
             AddACarCommand = new RelayCommand(ExecuteAddACar);
@@ -49,11 +51,18 @@ namespace _20260218_WpfApp1.ViewModel
             // Implement any necessary save logic here before exiting
             App.Current.Shutdown();
         }
-        private void ExecuteSendReturnCarFromMaintenance()
+        private void ExecuteSendCarToMaintenance()
         {
             // In MainViewModel
             var sendReturnCarFromMaintenance = new _20260218_WpfApp1.View.CarToMaintenance();
             sendReturnCarFromMaintenance.Show();
+        }
+
+        private void ExecuteReturnCarFromMaintenance()
+        {
+            // In MainViewModel
+            var ReturnCarFromMaintenance = new _20260218_WpfApp1.View.CarFromMaintenance();
+            ReturnCarFromMaintenance.Show();
         }
         private void ExecuteViewCarsInMaintenance()
         {

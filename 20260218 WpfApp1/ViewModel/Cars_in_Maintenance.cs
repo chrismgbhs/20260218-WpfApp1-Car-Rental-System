@@ -15,7 +15,7 @@ namespace _20260218_WpfApp1.ViewModel
         public static void AddMaintenance(Maintenance maintenance)
         {
             carsInMaintenance.Add(maintenance);
-        }
+        } 
 
         public static void InitializeMaintenancesList()
         {
