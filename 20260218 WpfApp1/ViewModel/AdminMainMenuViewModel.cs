@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows;
 using System.Windows.Input;
 
 namespace _20260218_WpfApp1.ViewModel
@@ -50,8 +51,9 @@ namespace _20260218_WpfApp1.ViewModel
         }
         private void ExecuteSendReturnCarFromMaintenance()
         {
-            var SendReturnCarFromMaintenance = new CarToMaintenance();
-            SendReturnCarFromMaintenance.Show();
+            // In MainViewModel
+            var sendReturnCarFromMaintenance = new _20260218_WpfApp1.View.CarToMaintenance();
+            sendReturnCarFromMaintenance.Show();
         }
         private void ExecuteViewCarsInMaintenance()
         {

@@ -19,11 +19,7 @@ namespace _20260218_WpfApp1.View
         public CarToMaintenance()
         {
             InitializeComponent();
-        }
-
-        private void Button_Click(object sender, RoutedEventArgs e)
-        {
-            this.Close();
+            this.DataContext = new ViewModel.CarToMaintenance();
         }
     }
 }

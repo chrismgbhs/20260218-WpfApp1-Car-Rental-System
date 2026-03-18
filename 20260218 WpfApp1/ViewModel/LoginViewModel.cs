@@ -15,7 +15,7 @@ namespace _20260218_WpfApp1.ViewModel
     internal class LoginViewModel : ObservableObject
     {
         //Declare and construct the objects using a new name.
-        public UserModel CurrentUser { get; set; }
+        public static UserModel CurrentUser { get; set; }
         public ICommand LoginCommand { get; set; }
 
         public LoginViewModel()

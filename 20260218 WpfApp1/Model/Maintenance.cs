@@ -8,10 +8,10 @@ namespace _20260218_WpfApp1.Model
 {
     internal class Maintenance
     {
-        public Car Car;
-        public string MaintenanceDetails;
-        public string MaintenanceWorker;
-        public string StartDate;
+        public Car Car {get; set; }
+        public string MaintenanceDetails { get; set; }
+        public string MaintenanceWorker { get; set; }
+        public string StartDate { get; set; }
 
         public Maintenance(Car car, string maintenanceDetails, string maintenanceWorker, string startDate)
         {

@@ -47,7 +47,6 @@
                     <Border Style="{StaticResource NormalButtonBorder}">
                         <Button Content="Exit and Save" Style="{StaticResource NormalButton}" Command="{Binding ExitAndSaveCommand}"/>
                     </Border>
-                    
                 </StackPanel>
             </Grid>
         </Viewbox>

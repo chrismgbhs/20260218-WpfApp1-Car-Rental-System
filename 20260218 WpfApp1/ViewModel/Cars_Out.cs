@@ -1,15 +1,16 @@
 ﻿using _20260218_WpfApp1.Model;
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
 namespace _20260218_WpfApp1.ViewModel
 {
-    internal class Cars_Out
+    internal class Cars_Out : ObservableObject
     {
-        public static List<Borrowed_Car> carsRented = new List<Borrowed_Car>();
+        public static ObservableCollection<Borrowed_Car> carsRented = new ObservableCollection<Borrowed_Car>();
 
         public static void InitializeCarsOutList()
         {

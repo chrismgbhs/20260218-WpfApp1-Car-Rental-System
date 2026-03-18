@@ -24,7 +24,6 @@
 
                 <StackPanel Grid.Row="2" VerticalAlignment="Center" HorizontalAlignment="Center">
                     <TextBlock Text="AVAILABLE CARS" HorizontalAlignment="Center" Style="{StaticResource Header}"/>
-
                     <DataGrid 
                             Height="500"
                             Width="700"
