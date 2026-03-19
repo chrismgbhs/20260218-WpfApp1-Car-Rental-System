@@ -44,14 +44,19 @@ namespace _20260218_WpfApp1.ViewModel
 
                     if (userDetails[2] == "admin")
                     {
+                        Application.Current.MainWindow.Close();
                         var AdminMainMenu = new AdminMainMenu();
-                        AdminMainMenu.Show();
+                        AdminMainMenu.ShowDialog();
+                        Application.Current.MainWindow = AdminMainMenu;
+                        
                     }
 
                     else
                     {
+                        Application.Current.MainWindow.Close();
                         var UserMainMenu = new UserMainMenu();
-                        UserMainMenu.Show();
+                        UserMainMenu.ShowDialog();
+                        Application.Current.MainWindow = UserMainMenu;
                     }
                     break;
                 }

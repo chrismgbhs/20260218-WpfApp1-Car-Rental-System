@@ -38,13 +38,18 @@ namespace _20260218_WpfApp1.ViewModel
         //Implement method and logic.
         private void ExecuteViewAvailableCars()
         {
+            Application.Current.MainWindow.Close();// Close the current main window before opening the new one
             var AvailableCars = new AvailableCars();
-            AvailableCars.Show();
+            AvailableCars.ShowDialog();
+            Application.Current.MainWindow = AvailableCars;
         }
         private void ExecuteViewRentedCars()
         {
+            Application.Current.MainWindow.Close();
             var RentedCars = new RentedCars();
-            RentedCars.Show();
+            RentedCars.ShowDialog();
+            Application.Current.MainWindow = RentedCars;
+            
         }
         private void ExecuteExitAndSave()
         {
@@ -53,36 +58,52 @@ namespace _20260218_WpfApp1.ViewModel
         }
         private void ExecuteSendCarToMaintenance()
         {
-            // In MainViewModel
+            Application.Current.MainWindow.Close();
             var sendReturnCarFromMaintenance = new _20260218_WpfApp1.View.CarToMaintenance();
-            sendReturnCarFromMaintenance.Show();
+            sendReturnCarFromMaintenance.ShowDialog();
+            Application.Current.MainWindow = sendReturnCarFromMaintenance;
+            // In MainViewModel
+            
         }
 
         private void ExecuteReturnCarFromMaintenance()
         {
-            // In MainViewModel
+            Application.Current.MainWindow.Close();
             var ReturnCarFromMaintenance = new _20260218_WpfApp1.View.CarFromMaintenance();
-            ReturnCarFromMaintenance.Show();
+            ReturnCarFromMaintenance.ShowDialog();
+            Application.Current.MainWindow = ReturnCarFromMaintenance;
+            
         }
         private void ExecuteViewCarsInMaintenance()
         {
+            Application.Current.MainWindow.Close();
             var ViewCarsInMaintenance = new CarsInMaintenance();
-            ViewCarsInMaintenance.Show();
+            ViewCarsInMaintenance.ShowDialog();
+            Application.Current.MainWindow = ViewCarsInMaintenance;
         }
         private void ExecuteViewMaintenanceHistory()
         {
+            Application.Current.MainWindow.Close();
             var ViewMaintenanceHistory = new MaintenanceHistory();
-            ViewMaintenanceHistory.Show();
+            ViewMaintenanceHistory.ShowDialog();
+            Application.Current.MainWindow = ViewMaintenanceHistory;
+            
         }
         private void ExecuteAddACar()
         {
+            Application.Current.MainWindow.Close();
             var AddACar = new AddCar();
             AddACar.Show();
+            Application.Current.MainWindow = AddACar;
+            
         }
         private void ExecuteAddMultipleCarsViaCSVFile()
         {
+            Application.Current.MainWindow.Close();
             var AddMultipleCarsViaCSVFile = new AddCars();
-            AddMultipleCarsViaCSVFile.Show();
+            AddMultipleCarsViaCSVFile.ShowDialog();
+            Application.Current.MainWindow = AddMultipleCarsViaCSVFile;
+            
         }
     }
 }

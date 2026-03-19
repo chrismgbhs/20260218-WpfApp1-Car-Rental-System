@@ -74,11 +74,6 @@ namespace _20260218_WpfApp1.ViewModel
                             break;
                         }
                     }
-                    
-                    car.Name = string.Empty;
-                    car.Brand = string.Empty;
-                    car.Age = string.Empty;
-                    car.LicensePlate = string.Empty;
                 }
             }
         }
