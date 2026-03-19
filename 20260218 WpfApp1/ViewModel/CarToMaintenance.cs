@@ -51,9 +51,18 @@ namespace _20260218_WpfApp1.ViewModel
 
                 else
                 {
-                    //.Show($"Selected Car:\nName: {car.Name}\nBrand: {car.Brand}\nAge: {car.Age}\nLicense Plate: {car.LicensePlate}");
+                    MessageBox.Show($"Selected Car:\nName: {car.Name}\nBrand: {car.Brand}\nAge: {car.Age}\nLicense Plate: {car.LicensePlate}");
                     //MessageBox.Show($"{Cars_In.carsAvailable.Count} cars available");
                     Cars_in_Maintenance.carsInMaintenance.Add(new Maintenance(car, MaintenanceDescription, MaintenanceWorker, DateTime.Now.ToString()));
+
+                    foreach (var maintenance in Cars_in_Maintenance.carsInMaintenance)
+                    {
+                        if (maintenance.Car.LicensePlate == car.LicensePlate)
+                        {
+                            MessageBox.Show($"{maintenance.Car.Name} sent to maintenance with description: {maintenance.MaintenanceDetails}");
+                            break;
+                        }
+                    }
                     MessageBox.Show("Car sent to maintenance successfully!");
                     
                     foreach (var availableCar in Cars_In.carsAvailable)

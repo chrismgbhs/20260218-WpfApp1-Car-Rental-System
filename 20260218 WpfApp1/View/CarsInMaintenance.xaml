@@ -31,7 +31,7 @@
                         AutoGenerateColumns="False"
                         CanUserAddRows="False"
                         Style="{StaticResource DataGridText}"
-                        AlternatingRowBackground="LightPink">
+                        AlternatingRowBackground="LightPink" SelectedIndex="-1">
                         <DataGrid.Columns>
                             <DataGridTextColumn Header="Name" Binding="{Binding Car.Name}" HeaderStyle="{StaticResource DataGridHeader}" ElementStyle="{StaticResource BodyTextStyle}"/>
                             <DataGridTextColumn Header="License Plate" Binding="{Binding Car.LicensePlate}" HeaderStyle="{StaticResource DataGridHeader}" ElementStyle="{StaticResource BodyTextStyle}"/>
