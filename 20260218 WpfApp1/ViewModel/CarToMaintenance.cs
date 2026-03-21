@@ -1,4 +1,5 @@
 ﻿using _20260218_WpfApp1.Model;
+using _20260218_WpfApp1.View;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -18,6 +19,34 @@ namespace _20260218_WpfApp1.ViewModel
         public Car car;
 
         public ICommand SendCarToMaintenanceCommand { get; set; }
+
+        public ICommand BackCommand { get; set; }
+
+        public CarToMaintenance()
+        {
+            SendCarToMaintenanceCommand = new RelayCommand(SendSelectedCarToMaintenance);
+            BackCommand = new RelayCommand(ExecuteBack);
+        }
+
+        public void ExecuteBack()
+        {
+            Window mainWindow;
+            if (LoginViewModel.CurrentUser.Role == "admin")
+            {
+                mainWindow = new AdminMainMenu();
+            }
+
+            else
+            {
+                mainWindow = new UserMainMenu();
+            }
+
+            Application.Current.MainWindow = mainWindow; // ✅ Set BEFORE closing
+            mainWindow.Show();                           // ✅ Non-blocking
+            Application.Current.Windows
+                .OfType<View.CarToMaintenance>()
+                .FirstOrDefault()?.Close();                 // ✅ Close login after
+        }
         public Car SelectedCar
         {
             get { return _selectedCar; }
@@ -32,11 +61,6 @@ namespace _20260218_WpfApp1.ViewModel
                     //MessageBox.Show($"Selected Car:\nName: {car.Name}\nBrand: {car.Brand}\nAge: {car.Age}\nLicense Plate: {car.LicensePlate}");
                 }
             }
-        }
-
-        public CarToMaintenance()
-        {
-            SendCarToMaintenanceCommand = new RelayCommand(SendSelectedCarToMaintenance);
         }
 
         public void SendSelectedCarToMaintenance()

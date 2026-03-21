@@ -37,6 +37,7 @@ namespace _20260218_WpfApp1.ViewModel
                 if (userDetails[0] == CurrentUser.Username && userDetails[1] == CurrentUser.Pin)
                 {
                     userFound = true;
+                    CurrentUser.Role = userDetails[2];
                     MessageBox.Show("User found.");
                     Cars_In.InitializeCarsInList();
                     Cars_Out.InitializeCarsOutList();
@@ -44,19 +45,22 @@ namespace _20260218_WpfApp1.ViewModel
 
                     if (userDetails[2] == "admin")
                     {
-                        Application.Current.MainWindow.Close();
                         var AdminMainMenu = new AdminMainMenu();
-                        AdminMainMenu.ShowDialog();
-                        Application.Current.MainWindow = AdminMainMenu;
-                        
+                        Application.Current.MainWindow = AdminMainMenu; // ✅ Set BEFORE closing
+                        AdminMainMenu.Show();                           // ✅ Non-blocking
+                        Application.Current.Windows
+                            .OfType<Login>()
+                            .FirstOrDefault()?.Close();                 // ✅ Close login after
                     }
 
                     else
                     {
-                        Application.Current.MainWindow.Close();
-                        var UserMainMenu = new UserMainMenu();
-                        UserMainMenu.ShowDialog();
-                        Application.Current.MainWindow = UserMainMenu;
+                        var mainWindow = new UserMainMenu();
+                        Application.Current.MainWindow = mainWindow; // ✅ Set BEFORE closing
+                        mainWindow.Show();                           // ✅ Non-blocking
+                        Application.Current.Windows
+                            .OfType<Login>()
+                            .FirstOrDefault()?.Close();                 // ✅ Close login after
                     }
                     break;
                 }

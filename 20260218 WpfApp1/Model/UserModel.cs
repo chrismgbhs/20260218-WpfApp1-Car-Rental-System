@@ -12,6 +12,7 @@ namespace _20260218_WpfApp1.Model
         //DECLARATION OF OBJECT ELEMENTS
         private string _username = string.Empty;
         private string _pin = string.Empty;
+        private string _role = string.Empty;
 
         //REFERENCE USERNAME TO PROPERTY CHANGE
         public string Username
@@ -37,6 +38,19 @@ namespace _20260218_WpfApp1.Model
                 {
                     _pin = value;
                     OnPropertyChanged(nameof(Pin));
+                }
+            }
+        }
+
+        public string Role
+        {
+            get => _role;
+            set
+            {
+                if (_role != value)
+                {
+                    _role = value;
+                    OnPropertyChanged(nameof(Role));
                 }
             }
         }

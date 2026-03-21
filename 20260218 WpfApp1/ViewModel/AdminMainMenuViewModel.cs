@@ -38,18 +38,22 @@ namespace _20260218_WpfApp1.ViewModel
         //Implement method and logic.
         private void ExecuteViewAvailableCars()
         {
-            Application.Current.MainWindow.Close();// Close the current main window before opening the new one
-            var AvailableCars = new AvailableCars();
-            AvailableCars.ShowDialog();
-            Application.Current.MainWindow = AvailableCars;
+            var mainWindow = new AvailableCars();
+            Application.Current.MainWindow = mainWindow; // ✅ Set BEFORE closing
+            mainWindow.Show();                           // ✅ Non-blocking
+            Application.Current.Windows
+                .OfType<AdminMainMenu>()
+                .FirstOrDefault()?.Close();                 // ✅ Close login after
         }
         private void ExecuteViewRentedCars()
         {
-            Application.Current.MainWindow.Close();
-            var RentedCars = new RentedCars();
-            RentedCars.ShowDialog();
-            Application.Current.MainWindow = RentedCars;
-            
+            var mainWindow = new RentedCars();
+            Application.Current.MainWindow = mainWindow; // ✅ Set BEFORE closing
+            mainWindow.Show();                           // ✅ Non-blocking
+            Application.Current.Windows
+                .OfType<AdminMainMenu>()
+                .FirstOrDefault()?.Close();                 // ✅ Close login after
+
         }
         private void ExecuteExitAndSave()
         {
@@ -58,52 +62,61 @@ namespace _20260218_WpfApp1.ViewModel
         }
         private void ExecuteSendCarToMaintenance()
         {
-            Application.Current.MainWindow.Close();
-            var sendReturnCarFromMaintenance = new _20260218_WpfApp1.View.CarToMaintenance();
-            sendReturnCarFromMaintenance.ShowDialog();
-            Application.Current.MainWindow = sendReturnCarFromMaintenance;
-            // In MainViewModel
-            
+            var mainWindow = new View.CarToMaintenance();
+            Application.Current.MainWindow = mainWindow; // ✅ Set BEFORE closing
+            mainWindow.Show();                           // ✅ Non-blocking
+            Application.Current.Windows
+                .OfType<AdminMainMenu>()
+                .FirstOrDefault()?.Close();                 // ✅ Close login after
         }
 
         private void ExecuteReturnCarFromMaintenance()
         {
-            Application.Current.MainWindow.Close();
-            var ReturnCarFromMaintenance = new _20260218_WpfApp1.View.CarFromMaintenance();
-            ReturnCarFromMaintenance.ShowDialog();
-            Application.Current.MainWindow = ReturnCarFromMaintenance;
-            
+            var mainWindow = new View.CarFromMaintenance();
+            Application.Current.MainWindow = mainWindow; // ✅ Set BEFORE closing
+            mainWindow.Show();                           // ✅ Non-blocking
+            Application.Current.Windows
+                .OfType<AdminMainMenu>()
+                .FirstOrDefault()?.Close();                 // ✅ Close login after
+
         }
         private void ExecuteViewCarsInMaintenance()
         {
-            Application.Current.MainWindow.Close();
-            var ViewCarsInMaintenance = new CarsInMaintenance();
-            ViewCarsInMaintenance.ShowDialog();
-            Application.Current.MainWindow = ViewCarsInMaintenance;
+            var mainWindow = new CarsInMaintenance();
+            Application.Current.MainWindow = mainWindow; // ✅ Set BEFORE closing
+            mainWindow.Show();                           // ✅ Non-blocking
+            Application.Current.Windows
+                .OfType<AdminMainMenu>()
+                .FirstOrDefault()?.Close();                 // ✅ Close login after
         }
         private void ExecuteViewMaintenanceHistory()
         {
-            Application.Current.MainWindow.Close();
-            var ViewMaintenanceHistory = new MaintenanceHistory();
-            ViewMaintenanceHistory.ShowDialog();
-            Application.Current.MainWindow = ViewMaintenanceHistory;
-            
+            Window mainWindow = new View.MaintenanceHistory();
+            Application.Current.MainWindow = mainWindow; // ✅ Set BEFORE closing
+            mainWindow.Show();                           // ✅ Non-blocking
+            Application.Current.Windows
+                .OfType<AdminMainMenu>()
+                .FirstOrDefault()?.Close();                 // ✅ Close login after
+
         }
         private void ExecuteAddACar()
         {
-            Application.Current.MainWindow.Close();
-            var AddACar = new AddCar();
-            AddACar.Show();
-            Application.Current.MainWindow = AddACar;
-            
+            var mainWindow = new View.AddCar();
+            Application.Current.MainWindow = mainWindow; // ✅ Set BEFORE closing
+            mainWindow.Show();                           // ✅ Non-blocking
+            Application.Current.Windows
+                .OfType<AdminMainMenu>()
+                .FirstOrDefault()?.Close();                 // ✅ Close login after
+
         }
         private void ExecuteAddMultipleCarsViaCSVFile()
         {
-            Application.Current.MainWindow.Close();
-            var AddMultipleCarsViaCSVFile = new AddCars();
-            AddMultipleCarsViaCSVFile.ShowDialog();
-            Application.Current.MainWindow = AddMultipleCarsViaCSVFile;
-            
+            Window mainWindow = new View.AddCars();
+            Application.Current.MainWindow = mainWindow; // ✅ Set BEFORE closing
+            mainWindow.Show();                           // ✅ Non-blocking
+            Application.Current.Windows
+                .OfType<AdminMainMenu>()
+                .FirstOrDefault()?.Close();                 // ✅ Close login after
         }
     }
 }

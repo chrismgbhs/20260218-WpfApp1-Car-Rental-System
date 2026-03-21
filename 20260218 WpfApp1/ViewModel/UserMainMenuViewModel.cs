@@ -30,23 +30,39 @@ namespace _20260218_WpfApp1.ViewModel
         //Implement method and logic.
         private void ExecuteViewAvailableCars()
         {
-            var AvailableCars = new AvailableCars();
-            AvailableCars.Show();
+            var mainWindow = new AvailableCars();
+            Application.Current.MainWindow = mainWindow; // ✅ Set BEFORE closing
+            mainWindow.Show();                           // ✅ Non-blocking
+            Application.Current.Windows
+                .OfType<UserMainMenu>()
+                .FirstOrDefault()?.Close();                 // ✅ Close login after
         }
         private void ExecuteViewRentedCars()
         {
-            var RentedCars = new RentedCars();
-            RentedCars.Show();
+            var mainWindow = new RentedCars();
+            Application.Current.MainWindow = mainWindow; // ✅ Set BEFORE closing
+            mainWindow.Show();                           // ✅ Non-blocking
+            Application.Current.Windows
+                .OfType<UserMainMenu>()
+                .FirstOrDefault()?.Close();                 // ✅ Close login after
         }
         private void ExecuteRentACar()
         {
-            var RentCar = new RentCar();
-            RentCar.Show();
+            Window mainWindow = new View.RentCar();
+            Application.Current.MainWindow = mainWindow; // ✅ Set BEFORE closing
+            mainWindow.Show();                           // ✅ Non-blocking
+            Application.Current.Windows
+                .OfType<UserMainMenu>()
+                .FirstOrDefault()?.Close();                 // ✅ Close login after
         }
         private void ExecuteReturnACar()
         {
-            var Return = new ReturnCar();
-            Return.Show();
+            Window mainWindow = new View.ReturnCar();
+            Application.Current.MainWindow = mainWindow; // ✅ Set BEFORE closing
+            mainWindow.Show();                           // ✅ Non-blocking
+            Application.Current.Windows
+                .OfType<UserMainMenu>()
+                .FirstOrDefault()?.Close();                 // ✅ Close login after
         }
         private void ExecuteExitAndSave()
         {

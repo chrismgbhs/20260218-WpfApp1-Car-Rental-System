@@ -18,8 +18,7 @@
                     <RowDefinition Height="*"/>
                     <!-- Main Menu fills remaining space -->
                 </Grid.RowDefinitions>
-
-                <TextBlock Text="CAR RENTAL SYSTEM" Style="{StaticResource Title}" Grid.Row="0" Margin="25,40,25,40"/>
+                <TextBlock Text="CAR RENTAL SYSTEM" Foreground="White" Style="{StaticResource Title}" Grid.Row="0" Margin="25,40,25,40"/>
                 <Border Style="{StaticResource MainBorder}" Grid.Row="1"/>
 
                 <StackPanel Grid.Row="2" VerticalAlignment="Center" HorizontalAlignment="Center">

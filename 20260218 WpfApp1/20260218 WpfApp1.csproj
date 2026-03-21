@@ -117,6 +117,8 @@
     <Compile Include="Model\Maintenance.cs" />
     <Compile Include="Model\PreviousPage.cs" />
     <Compile Include="Model\Schedule.cs" />
+    <Compile Include="ViewModel\AddCar.cs" />
+    <Compile Include="ViewModel\AddCars.cs" />
     <Compile Include="ViewModel\AdminMainMenuViewModel.cs" />
     <Compile Include="ViewModel\CarFromMaintenance.cs" />
     <Compile Include="ViewModel\Cars_In.cs" />
@@ -126,11 +128,14 @@
     <Compile Include="ViewModel\FileManager.cs" />
     <Compile Include="Model\UserModel.cs" />
     <Compile Include="ViewModel\LoginViewModel.cs" />
+    <Compile Include="ViewModel\MaintenanceHistory.cs" />
     <Compile Include="ViewModel\Navigation.cs" />
     <Compile Include="ViewModel\NewWindow.cs" />
     <Compile Include="ViewModel\ObservableObject.cs" />
     <Compile Include="ViewModel\RelayCommand.cs" />
     <Compile Include="ViewModel\Rental_Manager.cs" />
+    <Compile Include="ViewModel\RentCar.cs" />
+    <Compile Include="ViewModel\ReturnCar.cs" />
     <Compile Include="ViewModel\UserMainMenuViewModel.cs" />
     <Compile Include="View\CarFromMaintenance.xaml.cs">
       <DependentUpon>CarFromMaintenance.xaml</DependentUpon>
