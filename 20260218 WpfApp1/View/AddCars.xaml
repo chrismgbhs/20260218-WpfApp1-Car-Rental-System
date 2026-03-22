@@ -32,7 +32,17 @@
 
                 <StackPanel Grid.Row="2" VerticalAlignment="Center" HorizontalAlignment="Center">
                     <TextBlock Text="ADD CARS" HorizontalAlignment="Center" Style="{StaticResource Header}"/>
-                    <TextBlock Text="This is where the cars will be added." Style="{StaticResource BodyTextStyle}"/>
+                    <TextBlock Text="FILE PATH" HorizontalAlignment="Center" VerticalAlignment="Top" Foreground="White" Style="{StaticResource BodyTextStyle}"/>
+                    <Border Style="{StaticResource TextBoxBorder}">
+                        <TextBox 
+                            Width="200" 
+                            Style="{StaticResource BodyTextBox}"
+                            Text="{Binding FilePath, UpdateSourceTrigger=PropertyChanged}"
+                        />
+                    </Border>
+                    <Border Style="{StaticResource NormalButtonBorder}">
+                        <Button Content="ADD CARS" Style="{StaticResource NormalButton}" Command="{Binding AddCarsCommand}"/>
+                    </Border>
                 </StackPanel>
             </Grid>
         </Viewbox>

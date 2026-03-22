@@ -59,7 +59,15 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="View\EditCar.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="View\NewWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\RemoveCar.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -125,6 +133,7 @@
     <Compile Include="ViewModel\Cars_in_Maintenance.cs" />
     <Compile Include="ViewModel\Cars_Out.cs" />
     <Compile Include="ViewModel\CarToMaintenance.cs" />
+    <Compile Include="ViewModel\EditCar.cs" />
     <Compile Include="ViewModel\FileManager.cs" />
     <Compile Include="Model\UserModel.cs" />
     <Compile Include="ViewModel\LoginViewModel.cs" />
@@ -133,6 +142,7 @@
     <Compile Include="ViewModel\NewWindow.cs" />
     <Compile Include="ViewModel\ObservableObject.cs" />
     <Compile Include="ViewModel\RelayCommand.cs" />
+    <Compile Include="ViewModel\RemoveCar.cs" />
     <Compile Include="ViewModel\Rental_Manager.cs" />
     <Compile Include="ViewModel\RentCar.cs" />
     <Compile Include="ViewModel\ReturnCar.cs" />
@@ -140,8 +150,14 @@
     <Compile Include="View\CarFromMaintenance.xaml.cs">
       <DependentUpon>CarFromMaintenance.xaml</DependentUpon>
     </Compile>
+    <Compile Include="View\EditCar.xaml.cs">
+      <DependentUpon>EditCar.xaml</DependentUpon>
+    </Compile>
     <Compile Include="View\NewWindow.xaml.cs">
       <DependentUpon>NewWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\RemoveCar.xaml.cs">
+      <DependentUpon>RemoveCar.xaml</DependentUpon>
     </Compile>
     <Compile Include="View\Return.xaml.cs">
       <DependentUpon>Return.xaml</DependentUpon>

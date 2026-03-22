@@ -56,6 +56,14 @@
                             Text="{Binding MaintenanceDescription, UpdateSourceTrigger=PropertyChanged}"
                         />
                     </Border>
+                    <TextBlock Text="MAINTENANCE WORKER" HorizontalAlignment="Center" VerticalAlignment="Top" Foreground="White" Style="{StaticResource BodyTextStyle}"/>
+                    <Border Style="{StaticResource TextBoxBorder}">
+                        <TextBox 
+                            Width="200" 
+                            Style="{StaticResource BodyTextBox}"
+                            Text="{Binding MaintenanceWorker, UpdateSourceTrigger=PropertyChanged}"
+                        />
+                    </Border>
                     <Border Style="{StaticResource NormalButtonBorder}">
                         <Button Content="Send Selected Car to Maintenance" Style="{StaticResource NormalButton}" Command="{Binding SendCarToMaintenanceCommand}"/>
                     </Border>

@@ -1,4 +1,5 @@
-﻿using _20260218_WpfApp1.View;
+﻿using _20260218_WpfApp1.Model;
+using _20260218_WpfApp1.View;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,14 +10,34 @@ using System.Windows.Input;
 
 namespace _20260218_WpfApp1.ViewModel
 {
-    internal class MaintenanceHistory
+    internal class MaintenanceHistory : ObservableObject
     {
+        public string _history;
+        public string PlateNumber { get; set; }
+        public ICommand SearchCommand { get; set; }
+        public ICommand BackCommand { get; set; }
+
+        public string History
+        {
+            get { return _history; }
+            set { _history = value; OnPropertyChanged(nameof(History)); }
+        }
+
         public MaintenanceHistory()
         {
+            SearchCommand = new RelayCommand(ExecuteSearch);
             BackCommand = new RelayCommand(ExecuteBack);
         }
 
-        public ICommand BackCommand { get; set; }
+        public void ExecuteSearch()
+        {
+            File_Manager file_Manager = new File_Manager($"File/{PlateNumber}.csv");
+            List<string> lines = file_Manager.getLines();
+            foreach (string line in lines)
+            {
+                History += $"{line}\n";
+            }
+        }
 
         public void ExecuteBack()
         {

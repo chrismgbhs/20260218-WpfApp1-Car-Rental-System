@@ -12,12 +12,54 @@ namespace _20260218_WpfApp1.ViewModel
 {
     internal class AddCar
     {
+        public string CarModel { get; set; }
+        public string CarAge { get; set; }
+        public string CarBrand { get; set; }
+        public string PlateNumber { get; set; }
+        public ICommand SubmitCommand { get; set; }
+        public ICommand BackCommand { get; set; }
         public AddCar()
         {
             BackCommand = new RelayCommand(ExecuteBack);
+            SubmitCommand = new RelayCommand(ExecuteSubmit);
+        }
+        public void ExecuteSubmit()
+        {
+            if (CarModel == null || CarBrand == null || CarAge == null || PlateNumber == null) 
+            { 
+                MessageBox.Show("Please fill in all fields.");
+            }
+
+            else
+            {
+                if (!CheckDuplicates(PlateNumber))
+                {
+                    Car car = new Car(CarModel, CarBrand, CarAge, PlateNumber);
+                    Cars_In.AddCar(car);
+                    MessageBox.Show("Car added successfully!");
+                }
+
+                else
+                {
+                    MessageBox.Show("Car not added due to duplicate license plate.");
+                }
+            }
         }
 
-        public ICommand BackCommand { get; set; }
+        public static bool CheckDuplicates(string licensePlate)
+        {
+            bool value = false;
+            foreach (Car car in Cars_In.carsAvailable)
+            {
+                if (car.LicensePlate == licensePlate)
+                {
+                    MessageBox.Show($"A car with this license plate {licensePlate} already exists.");
+                    value = true;
+                    break;
+                }
+            }
+            return value;
+        }
 
         public void ExecuteBack()
         {

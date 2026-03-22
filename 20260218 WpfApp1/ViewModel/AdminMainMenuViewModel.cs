@@ -18,8 +18,10 @@ namespace _20260218_WpfApp1.ViewModel
         public ICommand ViewCarsInMaintenanceCommand { get; set; }
         public ICommand ViewMaintenanceHistoryCommand { get; set; }
         public ICommand AddACarCommand { get; set; }
+        public ICommand RemoveACarCommand { get; set; }
         public ICommand AddMultipleCarsViaCSVFileCommand { get; set; }
         public ICommand ExitAndSaveCommand { get; set; }
+        public ICommand EditACarCommand { get; set; }
 
 
         public AdminMainMenuViewModel()
@@ -31,6 +33,8 @@ namespace _20260218_WpfApp1.ViewModel
             ViewCarsInMaintenanceCommand = new RelayCommand(ExecuteViewCarsInMaintenance);
             ViewMaintenanceHistoryCommand = new RelayCommand(ExecuteViewMaintenanceHistory);
             AddACarCommand = new RelayCommand(ExecuteAddACar);
+            RemoveACarCommand = new RelayCommand(ExecuteRemoveACar);
+            EditACarCommand = new RelayCommand(ExecuteEditACar);
             AddMultipleCarsViaCSVFileCommand = new RelayCommand(ExecuteAddMultipleCarsViaCSVFile);
             ExitAndSaveCommand = new RelayCommand(ExecuteExitAndSave);
         }
@@ -57,7 +61,10 @@ namespace _20260218_WpfApp1.ViewModel
         }
         private void ExecuteExitAndSave()
         {
-            // Implement any necessary save logic here before exiting
+            Console.WriteLine("Exiting the system. Goodbye!");
+            Cars_Out.ExportCarsOutList();
+            Cars_in_Maintenance.ExportMaintenancesList();
+            Cars_In.ExportCarsInList();
             App.Current.Shutdown();
         }
         private void ExecuteSendCarToMaintenance()
@@ -108,6 +115,26 @@ namespace _20260218_WpfApp1.ViewModel
                 .OfType<AdminMainMenu>()
                 .FirstOrDefault()?.Close();                 // ✅ Close login after
 
+        }
+
+        private void ExecuteRemoveACar()
+        {
+            var mainWindow = new View.RemoveCar();
+            Application.Current.MainWindow = mainWindow; // ✅ Set BEFORE closing
+            mainWindow.Show();                           // ✅ Non-blocking
+            Application.Current.Windows
+                .OfType<AdminMainMenu>()
+                .FirstOrDefault()?.Close();                 // ✅ Close login after
+        }
+
+        private void ExecuteEditACar()
+        {
+            var mainWindow = new View.EditCar();
+            Application.Current.MainWindow = mainWindow; // ✅ Set BEFORE closing
+            mainWindow.Show();                           // ✅ Non-blocking
+            Application.Current.Windows
+                .OfType<AdminMainMenu>()
+                .FirstOrDefault()?.Close();                 // ✅ Close login after
         }
         private void ExecuteAddMultipleCarsViaCSVFile()
         {

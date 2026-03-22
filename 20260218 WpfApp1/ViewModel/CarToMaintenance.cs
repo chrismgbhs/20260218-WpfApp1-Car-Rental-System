@@ -14,7 +14,7 @@ namespace _20260218_WpfApp1.ViewModel
     internal class CarToMaintenance : ObservableObject
     {
         public string MaintenanceDescription { get; set; }
-        public string MaintenanceWorker = LoginViewModel.CurrentUser.Username;
+        public string MaintenanceWorker { get; set; }
         private Car _selectedCar;
         public Car car;
 

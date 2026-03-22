@@ -1,14 +1,15 @@
-﻿<Window x:Class="_20260218_WpfApp1.View.AddCar"
+﻿<Window x:Class="_20260218_WpfApp1.View.EditCar"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:vm="clr-namespace:_20260218_WpfApp1.ViewModel"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:_20260218_WpfApp1"
+        xmlns:local="clr-namespace:_20260218_WpfApp1.View"
         mc:Ignorable="d"
-        Title="Car" Height="auto" Width="auto" WindowStartupLocation="CenterScreen" Foreground="White">
+        Title="EditCar" WindowStartupLocation="CenterScreen" Foreground="White">
     <ScrollViewer VerticalScrollBarVisibility="Visible">
-        <Viewbox Stretch="UniformToFill">
-            <Grid Background="#FF672121" Height="1080" Width="1920">
+        <Viewbox Stretch="Uniform">
+            <Grid Background="#FF672121" Height="auto" Width="1920">
                 <Grid.RowDefinitions>
                     <RowDefinition Height="Auto"/>
                     <!-- Title -->
@@ -28,16 +29,33 @@
                     </Border>
                     <TextBlock Text="CAR RENTAL SYSTEM" Foreground="White" Style="{StaticResource Title}" Grid.Row="0" Margin="25,40,25,40"/>
                 </StackPanel>
+
                 <Border Style="{StaticResource MainBorder}" Grid.Row="1"/>
 
                 <StackPanel Grid.Row="2" VerticalAlignment="Center" HorizontalAlignment="Center">
-                    <TextBlock Text="ADD A CAR" HorizontalAlignment="Center" Style="{StaticResource Header}"/>
-                    <TextBlock Text="MODEL" HorizontalAlignment="Center" VerticalAlignment="Top" Foreground="White" Style="{StaticResource BodyTextStyle}"/>
+                    <TextBlock Text="SELECT A CAR TO EDIT" HorizontalAlignment="Center" Style="{StaticResource Header}"/>
+                    <DataGrid 
+                            Height="500"
+                            Width="700"
+                            ItemsSource="{Binding Source={x:Static vm:Cars_In.carsAvailable}}"
+                            SelectedItem="{Binding SelectedCar}"
+                            AutoGenerateColumns="False"
+                            CanUserAddRows="False"
+                            Style="{StaticResource DataGridText}"
+                            AlternatingRowBackground="LightPink">
+                        <DataGrid.Columns>
+                            <DataGridTextColumn Header="Name" Binding="{Binding Name}" HeaderStyle="{StaticResource DataGridHeader}" ElementStyle="{StaticResource BodyTextStyle}"/>
+                            <DataGridTextColumn Header="Brand" Binding="{Binding Brand}" HeaderStyle="{StaticResource DataGridHeader}" ElementStyle="{StaticResource BodyTextStyle}"/>
+                            <DataGridTextColumn Header="Age" Binding="{Binding Age}" HeaderStyle="{StaticResource DataGridHeader}" ElementStyle="{StaticResource BodyTextStyle}"/>
+                            <DataGridTextColumn Header="License Plate" Binding="{Binding LicensePlate}" HeaderStyle="{StaticResource DataGridHeader}" ElementStyle="{StaticResource BodyTextStyle}"/>
+                        </DataGrid.Columns>
+                    </DataGrid>
+                    <TextBlock Text="NAME" HorizontalAlignment="Center" VerticalAlignment="Top" Foreground="White" Style="{StaticResource BodyTextStyle}"/>
                     <Border Style="{StaticResource TextBoxBorder}">
                         <TextBox 
                             Width="200" 
                             Style="{StaticResource BodyTextBox}"
-                            Text="{Binding CarModel, UpdateSourceTrigger=PropertyChanged}"
+                            Text="{Binding Name, UpdateSourceTrigger=PropertyChanged}"
                         />
                     </Border>
                     <TextBlock Text="BRAND" HorizontalAlignment="Center" VerticalAlignment="Top" Foreground="White" Style="{StaticResource BodyTextStyle}"/>
@@ -45,7 +63,7 @@
                         <TextBox 
                             Width="200" 
                             Style="{StaticResource BodyTextBox}"
-                            Text="{Binding CarBrand, UpdateSourceTrigger=PropertyChanged}"
+                            Text="{Binding Brand, UpdateSourceTrigger=PropertyChanged}"
                         />
                     </Border>
                     <TextBlock Text="AGE" HorizontalAlignment="Center" VerticalAlignment="Top" Foreground="White" Style="{StaticResource BodyTextStyle}"/>
@@ -53,19 +71,19 @@
                         <TextBox 
                             Width="200" 
                             Style="{StaticResource BodyTextBox}"
-                            Text="{Binding CarAge, UpdateSourceTrigger=PropertyChanged}"
+                            Text="{Binding Age, UpdateSourceTrigger=PropertyChanged}"
                         />
                     </Border>
-                    <TextBlock Text="PLATE NUMBER" HorizontalAlignment="Center" VerticalAlignment="Top" Foreground="White" Style="{StaticResource BodyTextStyle}"/>
+                    <TextBlock Text="LICENSE PLATE" HorizontalAlignment="Center" VerticalAlignment="Top" Foreground="White" Style="{StaticResource BodyTextStyle}"/>
                     <Border Style="{StaticResource TextBoxBorder}">
                         <TextBox 
                             Width="200" 
                             Style="{StaticResource BodyTextBox}"
-                            Text="{Binding PlateNumber, UpdateSourceTrigger=PropertyChanged}"
+                            Text="{Binding LicensePlate, UpdateSourceTrigger=PropertyChanged}"
                         />
                     </Border>
                     <Border Style="{StaticResource NormalButtonBorder}">
-                        <Button Content="Submit" Style="{StaticResource NormalButton}" Command="{Binding SubmitCommand}"/>
+                        <Button Content="Update" Style="{StaticResource NormalButton}" Command="{Binding UpdateCarCommand}"/>
                     </Border>
                 </StackPanel>
             </Grid>

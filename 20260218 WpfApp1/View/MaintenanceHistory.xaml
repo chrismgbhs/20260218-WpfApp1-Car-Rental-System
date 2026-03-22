@@ -32,7 +32,19 @@
 
                 <StackPanel Grid.Row="2" VerticalAlignment="Center" HorizontalAlignment="Center">
                     <TextBlock Text="MAINTENANCE HISTORY" HorizontalAlignment="Center" Style="{StaticResource Header}"/>
-                    <TextBlock Text="This is where the cars will be presented." Style="{StaticResource BodyTextStyle}"/>
+                    <TextBlock Text="{Binding History}" Style="{StaticResource BodyTextStyle}"/>
+
+                    <TextBlock Text="PLATE NUMBER" HorizontalAlignment="Center" VerticalAlignment="Top" Foreground="White" Style="{StaticResource BodyTextStyle}"/>
+                    <Border Style="{StaticResource TextBoxBorder}">
+                        <TextBox 
+                            Width="200" 
+                            Style="{StaticResource BodyTextBox}"
+                            Text="{Binding PlateNumber, UpdateSourceTrigger=PropertyChanged}"
+                        />
+                    </Border>
+                    <Border Style="{StaticResource NormalButtonBorder}">
+                        <Button Content="Search" Style="{StaticResource NormalButton}" Command="{Binding SearchCommand}"/>
+                    </Border>
                 </StackPanel>
             </Grid>
         </Viewbox>
