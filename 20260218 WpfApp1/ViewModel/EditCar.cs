@@ -108,6 +108,7 @@ namespace _20260218_WpfApp1.ViewModel
                     SelectedCar.Age = Age;
                     SelectedCar.LicensePlate = LicensePlate;
                     MessageBox.Show("Car updated successfully.");
+                    OnPropertyChanged(nameof(SelectedCar));
                 }
             }
 
