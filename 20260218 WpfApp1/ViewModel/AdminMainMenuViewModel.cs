@@ -22,6 +22,7 @@ namespace _20260218_WpfApp1.ViewModel
         public ICommand AddMultipleCarsViaCSVFileCommand { get; set; }
         public ICommand ExitAndSaveCommand { get; set; }
         public ICommand EditACarCommand { get; set; }
+        public ICommand NewWindowCommand { get; set; }
 
 
         public AdminMainMenuViewModel()
@@ -37,6 +38,18 @@ namespace _20260218_WpfApp1.ViewModel
             EditACarCommand = new RelayCommand(ExecuteEditACar);
             AddMultipleCarsViaCSVFileCommand = new RelayCommand(ExecuteAddMultipleCarsViaCSVFile);
             ExitAndSaveCommand = new RelayCommand(ExecuteExitAndSave);
+            NewWindowCommand = new RelayCommand(ExecuteNewWindow);
+        }
+
+        private void ExecuteNewWindow()
+        {
+            ViewModel.AnotherWIndow.Test = "Hello from AdminMainMenuViewModel!";
+            var mainWindow = new View.AnotherWIndow();
+            Application.Current.MainWindow = mainWindow; // ✅ Set BEFORE closing
+            mainWindow.Show();                           // ✅ Non-blocking
+            Application.Current.Windows
+                .OfType<AdminMainMenu>()
+                .FirstOrDefault()?.Close();                 // ✅ Close login after
         }
 
         //Implement method and logic.

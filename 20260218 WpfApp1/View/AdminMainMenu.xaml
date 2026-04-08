@@ -8,7 +8,7 @@
         Title="Admin Dashboard" WindowStartupLocation="CenterScreen" Foreground="White">
     <ScrollViewer VerticalScrollBarVisibility="Visible">
         <Viewbox Stretch="UniformToFill">
-            <Grid Background="#FF672121" Height="1080" Width="1920">
+            <Grid Background="#FF672121" Height="auto" Width="1920">
                 <Grid.RowDefinitions>
                     <RowDefinition Height="Auto"/>
                     <!-- Title -->
@@ -55,6 +55,9 @@
                     </Border>
                     <Border Style="{StaticResource NormalButtonBorder}">
                         <Button Content="Exit and Save" Style="{StaticResource NormalButton}" Command="{Binding ExitAndSaveCommand}"/>
+                    </Border>
+                    <Border Style="{StaticResource NormalButtonBorder}">
+                        <Button Content="New Window" Style="{StaticResource NormalButton}" Command="{Binding NewWindowCommand}"/>
                     </Border>
                 </StackPanel>
             </Grid>

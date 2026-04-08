@@ -3,6 +3,8 @@ using _20260218_WpfApp1.View;
 using System;
 using System.Collections.Generic;
 using System.Data;
+using System.Data.SqlClient;
+using System.Data.SqlTypes;
 using System.Diagnostics.Contracts;
 using System.Linq;
 using System.Text;
@@ -17,6 +19,7 @@ namespace _20260218_WpfApp1.ViewModel
         //Declare and construct the objects using a new name.
         public static UserModel CurrentUser { get; set; }
         public ICommand LoginCommand { get; set; }
+        string connectionString = @"Server=CCL2-10\MSSQLSERVER01; Database=Car Rental System; User Id=sa; Password=ccl2; TrustServerCertificate=True;";
 
         public LoginViewModel()
         {
@@ -28,49 +31,69 @@ namespace _20260218_WpfApp1.ViewModel
         private void ExecuteLogin()
         {
             bool userFound = false;
-            File_Manager file_Manager = new File_Manager("File/users.csv");
-            List<string> lines = file_Manager.getLines();
-            foreach (string line in lines)
+
+            try
             {
-                Console.WriteLine(line);
-                string[] userDetails = line.Trim().Split(',');
-                if (userDetails[0] == CurrentUser.Username && userDetails[1] == CurrentUser.Pin)
+                using (SqlConnection connection = new SqlConnection(connectionString))
                 {
-                    userFound = true;
-                    CurrentUser.Role = userDetails[2];
-                    MessageBox.Show("User found.");
-                    Cars_In.InitializeCarsInList();
-                    Cars_Out.InitializeCarsOutList();
-                    Cars_in_Maintenance.InitializeMaintenancesList();
+                    string query = $"SELECT * FROM Users WHERE Username = @username AND Pin = @pin";
 
-                    if (userDetails[2] == "admin")
+                    using (SqlCommand command = new SqlCommand(query, connection))
                     {
-                        var AdminMainMenu = new AdminMainMenu();
-                        Application.Current.MainWindow = AdminMainMenu; // ✅ Set BEFORE closing
-                        AdminMainMenu.Show();                           // ✅ Non-blocking
-                        Application.Current.Windows
-                            .OfType<Login>()
-                            .FirstOrDefault()?.Close();                 // ✅ Close login after
-                    }
+                        command.Parameters.AddWithValue("@username", CurrentUser.Username);
+                        command.Parameters.AddWithValue("@pin", CurrentUser.Pin);
+                        connection.Open();
 
-                    else
-                    {
-                        var mainWindow = new UserMainMenu();
-                        Application.Current.MainWindow = mainWindow; // ✅ Set BEFORE closing
-                        mainWindow.Show();                           // ✅ Non-blocking
-                        Application.Current.Windows
-                            .OfType<Login>()
-                            .FirstOrDefault()?.Close();                 // ✅ Close login after
+                        using (SqlDataReader reader = command.ExecuteReader())
+                        {
+                            if (reader.HasRows)
+                            {
+                                MessageBox.Show("User found.");
+                                Cars_In.InitializeCarsInList();
+                                Cars_Out.InitializeCarsOutList();
+                                Cars_in_Maintenance.InitializeMaintenancesList();
+
+                                userFound = true;
+
+                                while (reader.Read())
+                                {
+                                    if (reader.GetString(reader.GetOrdinal("Role")) == "admin")
+                                    {
+                                        CurrentUser.Role = "admin";
+                                        var AdminMainMenu = new AdminMainMenu();
+                                        Application.Current.MainWindow = AdminMainMenu; // ✅ Set BEFORE closing
+                                        AdminMainMenu.Show();                           // ✅ Non-blocking
+                                        Application.Current.Windows
+                                            .OfType<Login>()
+                                            .FirstOrDefault()?.Close();                 // ✅ Close login after
+                                    }
+
+                                    else
+                                    {
+                                        var mainWindow = new UserMainMenu();
+                                        Application.Current.MainWindow = mainWindow; // ✅ Set BEFORE closing
+                                        mainWindow.Show();                           // ✅ Non-blocking
+                                        Application.Current.Windows
+                                            .OfType<Login>()
+                                            .FirstOrDefault()?.Close();                 // ✅ Close login after
+                                    }
+                                }
+                            }
+                        }
                     }
-                    break;
                 }
+            }
+
+            catch (Exception ex)
+            {
+                MessageBox.Show($"An error occurred while trying to log in: {ex.Message}");
+                return;
             }
 
             if (!userFound)
             {
                 MessageBox.Show("User not found. Please check your username and PIN.");
             }
-
         }
     }
 }
