@@ -59,6 +59,7 @@ namespace _20260218_WpfApp1.ViewModel
             {
                 using (SqlConnection connection = new SqlConnection(SQL.connectionString))
                 {
+                    connection.Open();
                         for (int counter = 0; counter < Cars_In.carsAvailable.Count; counter++)
                         {
                             query = $"UPDATE cars_in SET modelName = @modelName, brand = @brand, age = @age, plateNumber = @plateNumber WHERE carID = @ID";
@@ -69,10 +70,8 @@ namespace _20260218_WpfApp1.ViewModel
                                 command.Parameters.AddWithValue("@brand", Cars_In.carsAvailable[counter].Brand);
                                 command.Parameters.AddWithValue("@age", Cars_In.carsAvailable[counter].Age);
                                 command.Parameters.AddWithValue("@plateNumber", Cars_In.carsAvailable[counter].LicensePlate);
-                                connection.Open();
                                 int rows = command.ExecuteNonQuery();
                                 MessageBox.Show($"Exporting car with plate number: {Cars_In.carsAvailable[counter].LicensePlate} to database.", Cars_In.carsAvailable[counter].LicensePlate, MessageBoxButton.OK, MessageBoxImage.Information);
-                                connection.Close();
                             }
                         }
 
@@ -86,6 +85,7 @@ namespace _20260218_WpfApp1.ViewModel
                             {
                                 connection.Close();
                                 query = $"INSERT INTO cars_in (modelName, brand, age, plateNumber) VALUES (@modelName, @brand, @age, @plateNumber)";
+                                connection.Open();
                                 using (SqlCommand insertCommand = new SqlCommand(query, connection))
                                 {
                                     for (int counter = reader.FieldCount; counter < Cars_In.carsAvailable.Count; counter++)
@@ -94,11 +94,10 @@ namespace _20260218_WpfApp1.ViewModel
                                         insertCommand.Parameters.AddWithValue("@brand", Cars_In.carsAvailable[counter].Brand);
                                         insertCommand.Parameters.AddWithValue("@age", Cars_In.carsAvailable[counter].Age);
                                         insertCommand.Parameters.AddWithValue("@plateNumber", Cars_In.carsAvailable[counter].LicensePlate);
-                                        connection.Open();
                                         int rows = insertCommand.ExecuteNonQuery();
                                         MessageBox.Show($"Inserting car with plate number: {Cars_In.carsAvailable[counter].LicensePlate} to database.", Cars_In.carsAvailable[counter].LicensePlate, MessageBoxButton.OK, MessageBoxImage.Information);
-                                        connection.Close();
                                     }
+                                    connection.Close();
                                 }
                             }
                         }
@@ -137,6 +136,7 @@ namespace _20260218_WpfApp1.ViewModel
 
                         using (SqlDataReader reader = command.ExecuteReader())
                         {
+                            MessageBox.Show($"{reader.FieldCount} cars found in database.");
                             while (reader.Read())
                             {
                                 string modelName = reader.GetString(reader.GetOrdinal("modelName"));
