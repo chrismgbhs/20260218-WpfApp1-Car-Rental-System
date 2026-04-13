@@ -19,7 +19,6 @@ namespace _20260218_WpfApp1.ViewModel
         //Declare and construct the objects using a new name.
         public static UserModel CurrentUser { get; set; }
         public ICommand LoginCommand { get; set; }
-        string connectionString = @"Server=CCL2-10\MSSQLSERVER01; Database=Car Rental System; User Id=sa; Password=ccl2; TrustServerCertificate=True;";
 
         public LoginViewModel()
         {
@@ -34,7 +33,7 @@ namespace _20260218_WpfApp1.ViewModel
 
             try
             {
-                using (SqlConnection connection = new SqlConnection(connectionString))
+                using (SqlConnection connection = new SqlConnection(SQL.connectionString))
                 {
                     string query = $"SELECT * FROM Users WHERE Username = @username AND Pin = @pin";
 

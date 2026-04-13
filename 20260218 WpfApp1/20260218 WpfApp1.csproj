@@ -230,6 +230,7 @@
     <Compile Include="Model\Maintenance.cs" />
     <Compile Include="Model\PreviousPage.cs" />
     <Compile Include="Model\Schedule.cs" />
+    <Compile Include="Model\SQL.cs" />
     <Compile Include="ViewModel\AddCar.cs" />
     <Compile Include="ViewModel\AddCars.cs" />
     <Compile Include="ViewModel\AdminMainMenuViewModel.cs" />
