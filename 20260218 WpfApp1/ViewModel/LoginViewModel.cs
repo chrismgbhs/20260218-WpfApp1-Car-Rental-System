@@ -26,8 +26,7 @@ namespace _20260218_WpfApp1.ViewModel
             LoginCommand = new RelayCommand(ExecuteLogin);
         }
 
-        //Implement method and logic.
-        private void ExecuteLogin()
+        public async Task GoLogin()
         {
             bool userFound = false;
 
@@ -41,9 +40,9 @@ namespace _20260218_WpfApp1.ViewModel
                     {
                         command.Parameters.AddWithValue("@username", CurrentUser.Username);
                         command.Parameters.AddWithValue("@pin", CurrentUser.Pin);
-                        connection.Open();
+                        await connection.OpenAsync();
 
-                        using (SqlDataReader reader = command.ExecuteReader())
+                        using (SqlDataReader reader = await command.ExecuteReaderAsync())
                         {
                             if (reader.HasRows)
                             {
@@ -54,7 +53,7 @@ namespace _20260218_WpfApp1.ViewModel
 
                                 userFound = true;
 
-                                while (reader.Read())
+                                while (await reader.ReadAsync())
                                 {
                                     if (reader.GetString(reader.GetOrdinal("Role")) == "admin")
                                     {
@@ -93,6 +92,12 @@ namespace _20260218_WpfApp1.ViewModel
             {
                 MessageBox.Show("User not found. Please check your username and PIN.");
             }
+        }
+
+        //Implement method and logic.
+        private void ExecuteLogin()
+        {
+            GoLogin();
         }
     }
 }
