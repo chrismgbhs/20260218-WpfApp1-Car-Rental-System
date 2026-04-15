@@ -78,6 +78,7 @@ namespace _20260218_WpfApp1.ViewModel
             Cars_Out.ExportCarsOutList();
             Cars_in_Maintenance.ExportMaintenancesList();
             Cars_In.ExportCarsInList();
+            MessageBox.Show("Exiting the app.");
             App.Current.Shutdown();
         }
         private void ExecuteSendCarToMaintenance()

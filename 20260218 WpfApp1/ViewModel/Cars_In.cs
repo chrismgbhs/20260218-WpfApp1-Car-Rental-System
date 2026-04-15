@@ -13,6 +13,7 @@ using System.Windows;
 using System.Windows.Documents;
 using System.Windows.Input;
 using System.Xml.Linq;
+using System.Runtime.ConstrainedExecution;
 
 namespace _20260218_WpfApp1.ViewModel
 {
@@ -52,58 +53,178 @@ namespace _20260218_WpfApp1.ViewModel
                 .FirstOrDefault()?.Close();                 // ✅ Close login after
         }
 
-        public static void ExportCarsInList()
+        public static async Task InsertCarIntoDatabase(Car car)
         {
+            try
+            {
+                using (SqlConnection connection = new SqlConnection(SQL.connectionString))
+                {
+                    string query = $"INSERT INTO cars_in (carID, modelName, brand, age, plateNumber) VALUES ((SELECT COUNT(*) + 1 FROM cars_in), @modelName, @brand, @age, @plateNumber)";
+
+                    using (SqlCommand command = new SqlCommand(query, connection))
+                    {
+                        await connection.OpenAsync();
+                        command.Parameters.AddWithValue("@modelName", car.Name);
+                        command.Parameters.AddWithValue("@brand", car.Brand);
+                        command.Parameters.AddWithValue("@age", car.Age);
+                        command.Parameters.AddWithValue("@plateNumber", car.LicensePlate);
+                        await command.ExecuteNonQueryAsync();
+                        command.Parameters.Clear();
+                        connection.Close();
+                    }
+
+                    MessageBox.Show($"Car with plate number: {car.LicensePlate} added to database.", car.LicensePlate, MessageBoxButton.OK, MessageBoxImage.Information);
+                }
+            }
+
+            catch (Exception ex)
+            {
+                MessageBox.Show($"An error occurred while trying to log in: {ex.Message}");
+                return;
+            }
+        }
+
+        public static async Task DeleteCarFromDatabase(string plateNumber)
+        {
+            try
+            {
+                using (SqlConnection connection = new SqlConnection(SQL.connectionString))
+                {
+                    string query = $"DELETE FROM cars_in WHERE plateNumber = @plateNumber";
+
+                    using (SqlCommand command = new SqlCommand(query, connection))
+                    {
+                        await connection.OpenAsync();
+                        command.Parameters.AddWithValue("@plateNumber", plateNumber);
+                        await command.ExecuteNonQueryAsync();
+                        command.Parameters.Clear();
+                        connection.Close();
+                    }
+                }
+
+                MessageBox.Show($"Car with plate number: {plateNumber} deleted from database.", plateNumber, MessageBoxButton.OK, MessageBoxImage.Information);
+            }
+
+            catch (Exception ex)
+            {
+                MessageBox.Show($"An error occurred while trying to log in: {ex.Message}");
+                return;
+            }
+        }
+
+        public static async Task UpdateCarToDatabase (Car car)
+        {
+            try
+            {
+                using (SqlConnection connection = new SqlConnection(SQL.connectionString))
+                {
+                    string query = $"UPDATE cars_in SET modelname = @modelName, brand = @brand, age = @age, plateNumber = @plateNumber WHERE plateNumber = @plateNumber ";
+
+                    using (SqlCommand command = new SqlCommand(query, connection))
+                    {
+                        await connection.OpenAsync();
+                        command.Parameters.AddWithValue("@modelName", car.Name);
+                        command.Parameters.AddWithValue("@brand", car.Brand);
+                        command.Parameters.AddWithValue("@age", car.Age);
+                        command.Parameters.AddWithValue("@plateNumber", car.LicensePlate);
+                        await command.ExecuteNonQueryAsync();
+                        command.Parameters.Clear();
+                        connection.Close();
+                    }
+                }
+
+                MessageBox.Show($"Car with plate number: {car.LicensePlate} updated in database.", car.LicensePlate, MessageBoxButton.OK, MessageBoxImage.Information);
+            }
+
+            catch (Exception ex)
+            {
+                MessageBox.Show($"An error occurred while trying to log in: {ex.Message}");
+                return;
+            }
+        }
+
+        public static async Task ExportCarsInList()
+        {
+            int internalCars_InCounter = Cars_In.carsAvailable.Count;
+            int carsDiff = 0;
+            int rows = 0;
             string query;
             try
             {
                 using (SqlConnection connection = new SqlConnection(SQL.connectionString))
                 {
-                    connection.Open();
-                        for (int counter = 0; counter < Cars_In.carsAvailable.Count; counter++)
-                        {
-                            query = $"UPDATE cars_in SET modelName = @modelName, brand = @brand, age = @age, plateNumber = @plateNumber WHERE carID = @ID";
-                            using (SqlCommand command = new SqlCommand(query, connection))
-                            {
-                                command.Parameters.AddWithValue("@ID", counter + 1);
-                                command.Parameters.AddWithValue("@modelName", Cars_In.carsAvailable[counter].Name);
-                                command.Parameters.AddWithValue("@brand", Cars_In.carsAvailable[counter].Brand);
-                                command.Parameters.AddWithValue("@age", Cars_In.carsAvailable[counter].Age);
-                                command.Parameters.AddWithValue("@plateNumber", Cars_In.carsAvailable[counter].LicensePlate);
-                                int rows = command.ExecuteNonQuery();
-                                MessageBox.Show($"Exporting car with plate number: {Cars_In.carsAvailable[counter].LicensePlate} to database.", Cars_In.carsAvailable[counter].LicensePlate, MessageBoxButton.OK, MessageBoxImage.Information);
-                            }
-                        }
-
                     query = $"SELECT * FROM cars_in";
+
                     using (SqlCommand command = new SqlCommand(query, connection))
                     {
-                        connection.Open();
-                        using (SqlDataReader reader = command.ExecuteReader())
+                        await connection.OpenAsync();
+
+                        using (SqlDataReader reader = command.ExecuteReader()) 
                         {
-                            if (Cars_In.carsAvailable.Count > reader.FieldCount)
+                            if (reader.HasRows)
                             {
-                                connection.Close();
-                                query = $"INSERT INTO cars_in (modelName, brand, age, plateNumber) VALUES (@modelName, @brand, @age, @plateNumber)";
-                                connection.Open();
-                                using (SqlCommand insertCommand = new SqlCommand(query, connection))
+                                while (reader.Read())
                                 {
-                                    for (int counter = reader.FieldCount; counter < Cars_In.carsAvailable.Count; counter++)
+                                    bool carFound = false;
+
+                                    foreach (Car car in Cars_In.carsAvailable)
                                     {
-                                        insertCommand.Parameters.AddWithValue("@modelName", Cars_In.carsAvailable[counter].Name);
-                                        insertCommand.Parameters.AddWithValue("@brand", Cars_In.carsAvailable[counter].Brand);
-                                        insertCommand.Parameters.AddWithValue("@age", Cars_In.carsAvailable[counter].Age);
-                                        insertCommand.Parameters.AddWithValue("@plateNumber", Cars_In.carsAvailable[counter].LicensePlate);
-                                        int rows = insertCommand.ExecuteNonQuery();
-                                        MessageBox.Show($"Inserting car with plate number: {Cars_In.carsAvailable[counter].LicensePlate} to database.", Cars_In.carsAvailable[counter].LicensePlate, MessageBoxButton.OK, MessageBoxImage.Information);
+                                        if (car.LicensePlate == reader.GetString(reader.GetOrdinal("plateNumber")))
+                                        {
+                                            UpdateCarToDatabase(car);
+                                        }
+
+                                        else
+                                        {
+                                            InsertCarIntoDatabase(car);
+                                        }
                                     }
-                                    connection.Close();
+
+                                    rows++;
+                                }
+                            }
+
+                            else
+                            {
+                                foreach (Car car in Cars_In.carsAvailable)
+                                {
+                                    InsertCarIntoDatabase(car);
                                 }
                             }
                         }
+
+                        connection.Close();
                     }
 
-                }
+                    using (SqlCommand command = new SqlCommand(query, connection))
+                    {
+                        await connection.OpenAsync();
+
+                        using (SqlDataReader reader = command.ExecuteReader())
+                        {
+                            while (reader.Read())
+                            {
+                                bool carFound = false;
+
+                                foreach (Car car in Cars_In.carsAvailable)
+                                {
+                                    if (car.LicensePlate == reader.GetString(reader.GetOrdinal("plateNumber")))
+                                    {
+                                        carFound = true;
+                                        break;
+                                    }
+                                }
+
+                                if (carFound == false)
+                                {
+                                    DeleteCarFromDatabase(reader.GetString(reader.GetOrdinal("plateNumber")));
+                                }
+                            }
+                        }
+
+                        connection.Close();
+                    }
+                }  
             }
 
             catch (Exception ex)
