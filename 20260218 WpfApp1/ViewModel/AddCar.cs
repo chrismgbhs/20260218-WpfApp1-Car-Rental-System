@@ -23,6 +23,7 @@ namespace _20260218_WpfApp1.ViewModel
             BackCommand = new RelayCommand(ExecuteBack);
             SubmitCommand = new RelayCommand(ExecuteSubmit);
         }
+
         public void ExecuteSubmit()
         {
             if (CarModel == null || CarBrand == null || CarAge == null || PlateNumber == null) 

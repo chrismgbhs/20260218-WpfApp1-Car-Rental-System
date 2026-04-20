@@ -240,6 +240,7 @@
     <Compile Include="ViewModel\Cars_in_Maintenance.cs" />
     <Compile Include="ViewModel\Cars_Out.cs" />
     <Compile Include="ViewModel\CarToMaintenance.cs" />
+    <Compile Include="ViewModel\DatabaseManager.cs" />
     <Compile Include="ViewModel\EditCar.cs" />
     <Compile Include="ViewModel\FileManager.cs" />
     <Compile Include="Model\UserModel.cs" />
