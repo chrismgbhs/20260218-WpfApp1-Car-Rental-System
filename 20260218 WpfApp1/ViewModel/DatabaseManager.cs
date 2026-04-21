@@ -19,6 +19,8 @@ namespace _20260218_WpfApp1.ViewModel
     internal class DatabaseManager
     {
         //LOGIN
+
+
         public static void Login(UserModel CurrentUser, out bool userFound)
         {
             userFound = false;

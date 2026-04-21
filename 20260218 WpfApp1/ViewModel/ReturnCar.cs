@@ -15,9 +15,9 @@ namespace _20260218_WpfApp1.ViewModel
     internal class ReturnCar : ObservableObject
     {
         public static ObservableCollection<Borrowed_Car> rentedCars = new ObservableCollection<Borrowed_Car>();
-        private Car _selectedCar;
-        public Car car;
+        private Borrowed_Car _selectedCar;
         public Borrowed_Car borrowedCar;
+        public Car car;
         public ICommand BackCommand { get; set; }
         public ICommand ReturnCarCommand { get; set; }
 
@@ -28,7 +28,7 @@ namespace _20260218_WpfApp1.ViewModel
             LoadRentedCars();
         }
 
-        public Car SelectedCar
+        public Borrowed_Car SelectedCar
         {
             get { return _selectedCar; }
             set
@@ -38,9 +38,8 @@ namespace _20260218_WpfApp1.ViewModel
 
                 if (SelectedCar != null)
                 {
-                    //car = new Car(SelectedCar.Name, SelectedCar.Brand, SelectedCar.Age, SelectedCar.LicensePlate);
-                    //borrowedCar = new Borrowed_Car(car, SelectedCar.BorrowerName, SelectedCar.Sta)
-                    //MessageBox.Show($"Selected Car:\nName: {car.Name}\nBrand: {car.Brand}\nAge: {car.Age}\nLicense Plate: {car.LicensePlate}");
+                    car = new Car(SelectedCar.Car.Name, SelectedCar.Car.Brand, SelectedCar.Car.Age, SelectedCar.Car.LicensePlate);
+                    borrowedCar = new Borrowed_Car(car, SelectedCar.BorrowerName, SelectedCar.StartDateTime, SelectedCar.EndDateTime);
                 }
             }
         }
@@ -59,9 +58,9 @@ namespace _20260218_WpfApp1.ViewModel
 
         public void ExecuteReturnCar()
         {
-            Cars_In.carsAvailable.Add(SelectedCar);
+            Cars_In.carsAvailable.Add(SelectedCar.Car);
             Cars_Out.carsRented.Remove(SelectedCar);
-            Console.WriteLine("Car has been returned successfully.");
+            MessageBox.Show("Car has been returned successfully.");
         }
 
         public void ExecuteBack()
