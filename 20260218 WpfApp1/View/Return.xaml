@@ -3,11 +3,12 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:vm="clr-namespace:_20260218_WpfApp1.ViewModel"
         xmlns:local="clr-namespace:_20260218_WpfApp1"
         mc:Ignorable="d"
         Title="Return" WindowStartupLocation="CenterScreen" Foreground="White">
     <ScrollViewer VerticalScrollBarVisibility="Visible">
-        <Viewbox Stretch="UniformToFill">
+        <Viewbox Stretch="Uniform">
             <Grid Background="#FF672121" Height="1080" Width="1920">
                 <Grid.RowDefinitions>
                     <RowDefinition Height="Auto"/>
@@ -21,18 +22,39 @@
                 <StackPanel Orientation="Horizontal">
                     <Border Style="{StaticResource MajorButtonBorder}">
                         <Button 
-                            Content="BACK TO MAIN MENU" 
-                            Style="{StaticResource MajorButton}" 
-                            Command="{Binding BackCommand}"
-                        />
+                        Content="BACK TO MAIN MENU" 
+                        Style="{StaticResource MajorButton}" 
+                        Command="{Binding BackCommand}"
+                    />
                     </Border>
                     <TextBlock Text="CAR RENTAL SYSTEM" Foreground="White" Style="{StaticResource Title}" Grid.Row="0" Margin="25,40,25,40"/>
                 </StackPanel>
                 <Border Style="{StaticResource MainBorder}" Grid.Row="1"/>
 
                 <StackPanel Grid.Row="2" VerticalAlignment="Center" HorizontalAlignment="Center">
-                    <TextBlock Text="RETURN A CAR" HorizontalAlignment="Center" Style="{StaticResource Header}"/>
-                    <TextBlock Text="This is where the cars will be returned." Style="{StaticResource BodyTextStyle}"/>
+                    <TextBlock Text="SELECT CAR TO RETURN" HorizontalAlignment="Center" Style="{StaticResource Header}"/>
+                    <DataGrid 
+                    Height="500"
+                    Width="700"
+                    ItemsSource="{Binding Source={x:Static vm:ReturnCar.rentedCars}}"
+                    SelectedItem="{Binding SelectedCar}"
+                    AutoGenerateColumns="False"
+                    CanUserAddRows="False"
+                    Style="{StaticResource DataGridText}"
+                    AlternatingRowBackground="LightPink">
+                        <DataGrid.Columns>
+                            <DataGridTextColumn Header="Name" Binding="{Binding Car.Name}" HeaderStyle="{StaticResource DataGridHeader}" ElementStyle="{StaticResource BodyTextStyle}"/>
+                            <DataGridTextColumn Header="Brand" Binding="{Binding Car.Brand}" HeaderStyle="{StaticResource DataGridHeader}" ElementStyle="{StaticResource BodyTextStyle}"/>
+                            <DataGridTextColumn Header="Age" Binding="{Binding Car.Age}" HeaderStyle="{StaticResource DataGridHeader}" ElementStyle="{StaticResource BodyTextStyle}"/>
+                            <DataGridTextColumn Header="License Plate" Binding="{Binding Car.LicensePlate}" HeaderStyle="{StaticResource DataGridHeader}" ElementStyle="{StaticResource BodyTextStyle}"/>
+                            <DataGridTextColumn Header="Borrower" Binding="{Binding BorrowerName}" HeaderStyle="{StaticResource DataGridHeader}" ElementStyle="{StaticResource BodyTextStyle}"/>
+                            <DataGridTextColumn Header="Start" Binding="{Binding StartDateTime}" HeaderStyle="{StaticResource DataGridHeader}" ElementStyle="{StaticResource BodyTextStyle}"/>
+                            <DataGridTextColumn Header="End" Binding="{Binding EndDateTime}" HeaderStyle="{StaticResource DataGridHeader}" ElementStyle="{StaticResource BodyTextStyle}"/>
+                        </DataGrid.Columns>
+                    </DataGrid>
+                    <Border Style="{StaticResource NormalButtonBorder}">
+                        <Button Content="Return Selected Car" Style="{StaticResource NormalButton}" Command="{Binding ReturnCarCommand}"/>
+                    </Border>
                 </StackPanel>
             </Grid>
         </Viewbox>

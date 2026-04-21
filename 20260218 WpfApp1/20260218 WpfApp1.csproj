@@ -235,6 +235,7 @@
     <Compile Include="ViewModel\AddCars.cs" />
     <Compile Include="ViewModel\AdminMainMenuViewModel.cs" />
     <Compile Include="ViewModel\AnotherWIndow.cs" />
+    <Compile Include="ViewModel\AsyncRelayCommand.cs" />
     <Compile Include="ViewModel\CarFromMaintenance.cs" />
     <Compile Include="ViewModel\Cars_In.cs" />
     <Compile Include="ViewModel\Cars_in_Maintenance.cs" />

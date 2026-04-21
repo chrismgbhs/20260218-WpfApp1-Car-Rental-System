@@ -3,6 +3,7 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:vm="clr-namespace:_20260218_WpfApp1.ViewModel"
         xmlns:local="clr-namespace:_20260218_WpfApp1"
         mc:Ignorable="d"
         Title="Rent" WindowStartupLocation="CenterScreen" Foreground="White">
@@ -31,8 +32,49 @@
                 <Border Style="{StaticResource MainBorder}" Grid.Row="1"/>
 
                 <StackPanel Grid.Row="2" VerticalAlignment="Center" HorizontalAlignment="Center">
-                    <TextBlock Text="RENT A CAR" HorizontalAlignment="Center" Style="{StaticResource Header}"/>
-                    <TextBlock Text="This is where the cars will be rented." Style="{StaticResource BodyTextStyle}"/>
+                    <DataGrid 
+                        Height="500"
+                        Width="700"
+                        ItemsSource="{Binding Source={x:Static vm:Cars_In.carsAvailable}}"
+                        SelectedItem="{Binding SelectedCar}"
+                        AutoGenerateColumns="False"
+                        CanUserAddRows="False"
+                        Style="{StaticResource DataGridText}"
+                        AlternatingRowBackground="LightPink">
+                        <DataGrid.Columns>
+                            <DataGridTextColumn Header="Name" Binding="{Binding Name}" HeaderStyle="{StaticResource DataGridHeader}" ElementStyle="{StaticResource BodyTextStyle}"/>
+                            <DataGridTextColumn Header="Brand" Binding="{Binding Brand}" HeaderStyle="{StaticResource DataGridHeader}" ElementStyle="{StaticResource BodyTextStyle}"/>
+                            <DataGridTextColumn Header="Age" Binding="{Binding Age}" HeaderStyle="{StaticResource DataGridHeader}" ElementStyle="{StaticResource BodyTextStyle}"/>
+                            <DataGridTextColumn Header="License Plate" Binding="{Binding LicensePlate}" HeaderStyle="{StaticResource DataGridHeader}" ElementStyle="{StaticResource BodyTextStyle}"/>
+                        </DataGrid.Columns>
+                    </DataGrid>
+                    <TextBlock Text="Return Year" HorizontalAlignment="Center" VerticalAlignment="Top" Foreground="White" Style="{StaticResource BodyTextStyle}"/>
+                    <Border Style="{StaticResource TextBoxBorder}">
+                        <TextBox 
+                            Width="200" 
+                            Style="{StaticResource BodyTextBox}"
+                            Text="{Binding RentalYear, UpdateSourceTrigger=PropertyChanged}"
+                        />
+                    </Border>
+                    <TextBlock Text="Return Month" HorizontalAlignment="Center" VerticalAlignment="Top" Foreground="White" Style="{StaticResource BodyTextStyle}"/>
+                    <Border Style="{StaticResource TextBoxBorder}">
+                        <TextBox 
+                            Width="200" 
+                            Style="{StaticResource BodyTextBox}"
+                            Text="{Binding RentalMonth, UpdateSourceTrigger=PropertyChanged}"
+                        />
+                    </Border>
+                    <TextBlock Text="Return Day" HorizontalAlignment="Center" VerticalAlignment="Top" Foreground="White" Style="{StaticResource BodyTextStyle}"/>
+                    <Border Style="{StaticResource TextBoxBorder}">
+                        <TextBox 
+                            Width="200" 
+                            Style="{StaticResource BodyTextBox}"
+                            Text="{Binding RentalDay, UpdateSourceTrigger=PropertyChanged}"
+                        />
+                    </Border>
+                    <Border Style="{StaticResource NormalButtonBorder}">
+                        <Button Content="Rent" Style="{StaticResource NormalButton}" Command="{Binding SendCarToRentCommand}"/>
+                    </Border>
                 </StackPanel>
             </Grid>
         </Viewbox>
