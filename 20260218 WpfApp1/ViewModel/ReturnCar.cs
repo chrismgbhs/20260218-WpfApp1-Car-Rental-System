@@ -14,7 +14,8 @@ namespace _20260218_WpfApp1.ViewModel
 {
     internal class ReturnCar : ObservableObject
     {
-        public static ObservableCollection<Borrowed_Car> rentedCars = new ObservableCollection<Borrowed_Car>();
+        public static ObservableCollection<Borrowed_Car> userRentedCars = new ObservableCollection<Borrowed_Car>();
+
         private Borrowed_Car _selectedCar;
         public Borrowed_Car borrowedCar;
         public Car car;
@@ -46,21 +47,31 @@ namespace _20260218_WpfApp1.ViewModel
 
         public void LoadRentedCars()
         {
-            rentedCars.Clear();
+            userRentedCars.Clear();
             foreach (var rent in Cars_Out.carsRented)
             {
                 if (rent.BorrowerName == LoginViewModel.CurrentUser.Username)
                 {
-                    rentedCars.Add(rent);
+                    userRentedCars.Add(rent);
                 }
             }
         }
 
-        public void ExecuteReturnCar()
+        public async void ExecuteReturnCar()
         {
-            Cars_In.carsAvailable.Add(SelectedCar.Car);
-            Cars_Out.carsRented.Remove(SelectedCar);
-            MessageBox.Show("Car has been returned successfully.");
+            if (SelectedCar != null)
+            {
+                Cars_In.carsAvailable.Add(SelectedCar.Car);
+                Cars_Out.carsRented.Remove(SelectedCar);
+                MessageBox.Show("Car has been returned successfully.");
+                LoadRentedCars();
+                await DatabaseManager.RefreshDatabase();
+            }
+
+            else
+            {
+                MessageBox.Show("Please select a car to return.");
+            }
         }
 
         public void ExecuteBack()

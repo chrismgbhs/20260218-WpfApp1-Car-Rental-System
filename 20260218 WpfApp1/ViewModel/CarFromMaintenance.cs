@@ -60,7 +60,7 @@ namespace _20260218_WpfApp1.ViewModel
             }
         }
 
-        public void RemoveCarFromMaintenance()
+        public async void RemoveCarFromMaintenance()
         {
 
             Car car = new Car(maintenance.Car.Name, maintenance.Car.Brand, maintenance.Car.Age, maintenance.Car.LicensePlate);
@@ -91,6 +91,8 @@ namespace _20260218_WpfApp1.ViewModel
                     break;
                 }
             }
+
+            await DatabaseManager.RefreshDatabase();
         }
     }
 }

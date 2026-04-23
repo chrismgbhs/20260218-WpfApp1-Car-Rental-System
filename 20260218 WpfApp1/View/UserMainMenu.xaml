@@ -35,9 +35,9 @@
                     <Border Style="{StaticResource NormalButtonBorder}">
                         <Button Content="Return a Car" Command="{Binding ReturnACarCommand}" Style="{StaticResource NormalButton}"/>
                     </Border>
-                    <Border Style="{StaticResource NormalButtonBorder}">
+                    <!--<Border Style="{StaticResource NormalButtonBorder}">
                         <Button Content="Exit and Save" Command="{Binding ExitAndSaveCommand}" Style="{StaticResource NormalButton}"/>
-                    </Border>
+                    </Border>-->
                 </StackPanel>
             </Grid>
         </Viewbox>

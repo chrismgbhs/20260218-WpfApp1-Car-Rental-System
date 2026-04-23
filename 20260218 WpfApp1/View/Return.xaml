@@ -36,7 +36,7 @@
                     <DataGrid 
                     Height="500"
                     Width="700"
-                    ItemsSource="{Binding Source={x:Static vm:ReturnCar.rentedCars}}"
+                    ItemsSource="{Binding Source={x:Static vm:ReturnCar.userRentedCars}}"
                     SelectedItem="{Binding SelectedCar}"
                     AutoGenerateColumns="False"
                     CanUserAddRows="False"

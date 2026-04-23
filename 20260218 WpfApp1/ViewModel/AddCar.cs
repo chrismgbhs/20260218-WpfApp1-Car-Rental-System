@@ -24,7 +24,7 @@ namespace _20260218_WpfApp1.ViewModel
             SubmitCommand = new RelayCommand(ExecuteSubmit);
         }
 
-        public void ExecuteSubmit()
+        public async void ExecuteSubmit()
         {
             if (CarModel == null || CarBrand == null || CarAge == null || PlateNumber == null) 
             { 
@@ -38,6 +38,7 @@ namespace _20260218_WpfApp1.ViewModel
                     Car car = new Car(CarModel, CarBrand, CarAge, PlateNumber);
                     Cars_In.AddCar(car);
                     MessageBox.Show("Car added successfully!");
+                    await DatabaseManager.RefreshDatabase();
                 }
 
                 else

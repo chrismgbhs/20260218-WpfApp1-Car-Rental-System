@@ -92,7 +92,7 @@ namespace _20260218_WpfApp1.ViewModel
                 .FirstOrDefault()?.Close();                 // ✅ Close login after
         }
 
-        public void ExecuteUpdateCar()
+        public async void ExecuteUpdateCar()
         {
             if (SelectedCar != null)
             {
@@ -109,6 +109,7 @@ namespace _20260218_WpfApp1.ViewModel
                     SelectedCar.LicensePlate = LicensePlate;
                     MessageBox.Show("Car updated successfully.");
                     OnPropertyChanged(nameof(SelectedCar));
+                    await DatabaseManager.RefreshDatabase();
                 }
             }
 

@@ -24,7 +24,7 @@ namespace _20260218_WpfApp1.ViewModel
             RemoveCarCommand = new RelayCommand(RemoveSelectedCar);
         }
 
-        public void RemoveSelectedCar()
+        public async void RemoveSelectedCar()
         {
             if (SelectedCar != null)
             {
@@ -33,6 +33,7 @@ namespace _20260218_WpfApp1.ViewModel
                     if (Cars_In.carsAvailable.Remove(SelectedCar))
                     {
                         MessageBox.Show("Car removed successfully.");
+                        await DatabaseManager.RefreshDatabase();
 
                     }
 

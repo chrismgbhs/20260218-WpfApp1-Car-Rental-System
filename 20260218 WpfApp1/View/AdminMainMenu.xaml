@@ -53,12 +53,9 @@
                     <Border Style="{StaticResource NormalButtonBorder}">
                         <Button Content="Return Car from Maintenance" Style="{StaticResource NormalButton}" Command="{Binding ReturnCarFromMaintenanceCommand}"/>
                     </Border>
-                    <Border Style="{StaticResource NormalButtonBorder}">
+                    <!--<Border Style="{StaticResource NormalButtonBorder}">
                         <Button Content="Exit and Save" Style="{StaticResource NormalButton}" Command="{Binding ExitAndSaveCommand}"/>
-                    </Border>
-                    <Border Style="{StaticResource NormalButtonBorder}">
-                        <Button Content="New Window" Style="{StaticResource NormalButton}" Command="{Binding NewWindowCommand}"/>
-                    </Border>
+                    </Border>-->
                 </StackPanel>
             </Grid>
         </Viewbox>

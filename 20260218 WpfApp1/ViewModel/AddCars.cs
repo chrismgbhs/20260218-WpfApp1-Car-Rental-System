@@ -21,7 +21,7 @@ namespace _20260218_WpfApp1.ViewModel
             AddCarsCommand = new RelayCommand(ExecuteAddCars);
         }
 
-        public void ExecuteAddCars()
+        public async void ExecuteAddCars()
         {
             File_Manager file_Manager = new File_Manager(FilePath);
             List<string> lines = file_Manager.getLines();
@@ -40,6 +40,7 @@ namespace _20260218_WpfApp1.ViewModel
                         Car car = new Car(name, brand, age, licensePlate);
                         Cars_In.carsAvailable.Add(car);
                         MessageBox.Show($"{car.Name} has been added to the inventory successfully.");
+                        await DatabaseManager.RefreshDatabase();
                     }
 
                     else

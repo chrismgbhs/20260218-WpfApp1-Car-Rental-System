@@ -62,7 +62,7 @@ namespace _20260218_WpfApp1.ViewModel
             }
         }
 
-        public void SendSelectedCarToRent()
+        public async void SendSelectedCarToRent()
         {
             bool thirtyOneDays = false;
             int rentalYear;
@@ -217,6 +217,7 @@ namespace _20260218_WpfApp1.ViewModel
                                 File_Manager file_manager = new File_Manager("receipt.csv");
                                 file_manager.Write(content, false);
                                 MessageBox.Show("Receipt has been printed.");
+                                await DatabaseManager.RefreshDatabase();
                             }
                         }
                     }
