@@ -8,7 +8,7 @@
         Title="Admin Dashboard" WindowStartupLocation="CenterScreen" Foreground="White">
     <ScrollViewer VerticalScrollBarVisibility="Visible">
         <Viewbox Stretch="UniformToFill">
-            <Grid Background="#FF672121" Height="auto" Width="1920">
+            <Grid Background="#FF672121" Height="1080" Width="1920">
                 <Grid.RowDefinitions>
                     <RowDefinition Height="Auto"/>
                     <!-- Title -->
@@ -20,13 +20,12 @@
 
                 <TextBlock Text="CAR RENTAL SYSTEM" Foreground="White" Style="{StaticResource Title}" Grid.Row="0" Margin="25,40,25,40"/>
                 <Border Style="{StaticResource MainBorder}" Grid.Row="1"/>
-
                 <StackPanel Grid.Row="2" VerticalAlignment="Center" HorizontalAlignment="Center">
                     <TextBlock Text="MAIN MENU" HorizontalAlignment="Center" Style="{StaticResource Header}"/>
                     <Border Style="{StaticResource NormalButtonBorder}">
                         <Button Content="View Available Cars" Style="{StaticResource NormalButton}" Command="{Binding ViewAvailableCarsCommand}"/>
                     </Border>
-                    <Border Style="{StaticResource NormalButtonBorder}">
+                    <!--<Border Style="{StaticResource NormalButtonBorder}">
                         <Button Content="Add Available Car" Style="{StaticResource NormalButton}" Command="{Binding AddACarCommand}"/>
                     </Border>
                     <Border Style="{StaticResource NormalButtonBorder}">
@@ -37,7 +36,7 @@
                     </Border>
                     <Border Style="{StaticResource NormalButtonBorder}">
                         <Button Content="Add Multiple Available Cars via CSV file" Style="{StaticResource NormalButton}" Command="{Binding AddMultipleCarsViaCSVFileCommand}"/>
-                    </Border>
+                    </Border>-->
                     <Border Style="{StaticResource NormalButtonBorder}">
                         <Button Content="View Rented Cars" Style="{StaticResource NormalButton}" Command="{Binding ViewRentedCarsCommand}"/>
                     </Border>
