@@ -64,9 +64,13 @@ namespace _20260218_WpfApp1.ViewModel
                 .OfType<UserMainMenu>()
                 .FirstOrDefault()?.Close();                 // ✅ Close login after
         }
-        private void ExecuteExitAndSave()
+        private async void ExecuteExitAndSave()
         {
-            // Implement any necessary save logic here before exiting
+            Console.WriteLine("Exiting the system. Goodbye!");
+            await Cars_Out.ExportCarsOutList();
+            await Cars_in_Maintenance.ExportMaintenancesList();
+            await Cars_In.ExportCarsToDatabase();
+            MessageBox.Show("Exiting the app.");
             App.Current.Shutdown();
         }
     }

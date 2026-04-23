@@ -19,8 +19,6 @@ namespace _20260218_WpfApp1.ViewModel
     internal class DatabaseManager
     {
         //LOGIN
-
-
         public static void Login(UserModel CurrentUser, out bool userFound)
         {
             userFound = false;
@@ -166,7 +164,6 @@ namespace _20260218_WpfApp1.ViewModel
                 return;
             }
         }
-
         public static async Task InitializeCarsIn()
         {
             try
@@ -181,7 +178,6 @@ namespace _20260218_WpfApp1.ViewModel
 
                         using (SqlDataReader reader = command.ExecuteReader())
                         {
-                            MessageBox.Show($"{reader.FieldCount} cars found in database.");
                             while (reader.Read())
                             {
                                 string modelName = reader.GetString(reader.GetOrdinal("modelName"));
@@ -263,7 +259,6 @@ namespace _20260218_WpfApp1.ViewModel
 
                         using (SqlDataReader reader = command.ExecuteReader())
                         {
-                            MessageBox.Show($"{reader.FieldCount} cars found in database.");
                             while (reader.Read())
                             {
                                 string modelName = reader.GetString(reader.GetOrdinal("modelName"));
@@ -367,7 +362,6 @@ namespace _20260218_WpfApp1.ViewModel
 
                         using (SqlDataReader reader = command.ExecuteReader())
                         {
-                            MessageBox.Show($"{reader.FieldCount} cars found in database.");
                             while (reader.Read())
                             {
                                 string modelName = reader.GetString(reader.GetOrdinal("modelName"));
@@ -405,7 +399,6 @@ namespace _20260218_WpfApp1.ViewModel
                 return;
             }
         }
-
         public static async Task InsertCarIntoDatabaseMaintenance(Maintenance maintenance)
         {
             string query;
@@ -438,7 +431,6 @@ namespace _20260218_WpfApp1.ViewModel
                 return;
             }
         }
-
         public static async Task ExportMaintenances()
         {
             string query;
