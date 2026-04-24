@@ -42,6 +42,7 @@ namespace _20260218_WpfApp1.ViewModel
                     {
                         command.Parameters.AddWithValue("@username", CurrentUser.Username);
                         command.Parameters.AddWithValue("@pin", CurrentUser.Pin);
+
                         connection.Open();
 
                         using (SqlDataReader reader = command.ExecuteReader())
