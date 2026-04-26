@@ -9,72 +9,73 @@
         Title="Rent" WindowStartupLocation="CenterScreen" Foreground="White">
     <ScrollViewer VerticalScrollBarVisibility="Visible">
         <Viewbox Stretch="UniformToFill">
-            <Grid Background="#FF672121" Height="1080" Width="1920">
-                <Grid.RowDefinitions>
-                    <RowDefinition Height="Auto"/>
-                    <!-- Title -->
-                    <RowDefinition Height="Auto"/>
-                    <!-- Border -->
-                    <RowDefinition Height="*"/>
-                    <!-- Main Menu fills remaining space -->
-                </Grid.RowDefinitions>
-
-                <StackPanel Orientation="Horizontal">
-                    <Border Style="{StaticResource MajorButtonBorder}">
-                        <Button 
+            <Grid Background="#FF672121" Height="auto" Width="1920">
+                <StackPanel Orientation="Vertical">
+                    <StackPanel Orientation="Horizontal">
+                        <Border Style="{StaticResource MajorButtonBorder}">
+                            <Button 
                             Content="BACK TO MAIN MENU" 
                             Style="{StaticResource MajorButton}" 
                             Command="{Binding BackCommand}"
-                        />
-                    </Border>
-                    <TextBlock Text="CAR RENTAL SYSTEM" Foreground="White" Style="{StaticResource Title}" Grid.Row="0" Margin="25,40,25,40"/>
-                </StackPanel>
-                <Border Style="{StaticResource MainBorder}" Grid.Row="1"/>
-
-                <StackPanel Grid.Row="2" VerticalAlignment="Center" HorizontalAlignment="Center">
-                    <DataGrid 
-                        Height="500"
-                        Width="700"
-                        ItemsSource="{Binding Source={x:Static vm:Cars_In.carsAvailable}}"
-                        SelectedItem="{Binding SelectedCar}"
-                        AutoGenerateColumns="False"
-                        CanUserAddRows="False"
-                        Style="{StaticResource DataGridText}"
-                        AlternatingRowBackground="LightPink">
-                        <DataGrid.Columns>
-                            <DataGridTextColumn Header="Name" Binding="{Binding Name}" HeaderStyle="{StaticResource DataGridHeader}" ElementStyle="{StaticResource BodyTextStyle}"/>
-                            <DataGridTextColumn Header="Brand" Binding="{Binding Brand}" HeaderStyle="{StaticResource DataGridHeader}" ElementStyle="{StaticResource BodyTextStyle}"/>
-                            <DataGridTextColumn Header="Age" Binding="{Binding Age}" HeaderStyle="{StaticResource DataGridHeader}" ElementStyle="{StaticResource BodyTextStyle}"/>
-                            <DataGridTextColumn Header="License Plate" Binding="{Binding LicensePlate}" HeaderStyle="{StaticResource DataGridHeader}" ElementStyle="{StaticResource BodyTextStyle}"/>
-                        </DataGrid.Columns>
-                    </DataGrid>
-                    <TextBlock Text="Return Year" HorizontalAlignment="Center" VerticalAlignment="Top" Foreground="White" Style="{StaticResource BodyTextStyle}"/>
-                    <Border Style="{StaticResource TextBoxBorder}">
-                        <TextBox 
-                            Width="200" 
-                            Style="{StaticResource BodyTextBox}"
-                            Text="{Binding RentalYear, UpdateSourceTrigger=PropertyChanged}"
-                        />
-                    </Border>
-                    <TextBlock Text="Return Month" HorizontalAlignment="Center" VerticalAlignment="Top" Foreground="White" Style="{StaticResource BodyTextStyle}"/>
-                    <Border Style="{StaticResource TextBoxBorder}">
-                        <TextBox 
-                            Width="200" 
-                            Style="{StaticResource BodyTextBox}"
-                            Text="{Binding RentalMonth, UpdateSourceTrigger=PropertyChanged}"
-                        />
-                    </Border>
-                    <TextBlock Text="Return Day" HorizontalAlignment="Center" VerticalAlignment="Top" Foreground="White" Style="{StaticResource BodyTextStyle}"/>
-                    <Border Style="{StaticResource TextBoxBorder}">
-                        <TextBox 
-                            Width="200" 
-                            Style="{StaticResource BodyTextBox}"
-                            Text="{Binding RentalDay, UpdateSourceTrigger=PropertyChanged}"
-                        />
-                    </Border>
-                    <Border Style="{StaticResource NormalButtonBorder}">
-                        <Button Content="Rent" Style="{StaticResource NormalButton}" Command="{Binding SendCarToRentCommand}"/>
-                    </Border>
+                            />
+                        </Border>
+                        <TextBlock Text="CAR RENTAL SYSTEM" Foreground="White" Style="{StaticResource Title}" Margin="25,40,25,40"/>
+                    </StackPanel>
+                    <Border Style="{StaticResource MainBorder}"/>
+                    <StackPanel HorizontalAlignment="Center" Margin="25,40,25,40">
+                        <TextBlock Text="RENT A CAR" HorizontalAlignment="Center" Style="{StaticResource Header}"/>
+                        <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                            <Border Style="{StaticResource MajorButtonBorder}"  Margin="25,40,25,40"  VerticalAlignment="Top">
+                                <StackPanel Orientation="Vertical">
+                                    <TextBlock Text="Return Year" HorizontalAlignment="Center" VerticalAlignment="Top" Foreground="White" Style="{StaticResource BodyTextStyle}"/>
+                                    <Border Style="{StaticResource TextBoxBorder}">
+                                        <TextBox 
+                                        Width="200" 
+                                        Style="{StaticResource BodyTextBox}"
+                                        Text="{Binding RentalYear, UpdateSourceTrigger=PropertyChanged}"
+                                    />
+                                    </Border>
+                                    <TextBlock Text="Return Month" HorizontalAlignment="Center" VerticalAlignment="Top" Foreground="White" Style="{StaticResource BodyTextStyle}"/>
+                                    <Border Style="{StaticResource TextBoxBorder}">
+                                        <TextBox 
+                                        Width="200" 
+                                        Style="{StaticResource BodyTextBox}"
+                                        Text="{Binding RentalMonth, UpdateSourceTrigger=PropertyChanged}"
+                                    />
+                                    </Border>
+                                    <TextBlock Text="Return Day" HorizontalAlignment="Center" VerticalAlignment="Top" Foreground="White" Style="{StaticResource BodyTextStyle}"/>
+                                    <Border Style="{StaticResource TextBoxBorder}">
+                                        <TextBox 
+                                            Width="200" 
+                                            Style="{StaticResource BodyTextBox}"
+                                            Text="{Binding RentalDay, UpdateSourceTrigger=PropertyChanged}"
+                                        />
+                                    </Border>
+                                    <Border Style="{StaticResource NormalButtonBorder}">
+                                        <Button Content="Rent" Style="{StaticResource NormalButton}" Command="{Binding SendCarToRentCommand}"/>
+                                    </Border>
+                                </StackPanel>
+                            </Border>
+                            <DataGrid 
+                                Height="500"
+                                Width="700"
+                                ItemsSource="{Binding Source={x:Static vm:Cars_In.carsAvailable}}"
+                                SelectedItem="{Binding SelectedCar}"
+                                AutoGenerateColumns="False"
+                                CanUserAddRows="False"
+                                Style="{StaticResource DataGridText}"
+                                AlternatingRowBackground="LightPink"
+                                VerticalAlignment="Top"
+                                Margin="25,40,25,40" >
+                                <DataGrid.Columns>
+                                    <DataGridTextColumn Header="Name" Binding="{Binding Name}" HeaderStyle="{StaticResource DataGridHeader}" ElementStyle="{StaticResource BodyTextStyle}"/>
+                                    <DataGridTextColumn Header="Brand" Binding="{Binding Brand}" HeaderStyle="{StaticResource DataGridHeader}" ElementStyle="{StaticResource BodyTextStyle}"/>
+                                    <DataGridTextColumn Header="Age" Binding="{Binding Age}" HeaderStyle="{StaticResource DataGridHeader}" ElementStyle="{StaticResource BodyTextStyle}"/>
+                                    <DataGridTextColumn Header="License Plate" Binding="{Binding LicensePlate}" HeaderStyle="{StaticResource DataGridHeader}" ElementStyle="{StaticResource BodyTextStyle}"/>
+                                </DataGrid.Columns>
+                            </DataGrid>
+                        </StackPanel>
+                    </StackPanel>
                 </StackPanel>
             </Grid>
         </Viewbox>

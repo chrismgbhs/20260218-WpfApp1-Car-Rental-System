@@ -23,12 +23,12 @@
 
                 <StackPanel Grid.Row="2" VerticalAlignment="Center" HorizontalAlignment="Center">
                     <TextBlock Text="MAIN MENU" Style="{StaticResource Header}" HorizontalAlignment="{StaticResource MainMenuHorizontalAlignment}"/>
-                    <Border Style="{StaticResource NormalButtonBorder}">
+                    <!--<Border Style="{StaticResource NormalButtonBorder}">
                         <Button Content="View Available Cars" Command="{Binding ViewAvailableCarsCommand}" Style="{StaticResource NormalButton}"/>
-                    </Border>
-                    <Border Style="{StaticResource NormalButtonBorder}">
+                    </Border>-->
+                    <!--<Border Style="{StaticResource NormalButtonBorder}">
                         <Button Content="View Rented Cars" Command="{Binding ViewRentedCarsCommand}" Style="{StaticResource NormalButton}"/>
-                    </Border>
+                    </Border>-->
                     <Border Style="{StaticResource NormalButtonBorder}">
                         <Button Content="Rent a Car" Command="{Binding RentACarCommand}" Style="{StaticResource NormalButton}"/>
                     </Border>

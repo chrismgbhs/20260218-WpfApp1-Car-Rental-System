@@ -43,7 +43,7 @@
                     <Border Style="{StaticResource NormalButtonBorder}">
                         <Button Content="View Cars in Maintenance" Style="{StaticResource NormalButton}" Command="{Binding ViewCarsInMaintenanceCommand}"/>
                     </Border>
-                    <Border Style="{StaticResource NormalButtonBorder}">
+                    <!--<Border Style="{StaticResource NormalButtonBorder}">
                         <Button Content="Send Car to Maintenance" Style="{StaticResource NormalButton}" Command="{Binding SendCarToMaintenanceCommand}"/>
                     </Border>
                     <Border Style="{StaticResource NormalButtonBorder}">
@@ -52,7 +52,7 @@
                     <Border Style="{StaticResource NormalButtonBorder}">
                         <Button Content="Return Car from Maintenance" Style="{StaticResource NormalButton}" Command="{Binding ReturnCarFromMaintenanceCommand}"/>
                     </Border>
-                    <!--<Border Style="{StaticResource NormalButtonBorder}">
+                    <Border Style="{StaticResource NormalButtonBorder}">
                         <Button Content="Exit and Save" Style="{StaticResource NormalButton}" Command="{Binding ExitAndSaveCommand}"/>
                     </Border>-->
                 </StackPanel>

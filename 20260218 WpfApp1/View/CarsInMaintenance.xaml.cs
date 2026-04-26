@@ -22,7 +22,7 @@ namespace _20260218_WpfApp1.View
         public CarsInMaintenance()
         {
             InitializeComponent();
-            this.DataContext = new ViewModel.Cars_in_Maintenance();
+            this.DataContext = new ViewModel.CarFromMaintenance();
         }
     }
 }

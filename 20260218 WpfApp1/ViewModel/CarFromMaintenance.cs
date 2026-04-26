@@ -63,7 +63,7 @@ namespace _20260218_WpfApp1.ViewModel
         public async void RemoveCarFromMaintenance()
         {
 
-            Car car = new Car(maintenance.Car.Name, maintenance.Car.Brand, maintenance.Car.Age, maintenance.Car.LicensePlate);
+            Car car = new Car(SelectedCar.Car.Name, SelectedCar.Car.Brand, SelectedCar.Car.Age, SelectedCar.Car.LicensePlate);
             Cars_In.carsAvailable.Add(car);
             File_Manager file_Manager = new File_Manager("");
             foreach (var maintenanceCar in Cars_in_Maintenance.carsInMaintenance)

@@ -31,12 +31,15 @@ namespace _20260218_WpfApp1.ViewModel
         private string _licensePlate;
         private Car _selectedCar;
         public Car car;
+        public string MaintenanceDescription { get; set; }
+        public string MaintenanceWorker { get; set; }
 
         public ICommand UpdateCarCommand { get; set; }
         public ICommand BackCommand { get; set; }
         public ICommand SubmitCommand { get; set; }
         public ICommand AddCarsCommand { get; set; }
         public ICommand RemoveCarCommand { get; set; }
+        public ICommand SendCarToMaintenanceCommand { get; set; }
 
         public Cars_In()
         {
@@ -45,6 +48,7 @@ namespace _20260218_WpfApp1.ViewModel
             AddCarsCommand = new RelayCommand(ExecuteAddCars);
             UpdateCarCommand = new RelayCommand(ExecuteUpdateCar);
             RemoveCarCommand = new RelayCommand(RemoveSelectedCar);
+            SendCarToMaintenanceCommand = new RelayCommand(SendSelectedCarToMaintenance);
         }
 
         public string Name
@@ -86,6 +90,46 @@ namespace _20260218_WpfApp1.ViewModel
                     Age = SelectedCar.Age;
                     LicensePlate = SelectedCar.LicensePlate;
                     //MessageBox.Show($"Selected Car:\nName: {car.Name}\nBrand: {car.Brand}\nAge: {car.Age}\nLicense Plate: {car.LicensePlate}");
+                }
+            }
+        }
+
+        public async void SendSelectedCarToMaintenance()
+        {
+            //MessageBox.Show($"Selected Car:\nName: {car.Name}\nBrand: {car.Brand}\nAge: {car.Age}\nLicense Plate: {car.LicensePlate}");
+            if (SelectedCar != null)
+            {
+                if (MaintenanceDescription == null)
+                {
+                    MessageBox.Show("Please fill in all the fields before sending the car to maintenance.");
+                }
+
+                else
+                {
+                    MessageBox.Show($"Selected Car:\nName: {SelectedCar.Name}\nBrand: {SelectedCar.Brand}\nAge: {SelectedCar.Age}\nLicense Plate: {SelectedCar.LicensePlate}");
+                    //MessageBox.Show($"{Cars_In.carsAvailable.Count} cars available");
+                    Cars_in_Maintenance.carsInMaintenance.Add(new Maintenance(SelectedCar, MaintenanceDescription, MaintenanceWorker, DateTime.Now.ToString()));
+                    foreach (var maintenance in Cars_in_Maintenance.carsInMaintenance)
+                    {
+                        if (maintenance.Car.LicensePlate == SelectedCar.LicensePlate)
+                        {
+                            MessageBox.Show($"{maintenance.Car.Name} sent to maintenance with description: {maintenance.MaintenanceDetails}");
+                            break;
+                        }
+                    }
+                    MessageBox.Show("Car sent to maintenance successfully!");
+
+                    foreach (var availableCar in Cars_In.carsAvailable)
+                    {
+                        if (availableCar.LicensePlate == car.LicensePlate)
+                        {
+                            Cars_In.carsAvailable.Remove(availableCar);
+                            MessageBox.Show("Car removed from available cars list.");
+                            break;
+                        }
+                    }
+
+                    await DatabaseManager.RefreshDatabase();
                 }
             }
         }
