@@ -40,7 +40,7 @@ namespace _20260218_WpfApp1.ViewModel
             Application.Current.MainWindow = mainWindow; // ✅ Set BEFORE closing
             mainWindow.Show();                           // ✅ Non-blocking
             Application.Current.Windows
-                .OfType<View.CarFromMaintenance>()
+                .OfType<View.CarsInMaintenance>()
                 .FirstOrDefault()?.Close();                 // ✅ Close login after
         }
         public Maintenance SelectedCar
@@ -62,37 +62,45 @@ namespace _20260218_WpfApp1.ViewModel
 
         public async void RemoveCarFromMaintenance()
         {
-
-            Car car = new Car(SelectedCar.Car.Name, SelectedCar.Car.Brand, SelectedCar.Car.Age, SelectedCar.Car.LicensePlate);
-            Cars_In.carsAvailable.Add(car);
-            File_Manager file_Manager = new File_Manager("");
-            foreach (var maintenanceCar in Cars_in_Maintenance.carsInMaintenance)
+            if (SelectedCar == null)
             {
-                if (maintenanceCar.Car.LicensePlate == car.LicensePlate)
-                {
-                    file_Manager = new File_Manager($"{maintenanceCar.Car.LicensePlate}");
-                    break;
-                }
+                MessageBox.Show("Please select a car from the maintenance list before attempting to remove it.");
             }
 
-            List<string> content = new List<string>();
-            content.Add($"{maintenance.StartDate} | Maintenance details: {maintenance.MaintenanceDetails} | Maintenance worker: {maintenance.MaintenanceWorker} | Completed: {DateTime.Now}");
-
-            file_Manager.Write(content);
-            MessageBox.Show("Car has been returned from maintenance successfully.");
-            File_Manager file_manager = new File_Manager($"File/{maintenance.Car.LicensePlate}.csv");
-            file_manager.Write(content);
-            foreach (var maintenanceCar in Cars_in_Maintenance.carsInMaintenance)
+            else
             {
-                if (maintenanceCar.Car.LicensePlate == car.LicensePlate)
+                MessageBox.Show($"Car {SelectedCar.Car.Name} is being removed from maintenance.");
+                Car car = new Car(SelectedCar.Car.Name, SelectedCar.Car.Brand, SelectedCar.Car.Age, SelectedCar.Car.LicensePlate);
+                Cars_In.carsAvailable.Add(car);
+                File_Manager file_Manager = new File_Manager("");
+                foreach (var maintenanceCar in Cars_in_Maintenance.carsInMaintenance)
                 {
-                    Cars_in_Maintenance.carsInMaintenance.Remove(maintenanceCar);
-                    MessageBox.Show("Car has been removed from maintenance list.");
-                    break;
+                    if (maintenanceCar.Car.LicensePlate == car.LicensePlate)
+                    {
+                        file_Manager = new File_Manager($"{maintenanceCar.Car.LicensePlate}");
+                        break;
+                    }
                 }
-            }
 
-            await DatabaseManager.RefreshDatabase();
+                List<string> content = new List<string>();
+                content.Add($"{maintenance.StartDate} | Maintenance details: {maintenance.MaintenanceDetails} | Maintenance worker: {maintenance.MaintenanceWorker} | Completed: {DateTime.Now}");
+
+                file_Manager.Write(content);
+                MessageBox.Show("Car has been returned from maintenance successfully.");
+                File_Manager file_manager = new File_Manager($"File/{maintenance.Car.LicensePlate}.csv");
+                file_manager.Write(content);
+                foreach (var maintenanceCar in Cars_in_Maintenance.carsInMaintenance)
+                {
+                    if (maintenanceCar.Car.LicensePlate == car.LicensePlate)
+                    {
+                        Cars_in_Maintenance.carsInMaintenance.Remove(maintenanceCar);
+                        MessageBox.Show("Car has been removed from maintenance list.");
+                        break;
+                    }
+                }
+
+                await DatabaseManager.RefreshDatabase();
+            }
         }
     }
 }

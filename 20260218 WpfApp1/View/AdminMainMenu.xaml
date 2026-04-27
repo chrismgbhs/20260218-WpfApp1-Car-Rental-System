@@ -23,7 +23,7 @@
                 <StackPanel Grid.Row="2" VerticalAlignment="Center" HorizontalAlignment="Center">
                     <TextBlock Text="MAIN MENU" HorizontalAlignment="Center" Style="{StaticResource Header}"/>
                     <Border Style="{StaticResource NormalButtonBorder}">
-                        <Button Content="View Available Cars" Style="{StaticResource NormalButton}" Command="{Binding ViewAvailableCarsCommand}"/>
+                        <Button Content="Available Cars" Style="{StaticResource NormalButton}" Command="{Binding ViewAvailableCarsCommand}"/>
                     </Border>
                     <!--<Border Style="{StaticResource NormalButtonBorder}">
                         <Button Content="Add Available Car" Style="{StaticResource NormalButton}" Command="{Binding AddACarCommand}"/>
@@ -38,10 +38,10 @@
                         <Button Content="Add Multiple Available Cars via CSV file" Style="{StaticResource NormalButton}" Command="{Binding AddMultipleCarsViaCSVFileCommand}"/>
                     </Border>-->
                     <Border Style="{StaticResource NormalButtonBorder}">
-                        <Button Content="View Rented Cars" Style="{StaticResource NormalButton}" Command="{Binding ViewRentedCarsCommand}"/>
+                        <Button Content="Rented Cars" Style="{StaticResource NormalButton}" Command="{Binding ViewRentedCarsCommand}"/>
                     </Border>
                     <Border Style="{StaticResource NormalButtonBorder}">
-                        <Button Content="View Cars in Maintenance" Style="{StaticResource NormalButton}" Command="{Binding ViewCarsInMaintenanceCommand}"/>
+                        <Button Content="Maintenance" Style="{StaticResource NormalButton}" Command="{Binding ViewCarsInMaintenanceCommand}"/>
                     </Border>
                     <!--<Border Style="{StaticResource NormalButtonBorder}">
                         <Button Content="Send Car to Maintenance" Style="{StaticResource NormalButton}" Command="{Binding SendCarToMaintenanceCommand}"/>

@@ -23,27 +23,27 @@
                     </StackPanel>
                     <Border Style="{StaticResource MainBorder}"/>
                     <StackPanel HorizontalAlignment="Center" Margin="25,40,25,40">
-                        <TextBlock Text="AVAILABLE CARS" HorizontalAlignment="Center" Style="{StaticResource Header}"/>
                         <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
                             <StackPanel Orientation="Vertical">
+                                <TextBlock Text="EDIT CAR LIST" HorizontalAlignment="Center" Style="{StaticResource Header}"/>
                                 <Border Style="{StaticResource MajorButtonBorder}"  Margin="25,40,25,40"  VerticalAlignment="Top">
                                     <StackPanel Orientation="Vertical" Background="Maroon">
                                         <TextBlock Text="ADD A CAR" HorizontalAlignment="Center" Style="{StaticResource Header}"/>
                                         <TextBlock Text="MODEL" HorizontalAlignment="Center" VerticalAlignment="Top" Foreground="White" Style="{StaticResource BodyTextStyle}"/>
                                         <Border Style="{StaticResource TextBoxBorder}">
                                             <TextBox 
-                                    Width="200" 
-                                    Style="{StaticResource BodyTextBox}"
-                                    Text="{Binding CarModel, UpdateSourceTrigger=PropertyChanged}"
-                            />
+                                                Width="200" 
+                                                Style="{StaticResource BodyTextBox}"
+                                                Text="{Binding CarModel, UpdateSourceTrigger=PropertyChanged}"
+                                            />
                                         </Border>
                                         <TextBlock Text="BRAND" HorizontalAlignment="Center" VerticalAlignment="Top" Foreground="White" Style="{StaticResource BodyTextStyle}"/>
                                         <Border Style="{StaticResource TextBoxBorder}">
                                             <TextBox 
-                                Width="200" 
-                                Style="{StaticResource BodyTextBox}"
-                                Text="{Binding CarBrand, UpdateSourceTrigger=PropertyChanged}"
-                            />
+                                                Width="200" 
+                                                Style="{StaticResource BodyTextBox}"
+                                                Text="{Binding CarBrand, UpdateSourceTrigger=PropertyChanged}"
+                                            />
                                         </Border>
                                         <TextBlock Text="AGE" HorizontalAlignment="Center" VerticalAlignment="Top" Foreground="White" Style="{StaticResource BodyTextStyle}"/>
                                         <Border Style="{StaticResource TextBoxBorder}">
@@ -66,32 +66,6 @@
                                         </Border>
                                     </StackPanel>
                                 </Border>
-                                <Border Style="{StaticResource MajorButtonBorder}"  Margin="25,40,25,40"  VerticalAlignment="Top">
-                                    <StackPanel HorizontalAlignment="Center"  Background="Maroon">
-                                        <TextBlock Text="MAINTENANCE" HorizontalAlignment="Center" Style="{StaticResource Header}"/>
-                                        <TextBlock Text="DESCRIPTION" HorizontalAlignment="Center" VerticalAlignment="Top" Foreground="White" Style="{StaticResource BodyTextStyle}"/>
-                                        <Border Style="{StaticResource TextBoxBorder}">
-                                            <TextBox 
-                                    Width="200" 
-                                    Style="{StaticResource BodyTextBox}"
-                                    Text="{Binding MaintenanceDescription, UpdateSourceTrigger=PropertyChanged}"
-                                />
-                                        </Border>
-                                        <TextBlock Text="STAFF" HorizontalAlignment="Center" VerticalAlignment="Top" Foreground="White" Style="{StaticResource BodyTextStyle}"/>
-                                        <Border Style="{StaticResource TextBoxBorder}">
-                                            <TextBox 
-                                    Width="200" 
-                                    Style="{StaticResource BodyTextBox}"
-                                    Text="{Binding MaintenanceWorker, UpdateSourceTrigger=PropertyChanged}"
-                                />
-                                        </Border>
-                                        <Border Style="{StaticResource NormalButtonBorder}">
-                                            <Button Content="Submit" Style="{StaticResource NormalButton}" Command="{Binding SendCarToMaintenanceCommand}"/>
-                                        </Border>
-                                    </StackPanel>
-                                </Border>
-                            </StackPanel>
-                            <StackPanel Orientation="Vertical">
                                 <Border Style="{StaticResource MajorButtonBorder}"  Margin="25,40,25,40"  VerticalAlignment="Top">
                                     <StackPanel HorizontalAlignment="Center" Background="Maroon">
                                         <TextBlock Text="ADD CARS" HorizontalAlignment="Center" Style="{StaticResource Header}"/>
@@ -150,6 +124,7 @@
                                 </Border>
                             </StackPanel>
                             <StackPanel Orientation="Vertical">
+                                <TextBlock Text="AVAILABLE CARS" HorizontalAlignment="Center" Style="{StaticResource Header}"/>
                                 <DataGrid 
                                 Height="500"
                                 Width="700"
@@ -170,6 +145,33 @@
                                 </DataGrid>
                                 <Border Style="{StaticResource NormalButtonBorder}" Margin="25,40,25,40" HorizontalAlignment="Left">
                                     <Button Content="Remove Selected Car" Style="{StaticResource NormalButton}" Command="{Binding RemoveCarCommand}"/>
+                                </Border>
+                            </StackPanel>
+                            <StackPanel Orientation="Vertical">
+                                <TextBlock Text="SEND TO MAINTENANCE" HorizontalAlignment="Center" Style="{StaticResource Header}"/>
+                                <Border Style="{StaticResource MajorButtonBorder}"  Margin="25,40,25,40"  VerticalAlignment="Top">
+                                    <StackPanel HorizontalAlignment="Center"  Background="Maroon">
+                                        <TextBlock Text="MAINTENANCE" HorizontalAlignment="Center" Style="{StaticResource Header}"/>
+                                        <TextBlock Text="DESCRIPTION" HorizontalAlignment="Center" VerticalAlignment="Top" Foreground="White" Style="{StaticResource BodyTextStyle}"/>
+                                        <Border Style="{StaticResource TextBoxBorder}">
+                                            <TextBox 
+                                    Width="200" 
+                                    Style="{StaticResource BodyTextBox}"
+                                    Text="{Binding MaintenanceDescription, UpdateSourceTrigger=PropertyChanged}"
+                                />
+                                        </Border>
+                                        <TextBlock Text="STAFF" HorizontalAlignment="Center" VerticalAlignment="Top" Foreground="White" Style="{StaticResource BodyTextStyle}"/>
+                                        <Border Style="{StaticResource TextBoxBorder}">
+                                            <TextBox 
+                                    Width="200" 
+                                    Style="{StaticResource BodyTextBox}"
+                                    Text="{Binding MaintenanceWorker, UpdateSourceTrigger=PropertyChanged}"
+                                />
+                                        </Border>
+                                        <Border Style="{StaticResource NormalButtonBorder}">
+                                            <Button Content="Submit" Style="{StaticResource NormalButton}" Command="{Binding SendCarToMaintenanceCommand}"/>
+                                        </Border>
+                                    </StackPanel>
                                 </Border>
                             </StackPanel>
                         </StackPanel>

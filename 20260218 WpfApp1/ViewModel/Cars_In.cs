@@ -89,7 +89,6 @@ namespace _20260218_WpfApp1.ViewModel
                     Brand = SelectedCar.Brand;
                     Age = SelectedCar.Age;
                     LicensePlate = SelectedCar.LicensePlate;
-                    //MessageBox.Show($"Selected Car:\nName: {car.Name}\nBrand: {car.Brand}\nAge: {car.Age}\nLicense Plate: {car.LicensePlate}");
                 }
             }
         }
@@ -121,7 +120,7 @@ namespace _20260218_WpfApp1.ViewModel
 
                     foreach (var availableCar in Cars_In.carsAvailable)
                     {
-                        if (availableCar.LicensePlate == car.LicensePlate)
+                        if (availableCar.LicensePlate == SelectedCar.LicensePlate)
                         {
                             Cars_In.carsAvailable.Remove(availableCar);
                             MessageBox.Show("Car removed from available cars list.");
@@ -131,6 +130,10 @@ namespace _20260218_WpfApp1.ViewModel
 
                     await DatabaseManager.RefreshDatabase();
                 }
+            }
+            else
+            {
+                MessageBox.Show("Please select a car to send to maintenance.");
             }
         }
 
@@ -176,7 +179,6 @@ namespace _20260218_WpfApp1.ViewModel
                     SelectedCar.Age = Age;
                     SelectedCar.LicensePlate = LicensePlate;
                     MessageBox.Show("Car updated successfully.");
-                    OnPropertyChanged(nameof(SelectedCar));
                     await DatabaseManager.RefreshDatabase();
                 }
             }
@@ -189,37 +191,45 @@ namespace _20260218_WpfApp1.ViewModel
 
         public async void ExecuteAddCars()
         {
-            File_Manager file_Manager = new File_Manager(FilePath);
-            List<string> lines = file_Manager.getLines();
-            foreach (string line in lines)
+            if (FilePath == null)
             {
-                string[] carDetails = line.Split(',');
-                if (carDetails.Length == 4)
+                MessageBox.Show("Please select a file to import cars from.");
+            }
+
+            else
+            {
+                File_Manager file_Manager = new File_Manager(FilePath);
+                List<string> lines = file_Manager.getLines();
+                foreach (string line in lines)
                 {
-                    string name = carDetails[0].Trim();
-                    string brand = carDetails[1].Trim();
-                    string age = carDetails[2].Trim();
-                    string licensePlate = carDetails[3].Trim();
-
-                    if (!CheckDuplicates(licensePlate))
+                    string[] carDetails = line.Split(',');
+                    if (carDetails.Length == 4)
                     {
-                        Car car = new Car(name, brand, age, licensePlate);
-                        Cars_In.carsAvailable.Add(car);
-                        MessageBox.Show($"{car.Name} has been added to the inventory successfully.");
-                        await DatabaseManager.RefreshDatabase();
-                    }
+                        string name = carDetails[0].Trim();
+                        string brand = carDetails[1].Trim();
+                        string age = carDetails[2].Trim();
+                        string licensePlate = carDetails[3].Trim();
 
+                        if (!CheckDuplicates(licensePlate))
+                        {
+                            Car car = new Car(name, brand, age, licensePlate);
+                            Cars_In.carsAvailable.Add(car);
+                            MessageBox.Show($"{car.Name} has been added to the inventory successfully.");
+                            await DatabaseManager.RefreshDatabase();
+                        }
+
+                        else
+                        {
+                            MessageBox.Show($"Duplicate license plate found for {licensePlate}. Car not added.");
+                        }
+                    }
                     else
                     {
-                        MessageBox.Show($"Duplicate license plate found for {licensePlate}. Car not added.");
+                        MessageBox.Show("Invalid line format. Each line must contain exactly 4 values: Name, Brand, Age, License Plate.");
                     }
                 }
-                else
-                {
-                    MessageBox.Show("Invalid line format. Each line must contain exactly 4 values: Name, Brand, Age, License Plate.");
-                }
+                MessageBox.Show("Car import process completed.");
             }
-            MessageBox.Show("Car import process completed.");
         }
 
         public async void ExecuteSubmit()

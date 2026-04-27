@@ -66,7 +66,7 @@ namespace _20260218_WpfApp1.ViewModel
         public async void SendSelectedCarToMaintenance()
         {
             //MessageBox.Show($"Selected Car:\nName: {car.Name}\nBrand: {car.Brand}\nAge: {car.Age}\nLicense Plate: {car.LicensePlate}");
-            if (car != null)
+            if (SelectedCar != null)
             {
                 if (MaintenanceDescription == null)
                 {
@@ -75,31 +75,36 @@ namespace _20260218_WpfApp1.ViewModel
 
                 else
                 {
-                    MessageBox.Show($"Selected Car:\nName: {car.Name}\nBrand: {car.Brand}\nAge: {car.Age}\nLicense Plate: {car.LicensePlate}");
-                    //MessageBox.Show($"{Cars_In.carsAvailable.Count} cars available");
-                    Cars_in_Maintenance.carsInMaintenance.Add(new Maintenance(car, MaintenanceDescription, MaintenanceWorker, DateTime.Now.ToString()));
-                    foreach (var maintenance in Cars_in_Maintenance.carsInMaintenance)
-                    {
-                        if (maintenance.Car.LicensePlate == car.LicensePlate)
+                        MessageBox.Show($"Selected Car:\nName: {SelectedCar.Name}\nBrand: {SelectedCar.Brand}\nAge: {SelectedCar.Age}\nLicense Plate: {SelectedCar.LicensePlate}");
+                        //MessageBox.Show($"{Cars_In.carsAvailable.Count} cars available");
+                        Cars_in_Maintenance.carsInMaintenance.Add(new Maintenance(SelectedCar, MaintenanceDescription, MaintenanceWorker, DateTime.Now.ToString()));
+                        foreach (var maintenance in Cars_in_Maintenance.carsInMaintenance)
                         {
-                            MessageBox.Show($"{maintenance.Car.Name} sent to maintenance with description: {maintenance.MaintenanceDetails}");
-                            break;
+                            if (maintenance.Car.LicensePlate == car.LicensePlate)
+                            {
+                                MessageBox.Show($"{maintenance.Car.Name} sent to maintenance with description: {maintenance.MaintenanceDetails}");
+                                break;
+                            }
                         }
-                    }
-                    MessageBox.Show("Car sent to maintenance successfully!");
+                        MessageBox.Show("Car sent to maintenance successfully!");
 
-                    foreach (var availableCar in Cars_In.carsAvailable)
-                    {
-                        if (availableCar.LicensePlate == car.LicensePlate)
+                        foreach (var availableCar in Cars_In.carsAvailable)
                         {
-                            Cars_In.carsAvailable.Remove(availableCar);
-                            MessageBox.Show("Car removed from available cars list.");
-                            break;
+                            if (availableCar.LicensePlate == car.LicensePlate)
+                            {
+                                Cars_In.carsAvailable.Remove(availableCar);
+                                MessageBox.Show("Car removed from available cars list.");
+                                break;
+                            }
                         }
-                    }
 
-                    await DatabaseManager.RefreshDatabase();
+                        await DatabaseManager.RefreshDatabase();
                 }
+            }
+
+            else
+            {
+                MessageBox.Show("Please select a car to send to maintenance.");
             }
         }
     }
