@@ -13,11 +13,14 @@ using _20260218_WpfApp1.ViewModel;
 using System.Collections;
 using System.Runtime.ConstrainedExecution;
 using _20260218_WpfApp1.View;
+using System.Security.Cryptography.X509Certificates;
 
 namespace _20260218_WpfApp1.ViewModel
 {
     internal class DatabaseManager
     {
+        public static List<string> History = new List<string>();
+
         //REFRESH DATABASE
         public static async Task RefreshDatabase()
         {
@@ -358,6 +361,82 @@ namespace _20260218_WpfApp1.ViewModel
         }
 
         //MAINTENANCE
+        public static async Task MaintenanceHistory()
+        {
+            History.Clear();
+
+            try
+            {
+                using (SqlConnection connection = new SqlConnection(SQL.connectionString))
+                {
+                    string plateNumber = ViewModel.MaintenanceHistory.PlateNumber;
+                    File_Manager file_Manager = new File_Manager($"{plateNumber}.csv");
+                    string query = $"SELECT * FROM maintenances WHERE plateNumber = @plateNumber";
+                    using (SqlCommand command = new SqlCommand(query, connection))
+                    {
+                        command.Parameters.AddWithValue("@plateNumber", plateNumber);
+                        await connection.OpenAsync();
+                        using (SqlDataReader reader = command.ExecuteReader())
+                        {
+                            while (reader.Read())
+                            {
+                                string modelName = reader.GetString(reader.GetOrdinal("modelName"));
+                                string brand = reader.GetString(reader.GetOrdinal("brand"));
+                                string age = reader.GetString(reader.GetOrdinal("age"));
+                                string licensePlate = reader.GetString(reader.GetOrdinal("plateNumber"));
+                                string maintenanceDetails = reader.GetString(reader.GetOrdinal("maintenanceDetails"));
+                                string maintenanceWorker = reader.GetString(reader.GetOrdinal("maintenanceWorker"));
+                                string startDate = reader.GetString(reader.GetOrdinal("startDate"));
+                                string endDate = reader.GetString(reader.GetOrdinal("endDate"));
+
+                                History.Add($"Model: {modelName}, Brand: {brand}, Age: {age}, Plate Number: {licensePlate}, Maintenance Details: {maintenanceDetails}, Maintenance Worker: {maintenanceWorker}, Start Date: {startDate}, End Date: {endDate}\n");
+                            }
+
+                            file_Manager.Write(History, false);
+
+                            MessageBox.Show($"Maintenance history for plate number {plateNumber} has been written to the file.");
+                        }
+
+                        connection.Close();
+                        MessageBox.Show("Maintenance history initialized from database.");
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"An error occurred while trying to log in: {ex.Message}");
+                return;
+            }
+        }
+        public static async Task AddToHistory(Maintenance maintenance)
+        {
+            try
+            {
+                using (SqlConnection connection = new SqlConnection(SQL.connectionString))
+                {
+                    string query = $"INSERT INTO maintenances (modelName, brand, age, plateNumber, maintenanceDetails, maintenanceWorker, startDate, endDate) VALUES (@modelName, @brand, @age, @plateNumber, @maintenanceDetails, @maintenanceWorker, @startDate, @endDate)";
+                    using (SqlCommand command = new SqlCommand(query, connection))
+                    {
+                        command.Parameters.AddWithValue("@modelName", maintenance.Car.Name);
+                        command.Parameters.AddWithValue("@brand", maintenance.Car.Brand);
+                        command.Parameters.AddWithValue("@age", maintenance.Car.Age);
+                        command.Parameters.AddWithValue("@plateNumber", maintenance.Car.LicensePlate);
+                        command.Parameters.AddWithValue("@maintenanceDetails", maintenance.MaintenanceDetails);
+                        command.Parameters.AddWithValue("@maintenanceWorker", maintenance.MaintenanceWorker);
+                        command.Parameters.AddWithValue("@startDate", maintenance.StartDate);
+                        command.Parameters.AddWithValue("@endDate", DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss"));
+                        await connection.OpenAsync();
+                        command.ExecuteNonQuery();
+                        connection.Close();
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"An error occurred while trying to log in: {ex.Message}");
+                return;
+            }
+        }
         public static async Task InitializeMaintenances()
         {
             try

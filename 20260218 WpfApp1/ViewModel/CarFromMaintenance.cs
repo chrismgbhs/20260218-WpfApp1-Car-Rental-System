@@ -72,23 +72,10 @@ namespace _20260218_WpfApp1.ViewModel
                 MessageBox.Show($"Car {SelectedCar.Car.Name} is being removed from maintenance.");
                 Car car = new Car(SelectedCar.Car.Name, SelectedCar.Car.Brand, SelectedCar.Car.Age, SelectedCar.Car.LicensePlate);
                 Cars_In.carsAvailable.Add(car);
-                File_Manager file_Manager = new File_Manager("");
-                foreach (var maintenanceCar in Cars_in_Maintenance.carsInMaintenance)
-                {
-                    if (maintenanceCar.Car.LicensePlate == car.LicensePlate)
-                    {
-                        file_Manager = new File_Manager($"{maintenanceCar.Car.LicensePlate}");
-                        break;
-                    }
-                }
 
-                List<string> content = new List<string>();
-                content.Add($"{maintenance.StartDate} | Maintenance details: {maintenance.MaintenanceDetails} | Maintenance worker: {maintenance.MaintenanceWorker} | Completed: {DateTime.Now}");
-
-                file_Manager.Write(content);
+                await DatabaseManager.AddToHistory(SelectedCar);
                 MessageBox.Show("Car has been returned from maintenance successfully.");
-                File_Manager file_manager = new File_Manager($"File/{maintenance.Car.LicensePlate}.csv");
-                file_manager.Write(content);
+
                 foreach (var maintenanceCar in Cars_in_Maintenance.carsInMaintenance)
                 {
                     if (maintenanceCar.Car.LicensePlate == car.LicensePlate)
