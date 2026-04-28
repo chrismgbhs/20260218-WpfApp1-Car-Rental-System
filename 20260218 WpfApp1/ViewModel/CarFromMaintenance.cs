@@ -40,7 +40,7 @@ namespace _20260218_WpfApp1.ViewModel
             Application.Current.MainWindow = mainWindow; // ✅ Set BEFORE closing
             mainWindow.Show();                           // ✅ Non-blocking
             Application.Current.Windows
-                .OfType<View.CarsInMaintenance>()
+                .OfType<View.CarFromMaintenance>()
                 .FirstOrDefault()?.Close();                 // ✅ Close login after
         }
         public Maintenance SelectedCar

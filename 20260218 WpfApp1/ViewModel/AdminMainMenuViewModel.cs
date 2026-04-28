@@ -103,7 +103,7 @@ namespace _20260218_WpfApp1.ViewModel
         }
         private void ExecuteViewCarsInMaintenance()
         {
-            var mainWindow = new CarsInMaintenance();
+            var mainWindow = new View.CarFromMaintenance();
             Application.Current.MainWindow = mainWindow; // ✅ Set BEFORE closing
             mainWindow.Show();                           // ✅ Non-blocking
             Application.Current.Windows

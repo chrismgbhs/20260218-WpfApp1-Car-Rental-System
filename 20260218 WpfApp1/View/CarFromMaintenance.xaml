@@ -8,51 +8,45 @@
         mc:Ignorable="d"
         Title="Maintenance" WindowStartupLocation="CenterScreen" Foreground="White">
     <ScrollViewer VerticalScrollBarVisibility="Visible">
-        <Viewbox Stretch="Uniform">
+        <Viewbox Stretch="UniformToFill">
             <Grid Background="#FF672121" Height="1080" Width="1920">
-                <Grid.RowDefinitions>
-                    <RowDefinition Height="Auto"/>
-                    <!-- Title -->
-                    <RowDefinition Height="Auto"/>
-                    <!-- Border -->
-                    <RowDefinition Height="*"/>
-                    <!-- Main Menu fills remaining space -->
-                </Grid.RowDefinitions>
-
-                <StackPanel Orientation="Horizontal">
-                    <Border Style="{StaticResource MajorButtonBorder}">
-                        <Button 
+                <StackPanel Orientation="Vertical">
+                    <StackPanel Orientation="Horizontal">
+                        <Border Style="{StaticResource MajorButtonBorder}">
+                            <Button 
                             Content="BACK TO MAIN MENU" 
                             Style="{StaticResource MajorButton}" 
                             Command="{Binding BackCommand}"
-                        />
-                    </Border>
-                    <TextBlock Text="CAR RENTAL SYSTEM" Foreground="White" Style="{StaticResource Title}" Grid.Row="0" Margin="25,40,25,40"/>
-                </StackPanel>
-                <Border Style="{StaticResource MainBorder}" Grid.Row="1"/>
-
-                <StackPanel Grid.Row="2" VerticalAlignment="Center" HorizontalAlignment="Center">
-                    <TextBlock Text="SELECT CAR TO REMOVE FROM MAINTENANCE" HorizontalAlignment="Center" Style="{StaticResource Header}"/>
-                    <DataGrid 
-                        Height="500"
-                        Width="700"
-                        ItemsSource="{Binding Source={x:Static vm:Cars_in_Maintenance.carsInMaintenance}}"
-                        SelectedItem="{Binding SelectedCar}"
-                        AutoGenerateColumns="False"
-                        CanUserAddRows="False"
-                        Style="{StaticResource DataGridText}"
-                        AlternatingRowBackground="LightPink">
-                        <DataGrid.Columns>
-                            <DataGridTextColumn Header="Name" Binding="{Binding Car.Name}" HeaderStyle="{StaticResource DataGridHeader}" ElementStyle="{StaticResource BodyTextStyle}"/>
-                            <DataGridTextColumn Header="License Plate" Binding="{Binding Car.LicensePlate}" HeaderStyle="{StaticResource DataGridHeader}" ElementStyle="{StaticResource BodyTextStyle}"/>
-                            <DataGridTextColumn Header="Description" Binding="{Binding MaintenanceDetails}" HeaderStyle="{StaticResource DataGridHeader}" ElementStyle="{StaticResource BodyTextStyle}"/>
-                            <DataGridTextColumn Header="Worker" Binding="{Binding MaintenanceWorker}" HeaderStyle="{StaticResource DataGridHeader}" ElementStyle="{StaticResource BodyTextStyle}"/>
-                            <DataGridTextColumn Header="Date" Binding="{Binding StartDate}" HeaderStyle="{StaticResource DataGridHeader}" ElementStyle="{StaticResource BodyTextStyle}"/>
-                        </DataGrid.Columns>
-                    </DataGrid>
-                    <Border Style="{StaticResource NormalButtonBorder}">
-                        <Button Content="Remove Selected Car from Maintenance" Style="{StaticResource NormalButton}" Command="{Binding RemoveCarFromMaintenanceCommand}"/>
-                    </Border>
+                            />
+                        </Border>
+                        <TextBlock Text="CAR RENTAL SYSTEM" Foreground="White" Style="{StaticResource Title}" Margin="25,40,25,40"/>
+                    </StackPanel>
+                    <Border Style="{StaticResource MainBorder}"/>
+                    <StackPanel HorizontalAlignment="Center" Margin="25,40,25,40">
+                        <StackPanel VerticalAlignment="Center" HorizontalAlignment="Center">
+                            <TextBlock Text="SELECT CAR TO REMOVE FROM MAINTENANCE" HorizontalAlignment="Center" Style="{StaticResource Header}"/>
+                            <DataGrid 
+                                Height="500"
+                                Width="700"
+                                ItemsSource="{Binding Source={x:Static vm:Cars_in_Maintenance.carsInMaintenance}}"
+                                SelectedItem="{Binding SelectedCar}"
+                                AutoGenerateColumns="False"
+                                CanUserAddRows="False"
+                                Style="{StaticResource DataGridText}"
+                                AlternatingRowBackground="LightPink">
+                                <DataGrid.Columns>
+                                    <DataGridTextColumn Header="Name" Binding="{Binding Car.Name}" HeaderStyle="{StaticResource DataGridHeader}" ElementStyle="{StaticResource BodyTextStyle}"/>
+                                    <DataGridTextColumn Header="License Plate" Binding="{Binding Car.LicensePlate}" HeaderStyle="{StaticResource DataGridHeader}" ElementStyle="{StaticResource BodyTextStyle}"/>
+                                    <DataGridTextColumn Header="Description" Binding="{Binding MaintenanceDetails}" HeaderStyle="{StaticResource DataGridHeader}" ElementStyle="{StaticResource BodyTextStyle}"/>
+                                    <DataGridTextColumn Header="Worker" Binding="{Binding MaintenanceWorker}" HeaderStyle="{StaticResource DataGridHeader}" ElementStyle="{StaticResource BodyTextStyle}"/>
+                                    <DataGridTextColumn Header="Date" Binding="{Binding StartDate}" HeaderStyle="{StaticResource DataGridHeader}" ElementStyle="{StaticResource BodyTextStyle}"/>
+                                </DataGrid.Columns>
+                            </DataGrid>
+                            <Border Style="{StaticResource NormalButtonBorder}" HorizontalAlignment="Center">
+                                <Button Content="Remove Selected Car from Maintenance" Style="{StaticResource NormalButton}" Command="{Binding RemoveCarFromMaintenanceCommand}"/>
+                            </Border>
+                        </StackPanel>
+                    </StackPanel>
                 </StackPanel>
             </Grid>
         </Viewbox>

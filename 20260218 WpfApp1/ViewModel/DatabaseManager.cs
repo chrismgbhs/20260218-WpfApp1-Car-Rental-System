@@ -165,7 +165,6 @@ namespace _20260218_WpfApp1.ViewModel
                 foreach (Car car in Cars_In.carsAvailable)
                 {
                     await InsertCarIntoDatabase(car);
-                    MessageBox.Show("Operation completed.");
                 }
             }
 
@@ -201,7 +200,6 @@ namespace _20260218_WpfApp1.ViewModel
                                 if (!Rental_Manager.CheckDuplicates(plateNumber))
                                 {
                                     Cars_In.AddCar(car);
-                                    MessageBox.Show($"Added car with plate number: {plateNumber} to inventory.", plateNumber, MessageBoxButton.OK, MessageBoxImage.Information);
                                 }
 
                                 else
@@ -287,7 +285,6 @@ namespace _20260218_WpfApp1.ViewModel
                                 if (!Rental_Manager.CheckDuplicates(plateNumber))
                                 {
                                     Cars_Out.carsRented.Add(borrowed_Car);
-                                    MessageBox.Show($"Added car with plate number: {plateNumber} to inventory.", plateNumber, MessageBoxButton.OK, MessageBoxImage.Information);
                                 }
 
                                 else
@@ -350,7 +347,6 @@ namespace _20260218_WpfApp1.ViewModel
                 foreach (Borrowed_Car car in Cars_Out.carsRented)
                 {
                     await InsertCarIntoDatabaseOut(car);
-                    MessageBox.Show("Operation completed.");
                 }
             }
 
@@ -392,7 +388,6 @@ namespace _20260218_WpfApp1.ViewModel
                                 if (!Rental_Manager.CheckDuplicates(plateNumber))
                                 {
                                     Cars_in_Maintenance.AddMaintenance(maintenance);
-                                    MessageBox.Show($"Added car with plate number: {plateNumber} to inventory.", plateNumber, MessageBoxButton.OK, MessageBoxImage.Information);
                                 }
 
                                 else
@@ -487,7 +482,6 @@ namespace _20260218_WpfApp1.ViewModel
                 foreach (Maintenance maintenance in Cars_in_Maintenance.carsInMaintenance)
                 {
                     await InsertCarIntoDatabaseMaintenance(maintenance);
-                    MessageBox.Show("Operation completed.");
                 }
             }
 
