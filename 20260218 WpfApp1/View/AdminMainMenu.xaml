@@ -44,11 +44,12 @@
                         <Button Content="Maintenance" Style="{StaticResource NormalButton}" Command="{Binding ViewCarsInMaintenanceCommand}"/>
                     </Border>
                     <!--<Border Style="{StaticResource NormalButtonBorder}">
-                        <Button Content="Send Car to Maintenance" Style="{StaticResource NormalButton}" Command="{Binding SendCarToMaintenanceCommand}"/>
+                        <Button Content="Maintenance History" Style="{StaticResource NormalButton}" Command="{Binding ViewMaintenanceHistoryCommand}"/>
                     </Border>
                     <Border Style="{StaticResource NormalButtonBorder}">
-                        <Button Content="View Maintenance History" Style="{StaticResource NormalButton}" Command="{Binding ViewMaintenanceHistoryCommand}"/>
+                        <Button Content="Send Car to Maintenance" Style="{StaticResource NormalButton}" Command="{Binding SendCarToMaintenanceCommand}"/>
                     </Border>
+                    
                     <Border Style="{StaticResource NormalButtonBorder}">
                         <Button Content="Return Car from Maintenance" Style="{StaticResource NormalButton}" Command="{Binding ReturnCarFromMaintenanceCommand}"/>
                     </Border>

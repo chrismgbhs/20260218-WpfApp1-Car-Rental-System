@@ -22,9 +22,9 @@
                         <TextBlock Text="CAR RENTAL SYSTEM" Foreground="White" Style="{StaticResource Title}" Margin="25,40,25,40"/>
                     </StackPanel>
                     <Border Style="{StaticResource MainBorder}"/>
-                    <StackPanel HorizontalAlignment="Center" Margin="25,40,25,40">
+                    <StackPanel HorizontalAlignment="Center" Margin="25,40,25,40" Orientation="Horizontal">
                         <StackPanel VerticalAlignment="Center" HorizontalAlignment="Center">
-                            <TextBlock Text="SELECT CAR TO REMOVE FROM MAINTENANCE" HorizontalAlignment="Center" Style="{StaticResource Header}"/>
+                            <TextBlock Text="MAINTENANCES" HorizontalAlignment="Center" Style="{StaticResource Header}"/>
                             <DataGrid 
                                 Height="500"
                                 Width="700"
