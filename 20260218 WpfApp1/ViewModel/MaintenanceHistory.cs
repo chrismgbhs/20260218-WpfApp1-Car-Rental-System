@@ -2,7 +2,6 @@
 using _20260218_WpfApp1.View;
 using System;
 using System.Collections.Generic;
-using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -13,9 +12,16 @@ namespace _20260218_WpfApp1.ViewModel
 {
     internal class MaintenanceHistory : ObservableObject
     {
+        public string _history;
         public string PlateNumber { get; set; }
         public ICommand SearchCommand { get; set; }
         public ICommand BackCommand { get; set; }
+
+        public string History
+        {
+            get { return _history; }
+            set { _history = value; OnPropertyChanged(nameof(History)); }
+        }
 
         public MaintenanceHistory()
         {
@@ -27,8 +33,10 @@ namespace _20260218_WpfApp1.ViewModel
         {
             File_Manager file_Manager = new File_Manager($"File/{PlateNumber}.csv");
             List<string> lines = file_Manager.getLines();
-            file_Manager.Write(lines, true);
-            MessageBox.Show($"Receipt has been printed on Debug/File/{PlateNumber}.csv");
+            foreach (string line in lines)
+            {
+                History += $"{line}\n";
+            }
         }
 
         public void ExecuteBack()
