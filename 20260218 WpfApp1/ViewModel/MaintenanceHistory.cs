@@ -12,8 +12,8 @@ namespace _20260218_WpfApp1.ViewModel
 {
     internal class MaintenanceHistory : ObservableObject
     {
-        public string _history;
-        public string PlateNumber { get; set; }
+        public static string _history;
+        public static string PlateNumber { get; set; }
         public ICommand SearchCommand { get; set; }
         public ICommand BackCommand { get; set; }
 
@@ -29,14 +29,9 @@ namespace _20260218_WpfApp1.ViewModel
             BackCommand = new RelayCommand(ExecuteBack);
         }
 
-        public void ExecuteSearch()
+        public async void ExecuteSearch()
         {
-            File_Manager file_Manager = new File_Manager($"File/{PlateNumber}.csv");
-            List<string> lines = file_Manager.getLines();
-            foreach (string line in lines)
-            {
-                History += $"{line}\n";
-            }
+            await DatabaseManager.MaintenanceHistory();
         }
 
         public void ExecuteBack()
